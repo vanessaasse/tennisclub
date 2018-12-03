@@ -1,0 +1,35 @@
+easy_admin:
+    site_name: 'Tennis Club de Teyran'
+    design:
+        brand_color: '#112F41'
+    formats:
+        datetime: 'd/m/Y H:i:s'
+    entities:
+        Page:
+            class: App\Entity\Page
+            label: "Pages"
+            list:
+                title: "Toutes les pages"
+                max_results: 10
+                fields:
+                    - id
+                    - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'created at', label: 'Créée le'}
+                    - { property: 'edited at', label: 'Modifiée le'}
+                    - { property: 'user', label: 'Auteur'}
+                    - { property: 'is published', label: 'Publiée ?', type: 'boolean'}
+            search:
+                title: "Résultat de la recherche"
+                fields:
+                    - id
+                    - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'created at', label: 'Créée le'}
+                    - { property: 'edited at', label: 'Modifiée le'}
+                    - { property: 'user', label: 'Auteur'}
+                    - { property: 'is published', label: 'Publiée ?', type: 'boolean'}
+
+
+#       - App\Entity\Page
+#        - App\Entity\Category
+#        - App\Entity\User
+
