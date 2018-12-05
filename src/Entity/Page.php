@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
@@ -51,6 +50,32 @@ class Page
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * Page constructor.
+     * @param $title
+     * @param $user
+     * @param $slug
+     */
+    public function __construct($title, $user, $slug)
+    {
+        $this->title = $title;
+        $this->user = $user;
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+       $a = $this->title;
+       $b = $this->user;
+       $c = $this->slug;
+       $d = $a . $b . $c;
+       return strval($d);
+    }
+
 
     public function getId(): ?int
     {
@@ -131,8 +156,7 @@ class Page
 
     public function getSlug(): ?string
     {
-        $slugify = (new Slugify())->slugify($this->title);
-        return $slugify;
+        return $this->slug;
     }
 
     public function setSlug(string $slug): self
