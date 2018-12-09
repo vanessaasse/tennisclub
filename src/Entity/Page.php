@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
@@ -22,7 +23,7 @@ class Page
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $editedAt;
 
@@ -47,33 +48,27 @@ class Page
     private $isPublished;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"title", "code"})
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $slug;
+    // TODO ajouter un code après le slug en cas de publication de page avec un titre deja publié
+    // https://roadtodev.com/fr/blog/symfony-4-generer-des-slugs
 
     /**
-     * Page constructor.
-     * @param $title
-     * @param $user
-     * @param $slug
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\PageCategory", inversedBy="pages", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    public function __construct($title, $user, $slug)
-    {
-        $this->title = $title;
-        $this->user = $user;
-        $this->slug = $slug;
-    }
+    private $pageCategory;
+
 
     /**
      * @return string
      */
-    public function __toString(): string
+    public function __toString(): ?string
     {
-       $a = $this->title;
-       $b = $this->user;
-       $c = $this->slug;
-       $d = $a . $b . $c;
-       return strval($d);
+       return $this->title;
     }
 
 
@@ -165,4 +160,31 @@ class Page
 
         return $this;
     }
+
+
+    /**
+     * set PageCategory
+     *
+     * @param PageCategory $pageCategory
+     * @return $pageCategory
+     */
+    public function setPageCategory(\App\Entity\PageCategory $pageCategory)
+    {
+        $this->pageCategory = $pageCategory;
+
+        return $this;
+    }
+
+    /**
+     * get PageCategory
+     *
+     * @return \App\Entity\PageCategory
+     */
+    public function getPageCategory()
+    {
+        return $this->pageCategory;
+    }
+
+
+
 }
