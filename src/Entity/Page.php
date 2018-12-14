@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
+ * @UniqueEntity("slug")
  */
 class Page
 {
@@ -19,16 +22,19 @@ class Page
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime
      */
     private $editedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -49,16 +55,15 @@ class Page
 
     /**
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="string", length=128, unique=true)
+     * @ORM\Column(type="string", length=190, unique=true)
      */
     private $slug;
-    // TODO ajouter un code après le slug en cas de publication de page avec un titre deja publié
-    // https://roadtodev.com/fr/blog/symfony-4-generer-des-slugs
 
     /**
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\PageCategory", inversedBy="pages", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $pageCategory;
 

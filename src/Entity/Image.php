@@ -30,8 +30,6 @@ class Image
      * @ORM\Column(type="string", length=255)
      */
     private $file;
-    //TODO n'est pas un type="file" ?
-
 
     public function getId(): ?int
     {

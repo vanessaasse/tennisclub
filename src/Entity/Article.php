@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @UniqueEntity("slug")
  */
 class Article
 {
@@ -20,21 +22,25 @@ class Article
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime
      */
     private $EditedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $content;
 
@@ -50,20 +56,14 @@ class Article
 
     /**
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="string", length=128, unique=true)
+     * @ORM\Column(type="string", length=190, unique=true)
      */
     private $slug;
 
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ArticleCategory", cascade={"persist"})
-     */
-    private $articleCategories;
-
 
     public function __construct()
     {
-        $this->articleCategories =  new ArrayCollection();
     }
 
 
@@ -156,32 +156,4 @@ class Article
         return $this;
     }
 
-
-    /**
-     * @param ArticleCategory $articleCategory
-     * @return $this
-     */
-    public function addArticleCategory(\App\Entity\ArticleCategory $articleCategory)
-    {
-        $this->articleCategories[] = $articleCategory;
-        return $this;
-    }
-
-
-    /**
-     * @param ArticleCategory $articleCategory
-     */
-    public function removeArticleCategory(\App\Entity\ArticleCategory $articleCategory)
-    {
-        $this->articleCategories->removeElement($articleCategory);
-    }
-
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getArticleCategories()
-    {
-        return $this->articleCategories;
-    }
 }

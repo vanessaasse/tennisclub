@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @UniqueEntity("slug")
  */
 class Event
 {
@@ -19,26 +22,31 @@ class Event
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\Date
      */
     private $eventDate;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime
      */
     private $editedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $content;
 
@@ -54,7 +62,7 @@ class Event
 
     /**
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="string", length=128, unique=true)
+     * @ORM\Column(type="string", length=190, unique=true)
      */
     private $slug;
 
