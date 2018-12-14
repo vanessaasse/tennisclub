@@ -43,13 +43,13 @@ class Page
     private $user;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isPublished;
 
     /**
-     * @Gedmo\Slug(fields={"title", "code"})
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="string", length=128, unique=true)
      */
     private $slug;
     // TODO ajouter un code après le slug en cas de publication de page avec un titre deja publié
@@ -63,12 +63,10 @@ class Page
     private $pageCategory;
 
 
-    /**
-     * @return string
-     */
-    public function __toString(): ?string
+    public function __construct()
     {
-       return $this->title;
+        $this->setCreatedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
+        $this->setEditedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
     }
 
 
