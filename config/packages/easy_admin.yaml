@@ -2,32 +2,37 @@ easy_admin:
     site_name: 'Tennis Club de Teyran'
     design:
         brand_color: '#112F41'
+        form_theme: '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
         assets:
             css:
-                - 'bundles/easyadmin/bootstrap-all.css'
+                - '@EasyAdmin/stylesheet/bootstrap.min.css'
                 - 'assets/css/admin.css'
-                - 'https://use.fontawesome.com/releases/v5.5.0/css/all.css'
-                # TODO Ajouter des icones dans le menu
+                - '@EasyAdmin/stylesheet/font-awesome.min.css'
             js:
                - 'bundles/easyadmin/bootstrap-all.js'
         menu:
             - label: 'Pages'
+              icon: 'file'
               children:
                   - { entity: 'Page', label: 'Toutes les pages', params: { action: 'list'}}
                   - { entity: 'Page', label: 'Créer une page', params: { action: 'new'}}
             - label: 'Actualité'
+              icon: 'plus-circle'
               children:
                   - { entity: 'Article', label: 'Tous les articles', params: { action: 'list'}}
                   - { entity: 'Article', label: 'Créer un article', params: { action: 'new'}}
                   - { entity: 'ArticleCategory', label: 'Toutes les catégories', params: { action: 'list' }}
             - label: 'Agenda'
+              icon: 'calendar'
               children:
                   - { entity: 'Event', label: 'Tous les évènements', params: { action: 'list'}}
                   - { entity: 'Event', label: 'Créer un évènement', params: { action: 'new'}}
             - label: 'Image'
+              icon: 'image'
               children:
                   - { entity: 'Image', label: 'Toutes les images', params: { action: 'list'}}
             - label: 'Utilisateurs'
+              icon: 'user'
               children:
                   - { entity: 'User', label: 'Tous les utilisateurs', params: { action: 'list'}}
     formats:
