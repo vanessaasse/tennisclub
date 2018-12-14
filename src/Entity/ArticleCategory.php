@@ -23,8 +23,8 @@ class ArticleCategory
     private $name;
 
     /**
-     * @Gedmo\Slug(fields={"name", "code"})
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", length=128, unique=true)
      */
     private $slug;
 
