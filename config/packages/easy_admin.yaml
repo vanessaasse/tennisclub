@@ -1,15 +1,14 @@
 easy_admin:
     site_name: 'Tennis Club de Teyran'
     design:
-        brand_color: '#112F41'
-        form_theme: '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
+        form_theme: '@EasyAdmin/form/bootstrap_4.html.twig'
         assets:
             css:
-                - '@EasyAdmin/stylesheet/bootstrap.min.css'
-                - 'assets/css/admin.css'
-                - '@EasyAdmin/stylesheet/font-awesome.min.css'
+                - 'bundles/easyadmin/bootstrap-all.css'
+                - '../public/assets/css/admin.css'
+                - 'https://use.fontawesome.com/releases/v5.6.1/css/all.css'
             js:
-               - 'bundles/easyadmin/bootstrap-all.js'
+                - 'bundles/easyadmin/bootstrap-all.js'
         menu:
             - label: 'Pages'
               icon: 'file'
@@ -21,7 +20,6 @@ easy_admin:
               children:
                   - { entity: 'Article', label: 'Tous les articles', params: { action: 'list'}}
                   - { entity: 'Article', label: 'Créer un article', params: { action: 'new'}}
-                  - { entity: 'ArticleCategory', label: 'Toutes les catégories', params: { action: 'list' }}
             - label: 'Agenda'
               icon: 'calendar'
               children:
@@ -65,9 +63,9 @@ easy_admin:
             new:
                 title: "Créer une page"
                 fields:
-                    - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'title', label: 'Titre de la page', css_class: 'input-large', type_options: { required: true }}
                     - { property: 'pageCategory', label: 'Catégorie'}
-                    - { property: 'content', label: 'Contenu'}
+                    - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
 #                    // TODO Faire en sorte que le user soit enregistré d'office avec la session
             edit:
@@ -75,16 +73,13 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre de la page'}
                     - { property: 'pageCategory', label: 'Catégorie'}
-                    - { property: 'content', label: 'Contenu'}
+                    - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
-                actions: ['show']
-#               // TODO Bouton voir, faire le lien vers l'article en ligne
+
 
 
         Article:
             class: App\Entity\Article
-        ArticleCategory:
-            class: App\Entity\ArticleCategory
         Event:
             class: App\Entity\Event
         Image:
