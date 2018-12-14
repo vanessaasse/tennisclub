@@ -2,6 +2,34 @@ easy_admin:
     site_name: 'Tennis Club de Teyran'
     design:
         brand_color: '#112F41'
+        assets:
+            css:
+                - 'bundles/easyadmin/bootstrap-all.css'
+                - 'assets/css/admin.css'
+                - 'https://use.fontawesome.com/releases/v5.5.0/css/all.css'
+                # TODO Ajouter des icones dans le menu
+            js:
+               - 'bundles/easyadmin/bootstrap-all.js'
+        menu:
+            - label: 'Pages'
+              children:
+                  - { entity: 'Page', label: 'Toutes les pages', params: { action: 'list'}}
+                  - { entity: 'Page', label: 'Créer une page', params: { action: 'new'}}
+            - label: 'Actualité'
+              children:
+                  - { entity: 'Article', label: 'Tous les articles', params: { action: 'list'}}
+                  - { entity: 'Article', label: 'Créer un article', params: { action: 'new'}}
+                  - { entity: 'ArticleCategory', label: 'Toutes les catégories', params: { action: 'list' }}
+            - label: 'Agenda'
+              children:
+                  - { entity: 'Event', label: 'Tous les évènements', params: { action: 'list'}}
+                  - { entity: 'Event', label: 'Créer un évènement', params: { action: 'new'}}
+            - label: 'Image'
+              children:
+                  - { entity: 'Image', label: 'Toutes les images', params: { action: 'list'}}
+            - label: 'Utilisateurs'
+              children:
+                  - { entity: 'User', label: 'Tous les utilisateurs', params: { action: 'list'}}
     formats:
         datetime: 'd/m/Y H:i:s'
     entities:
@@ -14,22 +42,49 @@ easy_admin:
                 fields:
                     - id
                     - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'pageCategory', label: 'Catégorie'}
                     - { property: 'createdAt', label: 'Créée le'}
                     - { property: 'editedAt', label: 'Modifiée le'}
                     - { property: 'user', label: 'Auteur'}
-                    - { property: 'isPublished', label: 'Publiée ?'}
+                    - { property: 'isPublished', label: 'Publication'}
             search:
                 title: "Résultat de la recherche"
                 fields:
                     - id
                     - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'pageCategory', label: 'Catégorie'}
                     - { property: 'createdAt', label: 'Créée le'}
                     - { property: 'editedAt', label: 'Modifiée le'}
                     - { property: 'user', label: 'Auteur'}
-                    - { property: 'isPublished', label: 'Publiée ?', type: 'boolean'}
+                    - { property: 'isPublished', label: 'Publication'}
+            new:
+                title: "Créer une page"
+                fields:
+                    - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'pageCategory', label: 'Catégorie'}
+                    - { property: 'content', label: 'Contenu'}
+                    - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+#                    // TODO Faire en sorte que le user soit enregistré d'office avec la session
+            edit:
+                title: "Modifier une page"
+                fields:
+                    - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'pageCategory', label: 'Catégorie'}
+                    - { property: 'content', label: 'Contenu'}
+                    - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+                actions: ['show']
+#               // TODO Bouton voir, faire le lien vers l'article en ligne
 
 
-#       - App\Entity\Page
-#        - App\Entity\Category
-#        - App\Entity\User
+        Article:
+            class: App\Entity\Article
+        ArticleCategory:
+            class: App\Entity\ArticleCategory
+        Event:
+            class: App\Entity\Event
+        Image:
+            class: App\Entity\Image
+        User:
+            class: App\Entity\User
+
 
