@@ -71,7 +71,6 @@ class Page
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
-        $this->setEditedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
     }
 
 
