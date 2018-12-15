@@ -4,7 +4,6 @@ easy_admin:
         form_theme: '@EasyAdmin/form/bootstrap_4.html.twig'
         assets:
             css:
-                - 'bundles/easyadmin/bootstrap-all.css'
                 - '../public/assets/css/admin.css'
                 - 'https://use.fontawesome.com/releases/v5.6.1/css/all.css'
             js:
@@ -63,13 +62,16 @@ easy_admin:
             new:
                 title: "Créer une page"
                 fields:
+                    - { type: 'group', columns: 8, label: 'Texte'}
                     - { property: 'title', label: 'Titre de la page', css_class: 'input-large', type_options: { required: true }}
                     - { property: 'pageCategory', label: 'Catégorie'}
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
+                    - { type: 'group', columns: 4, label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
 #                    // TODO Faire en sorte que le user soit enregistré d'office avec la session
             edit:
                 title: "Modifier une page"
+                actions: ['-delete']
                 fields:
                     - { property: 'title', label: 'Titre de la page'}
                     - { property: 'pageCategory', label: 'Catégorie'}
