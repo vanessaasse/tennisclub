@@ -61,7 +61,7 @@ class Event
     private $isPublished;
 
     /**
-     * @Gedmo\Slug(fields={"title"})
+     * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(type="string", length=190, unique=true)
      */
     private $slug;
