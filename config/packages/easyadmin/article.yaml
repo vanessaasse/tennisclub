@@ -1,0 +1,7 @@
+easy_admin:
+    entities:
+        Article:
+            class: App\Entity\Article
+            label: "Articles"
+            list:
+                title: "Tous les articles"
