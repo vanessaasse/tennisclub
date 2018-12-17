@@ -36,8 +36,8 @@ class RegistrationController extends Controller
             $em->persist($user);
             $em->flush();
             dump($user);
-            $this->addFlash('success', 'Votre compte utilisateur a bien été enregistré');
             return $this->redirectToRoute('login');
+            $this->addFlash('success', 'Votre compte utilisateur a bien été enregistré.');
             // TODO Ajout Envoi login et mot de passe par email
 
 
