@@ -16,7 +16,8 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            anonymous: ~
+            pattern:   ^/
             guard:
                 authenticators:
                     - App\Security\LoginAuthenticator
@@ -29,6 +30,7 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                default_target_path: /admin
                 csrf_token_generator: security.csrf.token_manager
             logout:
                 path: /logout
