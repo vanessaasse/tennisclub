@@ -13,7 +13,7 @@ easy_admin:
                     - { property: 'createdAt', label: 'Créée le'}
                     - { property: 'editedAt', label: 'Modifiée le'}
                     - { property: 'user', label: 'Auteur'}
-                    - { property: 'isPublished', label: 'Publication'}
+                    - { property: 'isPublished', label: 'Publication', type: 'boolean'}
             search:
                 title: "Résultat de la recherche"
                 fields:
@@ -44,4 +44,5 @@ easy_admin:
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { type: 'group', columns: 4, label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+                    - { property: 'createdAt', label: 'Page créée le'}
 

@@ -21,14 +21,18 @@ class Page
     private $id;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
-     * @Assert\DateTime
+     * @@Assert\Type(type="\DateTime")
      */
     private $createdAt;
 
     /**
+     *
+     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
-     * @Assert\DateTime
+     * @Assert\Type(type="\DateTime")
      */
     private $editedAt;
 
