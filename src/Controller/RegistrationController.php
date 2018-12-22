@@ -29,7 +29,6 @@ class RegistrationController extends Controller
         {
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
-            $user->setRoles(array('ROLE_ADMIN'));
 
 
             $em = $this->getDoctrine()->getManager();
@@ -38,7 +37,7 @@ class RegistrationController extends Controller
             dump($user);
             return $this->redirectToRoute('login');
             $this->addFlash('success', 'Votre compte utilisateur a bien été enregistré.');
-            // TODO Ajout Envoi login et mot de passe par email
+            // TODO reset password
 
 
         }
