@@ -5,24 +5,26 @@ easy_admin:
             label: "Pages"
             list:
                 title: "Toutes les pages"
-                max_results: 10
+                actions:
+                    - { name: 'show', label: 'Voir le contenu'}
+                max_results: 20
                 fields:
-                    - id
                     - { property: 'title', label: 'Titre de la page'}
                     - { property: 'pageCategory', label: 'Catégorie'}
                     - { property: 'createdAt', label: 'Créée le'}
                     - { property: 'editedAt', label: 'Modifiée le'}
-                    - { property: 'user', label: 'Auteur'}
                     - { property: 'isPublished', label: 'Publication', type: 'boolean'}
             search:
                 title: "Résultat de la recherche"
+                actions:
+                    - { name: 'show', label: 'Voir le contenu'}
+                max_results: 20
                 fields:
                     - id
                     - { property: 'title', label: 'Titre de la page'}
                     - { property: 'pageCategory', label: 'Catégorie'}
                     - { property: 'createdAt', label: 'Créée le'}
                     - { property: 'editedAt', label: 'Modifiée le'}
-                    - { property: 'user', label: 'Auteur'}
                     - { property: 'isPublished', label: 'Publication'}
             new:
                 title: "Créer une page"
@@ -36,7 +38,9 @@ easy_admin:
 #                    // TODO Faire en sorte que le user soit enregistré d'office avec la session
             edit:
                 title: "Modifier une page"
-                actions: ['-delete']
+                actions:
+                    - { name: 'show', css_class: 'btn btn-primary' }
+                    - { name: '-delete' }
                 fields:
                     - { type: 'group', columns: 8, label: 'Texte'}
                     - { property: 'title', label: 'Titre de la page'}
@@ -46,3 +50,13 @@ easy_admin:
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
                     - { property: 'createdAt', label: 'Page créée le'}
 
+            show:
+                title: "Voir le contenu de la page"
+                actions:
+                    - { name: '-delete' }
+                fields:
+                    - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'pageCategory', label: 'Catégorie'}
+                    - { property: 'content', label: 'Contenu'}
+                    - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+                    - { property: 'createdAt', label: 'Page créée le'}
