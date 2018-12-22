@@ -23,48 +23,22 @@ class PageRepository extends ServiceEntityRepository
 
     /**
      * @param PageCategory $pageCategory
-     * @return mixed
+     * @return \Doctrine\ORM\QueryBuilder|mixed
      */
-    public function findPagebyCategory(PageCategory $pageCategory)
+    public function findPageByCategory(PageCategory $pageCategory)
     {
-        $qb = $this->createQueryBuilder('p');
+        $query = $this->createQueryBuilder('p')
+            ->select('p')
+            ->orderBy('p.id', 'ASC')
+            ->leftJoin('p.pageCategory', 'c')
+            ->addSelect('c');
 
-        $qb->where('p.pageCategory = :pageCategory')
-            ->setParameter('pageCategory', $pageCategory)
-            ->orderBy('p.id', 'ASC');
-
-        return $qb
+        $query = $query->add('where', $query->expr()->in('c', ':c'))
+            ->setParameter('c', $pageCategory)
             ->getQuery()
             ->getResult();
 
-    }
+        return $query;
 
-    // /**
-    //  * @return Page[] Returns an array of Page objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Page
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -20,12 +20,13 @@ class PageController extends AbstractController
     /**
      * @var PageRepository
      */
-    private $pageRepositoy;
+    private $pageRepository;
 
     /**
      * @var ObjectManager
      */
     private $em;
+
 
     /**
      * PageController constructor.
@@ -34,7 +35,7 @@ class PageController extends AbstractController
      */
     public function __construct(PageRepository $pageRepository, ObjectManager $em)
     {
-        $this->pageRepositoy = $pageRepository;
+        $this->pageRepository = $pageRepository;
         $this->em = $em;
     }
 
@@ -64,25 +65,18 @@ class PageController extends AbstractController
     /**
      *
      * @return Response
-     * @Template()
+     *
      */
-    public function getMenuCategory(): Response
+    public function getMenuCategory($pageCategory): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        //$listPages = $this->pageRepositoy->findPagebyCategory($pageCategory);
-
-        $listPages = $em->getRepository('App:Page')->findAll();
-
-
-        foreach ($listPages as $page){
-            $page->getSlug();
-            $page->getTitle();
-        }
+        $this->getDoctrine()->getManager();
+        $listPages = $this->pageRepository->findPageByCategory($pageCategory);
 
         return $this->render('frontEnd/page/menuCategory.html.twig', array(
             'listPages' => $listPages
         ));
     }
+
     /**
      * @Route("/a-propos", name="ap_pros")
 

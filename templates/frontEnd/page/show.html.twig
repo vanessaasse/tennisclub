@@ -24,7 +24,9 @@
 
             <div class="col-lg-3">
                 {{ page.pageCategory }}<br/>
-                {{ render(controller('App\\Controller\\PageController::getMenuCategory')) }}
+                {{ render(controller('App\\Controller\\PageController::getMenuCategory',
+                    {'pageCategory' : page.pageCategory}
+                )) }}
             </div>
             </div>
         </div>
