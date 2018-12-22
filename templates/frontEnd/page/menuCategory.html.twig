@@ -1,0 +1,6 @@
+ {% for page in listPages %}
+    <a href="{{ path('page.show', {'slug' : page.slug}) }}">{{ page.title }}</a><br/>
+ {% endfor %}
+
+
+
