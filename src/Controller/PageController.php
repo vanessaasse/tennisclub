@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Page;
+use App\Entity\PageCategory;
 use App\Repository\PageRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,37 +40,56 @@ class PageController extends AbstractController
 
     /**
      * @Route("/page/{slug}", name="page.show", requirements={"slug": "[a-z0-9/-]*"})
-     * @ParamConverter("page", class="App\Entity\Page")
-     * @param Page $page
-     * @param string $slug
      *
+     * @param Page $page
+     * @param $slug
      * @return Response
      */
-    public function show(Page $page, string $slug):Response
+    public function show(Page $page): Response
     {
-        if($page->getIsPublished() === true)
+        if($page->getIsPublished() === false)
         {
-            if($page->getSlug() !== $slug)
-            {
-                return $this->redirectToRoute('page.show', [
-                    'slug' => $page->getSlug()
-                ], 301);
-            }
+            $this->addFlash('alert', "La page recherchée n'existe pas.");
 
-            return $this->render('frontEnd/page/show.html.twig', [
-                'page' => $page
-            ]);
+            return $this->redirectToRoute('homepage');
+
+        }
+        return $this->render('frontEnd/page/show.html.twig', [
+            'page' => $page
+        ]);
+    }
+    // TODO penser à créer les pages d'erreur
+
+
+    /**
+     *
+     * @return Response
+     * @Template()
+     */
+    public function getMenuCategory(): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        //$listPages = $this->pageRepositoy->findPagebyCategory($pageCategory);
+
+        $listPages = $em->getRepository('App:Page')->findAll();
+
+
+        foreach ($listPages as $page){
+            $page->getSlug();
+            $page->getTitle();
         }
 
-        return $this->redirectToRoute('homepage');
-        $this->addFlash('alert', "La page recherchée n'existe pas.");
-        // TODO Suis-je obligée de mettre "page" dans la route ?
-
-
-
-
-
+        return $this->render('frontEnd/page/menuCategory.html.twig', array(
+            'listPages' => $listPages
+        ));
     }
+    /**
+     * @Route("/a-propos", name="ap_pros")
+
+    public function aPropos(PageRepository $pageRepository){
+        $page = $pageRepository->findOneBy(['slug'=> "test-1"]);
+
+    }*/
 
 
 
