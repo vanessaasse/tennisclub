@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Page;
+use App\Entity\PageCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -17,6 +18,25 @@ class PageRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Page::class);
+    }
+
+
+    /**
+     * @param PageCategory $pageCategory
+     * @return mixed
+     */
+    public function findPagebyCategory(PageCategory $pageCategory)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->where('p.pageCategory = :pageCategory')
+            ->setParameter('pageCategory', $pageCategory)
+            ->orderBy('p.id', 'ASC');
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+
     }
 
     // /**
