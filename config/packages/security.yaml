@@ -31,10 +31,11 @@ security:
 #                login_path: login
 #                check_path: login
 #                csrf_token_generator: security.csrf.token_manager
-#
-#            logout:
-#                path: /logout
-#                target: /
+            # TODO création de la partie authentification
+
+            logout:
+                path: /logout
+                target: /
 
             # https://symfony.com/doc/current/security/form_login_setup.html
 
