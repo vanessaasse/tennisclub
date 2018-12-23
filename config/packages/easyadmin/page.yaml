@@ -14,6 +14,7 @@ easy_admin:
                     - { property: 'createdAt', label: 'Créée le'}
                     - { property: 'editedAt', label: 'Modifiée le'}
                     - { property: 'isPublished', label: 'Publication', type: 'boolean'}
+                    - { property: 'toto', template: 'backEnd/page/getLinkOfPageOnline.html.twig'}
             search:
                 title: "Résultat de la recherche"
                 actions:

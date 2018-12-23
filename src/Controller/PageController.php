@@ -77,6 +77,22 @@ class PageController extends AbstractController
         ));
     }
 
+
+    /**
+     *
+     * @param Page $page
+     * @return Response
+     */
+    public function getLinkPageOnDashboard($id): Response
+    {
+        $this->getDoctrine()->getManager();
+        $page = $this->pageRepository->find($id);
+
+        return $this->render('backEnd/page/getLinkOfPageOnline.html.twig', [
+            'page' => $page
+        ]);
+    }
+
     /**
      * @Route("/a-propos", name="ap_pros")
 
