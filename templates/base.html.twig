@@ -66,7 +66,7 @@
                                 <div class="col-5">
                                     <ul class="nav flex-column"  id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="pill" href="#">Accueil</a>
+                                            <a class="nav-link" data-toggle="pill" href="{{ path('homepage') }}">Accueil</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="pill" href="#v-pills-club">Le club</a>
@@ -75,7 +75,8 @@
                                             <a class="nav-link" data-toggle="pill" href="#v-pills-ecole-tennis">L'école de tennis</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="pill" href="#">Tennis Adulte</a>
+                                            <a class="nav-link"  href="{{ path('page.show', {'slug' :
+                                                'nos-differentes-offres'}) }}">Tennis Adulte</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="pill" href="#v-pills-competitions">Compétitions</a>
@@ -97,39 +98,49 @@
                                         <!-- Bloc liens de l'onglet "Le club" -->
                                         <div class="tab-pane fade" id="v-pills-club" role="tabpanel" aria-labelledby="v-pills-club">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Présentation</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'presentation-du-club'}) }}">Présentation</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">L'historique du club</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'lhistorique-du-club'}) }}">L'historique du
+                                                    club</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Les partenaires</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'les-partenaires-du-club'}) }}">Les partenaires</a>
                                             </li>
                                         </div>
 
                                         <!-- Bloc liens de l'onglet "L'école de tennis" -->
                                         <div class="tab-pane fade" id="v-pills-ecole-tennis" role="tabpanel" aria-labelledby="v-pills-ecole-tennis">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Présentation de l'école</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'presentation-de-lecole-de-tennis'}) }}">Présentation de l'école</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">L'équipe pédagogique et les horaires d'entraînement</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'lequipe-pedagogique-et-les-horaires-dentrainement'}) }}">L'équipe pédagogique et les horaires d'entraînement</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Tarifs et inscription</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'tarifs-et-inscription'}) }}">Tarifs et inscription</a>
                                             </li>
                                         </div>
 
                                         <!-- Bloc liens de l'onglet "Compétitions" -->
                                         <div class="tab-pane fade" id="v-pills-competitions" role="tabpanel" aria-labelledby="v-pills-competitions">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Tournois jeunes</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'tournois-jeunes'}) }}">Tournois jeunes</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Tournois adultes</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'tournois-adultes'}) }}">Tournois adultes</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Championnats par équipe</a>
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'championnats-par-equipe'}) }}">Championnats par équipe</a>
                                             </li>
                                         </div>
 
