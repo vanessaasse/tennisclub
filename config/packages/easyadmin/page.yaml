@@ -5,8 +5,6 @@ easy_admin:
             label: "Pages"
             list:
                 title: "Toutes les pages"
-                actions:
-                    - { name: 'show', label: 'Voir le contenu'}
                 max_results: 20
                 fields:
                     - { property: 'title', label: 'Titre de la page'}
@@ -14,19 +12,10 @@ easy_admin:
                     - { property: 'createdAt', label: 'Créée le'}
                     - { property: 'editedAt', label: 'Modifiée le'}
                     - { property: 'isPublished', label: 'Publication', type: 'boolean'}
-                    - { property: 'toto', template: 'backEnd/page/getLinkOfPageOnline.html.twig'}
+                    - { property: 'Lien en ligne', template: 'backEnd/page/getLinkOfPageOnline.html.twig'}
             search:
                 title: "Résultat de la recherche"
-                actions:
-                    - { name: 'show', label: 'Voir le contenu'}
                 max_results: 20
-                fields:
-                    - id
-                    - { property: 'title', label: 'Titre de la page'}
-                    - { property: 'pageCategory', label: 'Catégorie'}
-                    - { property: 'createdAt', label: 'Créée le'}
-                    - { property: 'editedAt', label: 'Modifiée le'}
-                    - { property: 'isPublished', label: 'Publication'}
             new:
                 title: "Créer une page"
                 fields:
@@ -36,11 +25,11 @@ easy_admin:
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { type: 'group', columns: 4, label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
-#                    // TODO Faire en sorte que le user soit enregistré d'office avec la session
             edit:
                 title: "Modifier une page"
                 actions:
-                    - { name: 'show', css_class: 'btn btn-primary' }
+                    # - { name: 'show', css_class: 'btn btn-primary' } TODO voir comment ajouter un bouton vers la
+                    # page en ligne
                     - { name: '-delete' }
                 fields:
                     - { type: 'group', columns: 8, label: 'Texte'}
