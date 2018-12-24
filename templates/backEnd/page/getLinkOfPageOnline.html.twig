@@ -1,8 +1,8 @@
 {% if item.isPublished == true %}
-    <a href="{{ path('page.show', {'slug' : item.slug}) }}">Voir la page en ligne</a><br/>
+    <a href="{{ path('page.show', {'slug' : item.slug}) }}">Voir la page</a><br/>
 {% endif %}
 
 {% if item.isPublished == false %}
-    Page non visible en ligne.
+    Non disponible
 {% endif %}
 
