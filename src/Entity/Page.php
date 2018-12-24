@@ -22,9 +22,8 @@ class Page
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(type="datetime")
-     * @@Assert\Type(type="\DateTime")
+     * @Assert\Type(type="\DateTime")
      */
     private $createdAt;
 
