@@ -24,10 +24,6 @@ class Article
      * @var \DateTime
      * @ORM\Column(type="datetime")
      * @Assert\Type(type="\DateTime")
-     * @Assert\Range(max="+24 hours",
-     *     maxMessage="Vous ne pouvez pas publier cet article à une date ultérieure à aujourd'hui.")
-     * @Assert\LessThan(propertyPath="editedAt",
-     *     message="La date de création ne peut pas être supérieure à la date de modification.")
      *
      */
     private $createdAt;

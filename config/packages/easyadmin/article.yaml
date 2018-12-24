@@ -35,6 +35,6 @@ easy_admin:
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { type: 'group', columns: 4, label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
-                    - { property: 'createdAt', label: 'Article créé le'}
+
 
 

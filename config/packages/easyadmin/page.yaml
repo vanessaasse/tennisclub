@@ -38,7 +38,7 @@ easy_admin:
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { type: 'group', columns: 4, label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
-                    - { property: 'createdAt', label: 'Page créée le'}
+
 
             show:
                 title: "Voir le contenu de la page"
