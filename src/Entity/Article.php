@@ -21,16 +21,19 @@ class Article
     private $id;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime")
-     * @Assert\DateTime
+     * @Assert\Type(type="\DateTime")
+     *
      */
     private $createdAt;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
-     * @Assert\DateTime
+     * @Assert\Type(type="\DateTime")
      */
-    private $EditedAt;
+    private $editedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,8 +42,7 @@ class Article
     private $title;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
@@ -50,7 +52,7 @@ class Article
     private $user;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isPublished;
 
@@ -64,8 +66,8 @@ class Article
 
     public function __construct()
     {
+        $this->setCreatedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
     }
-
 
     public function getId(): ?int
     {
@@ -86,12 +88,12 @@ class Article
 
     public function getEditedAt(): ?\DateTimeInterface
     {
-        return $this->EditedAt;
+        return $this->editedAt;
     }
 
-    public function setEditedAt(?\DateTimeInterface $EditedAt): self
+    public function setEditedAt(\DateTimeInterface $editedAt): self
     {
-        $this->EditedAt = $EditedAt;
+        $this->editedAt = $editedAt;
 
         return $this;
     }
