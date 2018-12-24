@@ -5,3 +5,36 @@ easy_admin:
             label: "Articles"
             list:
                 title: "Tous les articles"
+                max_results: 20
+                fields:
+                    - { property: 'title', label: "Titre de l'article"}
+                    - { property: 'createdAt', label: 'Créé le'}
+                    - { property: 'editedAt', label: 'Modifié le'}
+                    - { property: 'isPublished', label: 'Publication', type: 'boolean'}
+                    # TODO ajouter un lien vers l'article en ligne quand il est publié
+            search:
+                title: "Résultat de la recherche"
+                max_results: 20
+            new:
+                title: "Créer un article"
+                fields:
+                    - { type: 'group', columns: 8, label: 'Texte'}
+                    - { property: 'title', label: "Titre de l'article"}
+                    - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
+                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { property: 'isPublished', label: 'Souhaitez-vous publier cet article ?'}
+            edit:
+                title: "Modifier un article"
+                actions:
+                    # - { name: 'show', css_class: 'btn btn-primary' } TODO voir comment ajouter un bouton vers la
+                    # page en ligne
+                    - { name: '-delete' }
+                fields:
+                    - { type: 'group', columns: 8, label: 'Texte'}
+                    - { property: 'title', label: "Titre de l'article"}
+                    - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
+                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+                    - { property: 'createdAt', label: 'Article créé le'}
+
+
