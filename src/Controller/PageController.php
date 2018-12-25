@@ -51,15 +51,15 @@ class PageController extends AbstractController
         if($page->getIsPublished() === false)
         {
             $this->addFlash('alert', "La page recherchée n'existe pas.");
-
             return $this->redirectToRoute('homepage');
-
         }
+
         return $this->render('frontEnd/page/show.html.twig', [
             'page' => $page
         ]);
     }
     // TODO penser à créer les pages d'erreur
+    // TODO modification de EditAction
 
 
     /**
