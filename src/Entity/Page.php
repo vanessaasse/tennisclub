@@ -42,7 +42,8 @@ class Page
     private $title;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Vous devez saisir le texte de votre article avant de le valider.")
      */
     private $content;
 
