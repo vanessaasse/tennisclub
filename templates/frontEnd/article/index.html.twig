@@ -21,8 +21,9 @@
                     </div>
 
                     <div class="col-lg-9">
-                        {{ article.title }}<br/>
-                        {{ article.content | raw }}
+                        <a href="{{ path('article.show', {'slug' : article.slug}) }}">{{ article.title }}</a><br/>
+                        {{ article.content | easyadmin_truncate(200) | raw }}
+                        <a href="{{ path('article.show', {'slug' : article.slug}) }}">[Lire la suite]</a>
                     </div>
 
                 {% endfor %}
