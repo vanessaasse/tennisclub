@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Actualités du club - {{ parent() }}
+{% endblock %}
+
+
+    {% block body %}
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>Actualité du club</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                {% for article in listArticles %}
+                    <div class="col-lg-3">
+                        {{ article.createdAt | date("d/m/Y") }}
+                    </div>
+
+                    <div class="col-lg-9">
+                        {{ article.title }}<br/>
+                        {{ article.content | raw }}
+                    </div>
+
+                {% endfor %}
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+    {% endblock %}
