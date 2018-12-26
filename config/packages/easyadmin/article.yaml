@@ -11,7 +11,7 @@ easy_admin:
                     - { property: 'createdAt', label: 'Créé le'}
                     - { property: 'editedAt', label: 'Modifié le'}
                     - { property: 'isPublished', label: 'Publication', type: 'boolean'}
-                    # TODO ajouter un lien vers l'article en ligne quand il est publié
+                    - { property: 'Lien en ligne', template: 'backEnd/article/getLinkOfArticleOnline.htlm.twig'}
             search:
                 title: "Résultat de la recherche"
                 max_results: 20
