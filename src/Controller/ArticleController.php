@@ -41,7 +41,6 @@ class ArticleController extends AbstractController
         return $this->render('frontEnd/article/index.html.twig', array(
             'listArticles' => $listArticles
         ));
-
     }
 
     /**
@@ -64,4 +63,17 @@ class ArticleController extends AbstractController
     }
 
 
+    /**
+     * @param $id
+     * @return Response
+     */
+    public function getLinkOfArticleOnline($id)
+    {
+        $this->getDoctrine()->getManager();
+        $article = $this->articleRepository->find($id);
+
+        return $this->render('backEnd/article/getLinkOfArticleOnline.htlm.twig', array(
+            'article' => $article
+        ));
+    }
 }
