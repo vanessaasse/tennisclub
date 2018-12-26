@@ -41,7 +41,6 @@ class PageController extends AbstractController
 
     /**
      * @Route("/page/{slug}", name="page.show", requirements={"slug": "[a-z0-9/-]*"})
-     *
      * @param Page $page
      * @param $slug
      * @return Response
@@ -63,9 +62,7 @@ class PageController extends AbstractController
 
 
     /**
-     *
      * @return Response
-     *
      */
     public function getMenuCategory($pageCategory): Response
     {
@@ -79,11 +76,10 @@ class PageController extends AbstractController
 
 
     /**
-     *
      * @param Page $page
      * @return Response
      */
-    public function getLinkPageOnDashboard($id): Response
+    public function getLinkofPageOnline($id): Response
     {
         $this->getDoctrine()->getManager();
         $page = $this->pageRepository->find($id);
@@ -92,6 +88,8 @@ class PageController extends AbstractController
             'page' => $page
         ]);
     }
+
+
 
     /**
      * @Route("/a-propos", name="ap_pros")
