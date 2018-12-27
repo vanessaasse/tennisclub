@@ -14,6 +14,7 @@ easy_admin:
                 - { property: 'createdAt', label: 'Créé le'}
                 - { property: 'editedAt', label: 'Modifié le'}
                 - { property: 'isPublished', label: 'Publication', type: 'boolean'}
+                - { property: 'Lien en ligne', template: 'backEnd/event/getLinkOfEventOnline.html.twig'}
             search:
                 title: "Résultat de la recherche"
                 max_results: 20

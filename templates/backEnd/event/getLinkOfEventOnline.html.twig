@@ -1,0 +1,7 @@
+{% if item.isPublished == true %}
+    <a href="{{ path('event.show', {'slug' : item.slug}) }}">Voir l'évènement</a><br/>
+{% endif %}
+
+{% if item.isPublished == false %}
+    Non disponible
+{% endif %}
