@@ -21,20 +21,23 @@ class Event
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @Assert\Date
+     *
+     * @ORM\Column(type="date")
+     * @Assert\Type(type="\DateTime")
      */
     private $eventDate;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime")
-     * @Assert\DateTime
+     * @Assert\Type(type="\DateTime")
      */
     private $createdAt;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
-     * @Assert\DateTime
+     * @Assert\Type(type="\DateTime")
      */
     private $editedAt;
 
@@ -46,7 +49,7 @@ class Event
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Vous devez saisir le texte de votre évènement avant de le valider.")
      */
     private $content;
 
@@ -65,6 +68,12 @@ class Event
      * @ORM\Column(type="string", length=190, unique=true)
      */
     private $slug;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
+        $this->setEventDate(new \DateTime());
+    }
 
 
     public function getId(): ?int

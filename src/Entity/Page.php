@@ -43,7 +43,7 @@ class Page
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="Vous devez saisir le texte de votre article avant de le valider.")
+     * @Assert\NotBlank(message="Vous devez saisir le texte de votre page avant de la valider.")
      */
     private $content;
 
