@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Article;
+use App\Entity\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use App\Entity\Page;
@@ -32,7 +33,8 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'easy_admin.pre_update' => array(array('setEditedAtPage'), array('setEditedAtArticle'))
+            'easy_admin.pre_update' => array(array('setEditedAtPage'), array('setEditedAtArticle'),
+                array('setEditedAtEvent'))
         );
     }
 
@@ -67,5 +69,19 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         $entity->setEditedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
         $event['Article'] = $entity;
 
+    }
+
+
+    public function setEditedAtEvent(GenericEvent $event)
+    {
+        $entity = $event->getSubject();
+
+        if(!($entity instanceof Event))
+        {
+            return;
+        }
+
+        $entity->setEditedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
+        $event['Event'] = $entity;
     }
 }
