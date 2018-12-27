@@ -26,3 +26,14 @@ easy_admin:
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { type: 'group', columns: 4, label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+            edit:
+                title: "Modifier un évènement"
+                actions:
+                    - { name: '-delete' }
+                fields:
+                    - { type: 'group', columns: 8, label: 'Texte'}
+                    - { property: 'title', label: "Titre de l'évènement"}
+                    - { property: 'eventDate', label: "Date de l'évènement"}
+                    - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
+                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
