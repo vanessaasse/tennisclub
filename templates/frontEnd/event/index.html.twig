@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="col-lg-9">
-                        {{ event.title }}<br/>
+                        <a href="{{ path('event.show', {'slug' : event.slug}) }}">{{ event.title }}</a><br/>
                     </div>
 
                 {% endfor %}

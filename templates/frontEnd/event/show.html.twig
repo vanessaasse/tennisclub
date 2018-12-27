@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+    {% block title %}
+        Agenda du club - {{ parent() }}
+    {% endblock %}
+
+
+    {% block body %}
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>Agenda du club</h1>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-3">
+                    Date de l'évènement<br/>
+                    Le {{ event.eventDate | date("d/m/Y") }}
+                </div>
+
+                <div class="col-lg-9">
+                    <h3>{{ event.title }}</h3>
+                    <p>{{ event.content | raw }}</p>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}

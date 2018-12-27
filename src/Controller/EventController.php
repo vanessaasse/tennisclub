@@ -47,4 +47,22 @@ class EventController extends AbstractController
     }
 
 
+    /**
+     * @Route("/agenda/{slug}", name="event.show", requirements={"slug": "[a-z0-9/-]*"})
+     * @param Event $event
+     * @return Response
+     */
+    public function show(Event $event): Response
+    {
+        if($event->getIsPublished() === false)
+        {
+            $this->addFlash('alert', "L'évènement recherché n'existe pas.");
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('frontEnd/event/show.html.twig', array(
+            'event' => $event));
+    }
+
+
 }
