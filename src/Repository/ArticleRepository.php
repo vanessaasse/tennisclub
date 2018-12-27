@@ -36,13 +36,13 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
 
-    public function getPreviousArticle($id)
+    public function findPreviousArticle($id)
     {
         $query = $this->createQueryBuilder('a')
             ->select('a')
-            ->where('a.id < 1')
-            ->setParameter('1', $id)
-            ->orderBy('a.id', 'DESC LIMIT 1')
+            ->where('a.id < :id')
+            ->setParameter('id', $id)
+            ->orderBy('a.id', 'DESC')
             ->getQuery()
             ->getResult();
 

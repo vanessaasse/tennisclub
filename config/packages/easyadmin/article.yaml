@@ -28,8 +28,6 @@ easy_admin:
             edit:
                 title: "Modifier un article"
                 actions:
-                    # - { name: 'show', css_class: 'btn btn-primary' } TODO voir comment ajouter un bouton vers la
-                    # page en ligne
                     - { name: '-delete' }
                 fields:
                     - { type: 'group', columns: 8, label: 'Texte'}
