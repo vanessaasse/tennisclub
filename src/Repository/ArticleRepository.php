@@ -34,4 +34,18 @@ class ArticleRepository extends ServiceEntityRepository
 
         return $query;
     }
+
+
+    public function getPreviousArticle($id)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.id < 1')
+            ->setParameter('1', $id)
+            ->orderBy('a.id', 'DESC LIMIT 1')
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
 }
