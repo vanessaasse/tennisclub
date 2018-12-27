@@ -1,5 +1,7 @@
  {% for page in listPages %}
+     {% if page.isPublished == true %}
     <a href="{{ path('page.show', {'slug' : page.slug}) }}">{{ page.title }}</a><br/>
+    {% endif %}
  {% endfor %}
 
 
