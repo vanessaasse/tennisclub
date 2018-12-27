@@ -30,7 +30,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/", name="article.list")
+     * @Route("/actualites/", name="article.list")
      *
      */
     public function index()
@@ -44,12 +44,13 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/{slug}", name="article.show", requirements={"slug": "[a-z0-9/-]*"})
+     * @Route("/actualites/{slug}", name="article.show", requirements={"slug": "[a-z0-9/-]*"})
      * @param Article $article
      * @return Response
      */
     public function show(Article $article): Response
     {
+
         if($article->getIsPublished() === false)
         {
             $this->addFlash('alert', "L'article recherché n'existe pas.");
@@ -62,18 +63,4 @@ class ArticleController extends AbstractController
         // TODO Penser aux liens précédent et suivant
     }
 
-
-    /**
-     * @param $id
-     * @return Response
-     */
-    public function getLinkOfArticleOnline($id)
-    {
-        $this->getDoctrine()->getManager();
-        $article = $this->articleRepository->find($id);
-
-        return $this->render('backEnd/article/getLinkOfArticleOnline.htlm.twig', array(
-            'article' => $article
-        ));
-    }
 }

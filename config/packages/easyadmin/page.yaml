@@ -6,6 +6,8 @@ easy_admin:
             list:
                 title: "Toutes les pages"
                 max_results: 20
+                actions:
+                - { name: 'new', label: "Créer une page" }
                 fields:
                     - { property: 'title', label: 'Titre de la page'}
                     - { property: 'pageCategory', label: 'Catégorie'}

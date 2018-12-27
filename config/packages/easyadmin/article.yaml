@@ -6,6 +6,8 @@ easy_admin:
             list:
                 title: "Tous les articles"
                 max_results: 20
+                actions:
+                    - { name: 'new', label: "Créer un article" }
                 fields:
                     - { property: 'title', label: "Titre de l'article"}
                     - { property: 'createdAt', label: 'Créé le'}
