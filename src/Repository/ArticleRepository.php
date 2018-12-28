@@ -36,13 +36,19 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findPreviousArticle($id)
     {
         $query = $this->createQueryBuilder('a')
             ->select('a')
             ->where('a.id < :id')
             ->setParameter('id', $id)
-            ->orderBy('a.id', 'DESC')
+            ->andWhere('a.isPublished = :isPublished')
+            ->setParameter('isPublished', '1')
+            ->setMaxResults(1)
             ->getQuery()
             ->getResult();
 

@@ -28,6 +28,10 @@
                     <p>{{ article.content | raw }}</p>
                 </div>
 
+                {{ render(controller('App\\Controller\\ArticleController::getPreviousArticleLink',
+                    {'id' : article.id})) }}
+
+
             </div>
 
 

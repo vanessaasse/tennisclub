@@ -64,6 +64,21 @@ class ArticleController extends AbstractController
     }
 
 
+    /**
+     * @param $id
+     * @return Response
+     */
+    public function getPreviousArticleLink($id): Response
+    {
+        $this->getDoctrine()->getManager();
+        $previousArticle = $this->articleRepository->findPreviousArticle($id);
+
+        return $this->render('frontEnd/article/previousArticleLink.html.twig', array(
+            'previousArticle' => $previousArticle
+        ));
+    }
+
+
 
 
 
