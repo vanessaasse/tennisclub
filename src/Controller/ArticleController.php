@@ -60,7 +60,6 @@ class ArticleController extends AbstractController
         return $this->render('frontEnd/article/show.html.twig', [
             'article' => $article
         ]);
-        // TODO Penser aux liens précédent et suivant
     }
 
 
@@ -70,11 +69,23 @@ class ArticleController extends AbstractController
      */
     public function getPreviousArticleLink($id): Response
     {
-        $this->getDoctrine()->getManager();
         $previousArticle = $this->articleRepository->findPreviousArticle($id);
 
         return $this->render('frontEnd/article/previousArticleLink.html.twig', array(
             'previousArticle' => $previousArticle
+        ));
+    }
+
+    /**
+     * @param $id
+     * @return Response
+     */
+    public function getNextArticleLink($id): Response
+    {
+        $lastArticle = $this->articleRepository->findNextArticle($id);
+
+        return $this->render('frontEnd/article/nextArticleLink.html.twig', array(
+            'lastArticle' => $lastArticle
         ));
     }
 

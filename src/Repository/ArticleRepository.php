@@ -54,4 +54,21 @@ class ArticleRepository extends ServiceEntityRepository
 
         return $query;
     }
+
+
+
+    public function findNextArticle($id)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.id > :id')
+            ->setParameter('id', $id)
+            ->andWhere('a.isPublished = :isPublished')
+            ->setParameter('isPublished', '1')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
 }

@@ -28,8 +28,12 @@
                     <p>{{ article.content | raw }}</p>
                 </div>
 
-                {{ render(controller('App\\Controller\\ArticleController::getPreviousArticleLink',
-                    {'id' : article.id})) }}
+                <p>{{ render(controller('App\\Controller\\ArticleController::getPreviousArticleLink',
+                    {'id' : article.id})) }}</p>
+
+
+                <p>{{ render(controller('App\\Controller\\ArticleController::getNextArticleLink',
+                        {'id' : article.id})) }}</p>
 
 
             </div>
