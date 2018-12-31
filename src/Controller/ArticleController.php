@@ -62,35 +62,20 @@ class ArticleController extends AbstractController
         ]);
     }
 
-
     /**
      * @param $id
      * @return Response
      */
-    public function getPreviousArticleLink($id): Response
+    public function getPreviousAndNextArticleLink($id): Response
     {
         $previousArticle = $this->articleRepository->findPreviousArticle($id);
+        $nextArticle= $this->articleRepository->findNextArticle($id);
 
-        return $this->render('frontEnd/article/previousArticleLink.html.twig', array(
-            'previousArticle' => $previousArticle
+        return $this->render('frontEnd/article/previousAndNextArticleLink.html.twig', array(
+            'previousArticle' => $previousArticle,
+            'nextArticle' => $nextArticle
         ));
+
     }
-
-    /**
-     * @param $id
-     * @return Response
-     */
-    public function getNextArticleLink($id): Response
-    {
-        $lastArticle = $this->articleRepository->findNextArticle($id);
-
-        return $this->render('frontEnd/article/nextArticleLink.html.twig', array(
-            'lastArticle' => $lastArticle
-        ));
-    }
-
-
-
-
 
 }

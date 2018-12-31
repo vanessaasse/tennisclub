@@ -1,0 +1,14 @@
+{% for article in previousArticle %}
+    <div class="col-lg-6">
+    <a href="{{ path('article.show', {'slug' : article.slug}) }}">Article précédent</a>
+    </div>
+{% endfor %}
+
+
+{% for article in nextArticle %}
+    <div class="col-lg-6">
+    <a href="{{ path('article.show', {'slug' : article.slug}) }}">Article suivant</a>
+    </div>
+{% endfor %}
+
+
