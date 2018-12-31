@@ -28,9 +28,55 @@ class EventRepository extends ServiceEntityRepository
             ->select('e')
             ->where('e.isPublished = :isPublished')
             ->setParameter('isPublished', '1')
+            ->orderBy('e.eventDate', 'DESC')
             ->getQuery()
             ->getResult();
 
         return $query;
     }
+
+
+    /**
+     * @param $eventDate
+     * @return mixed
+     */
+    public function findPreviousEvent($eventDate)
+    {
+
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.eventDate < :eventDate')
+            ->setParameter('eventDate', $eventDate)
+            ->orderBy('e.eventDate', 'DESC')
+            ->andWhere('e.isPublished = :isPublished')
+            ->setParameter('isPublished', '1')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
+
+    /**
+     * @param $eventDate
+     * @return mixed
+     */
+    public function findNextEvent($eventDate)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.eventDate > :eventDate')
+            ->setParameter('eventDate', $eventDate)
+            ->orderBy('e.eventDate', 'ASC')
+            ->andWhere('e.isPublished = :isPublished')
+            ->setParameter('isPublished', '1')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
+
 }

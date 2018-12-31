@@ -65,4 +65,21 @@ class EventController extends AbstractController
     }
 
 
+    /**
+     * @param $eventDate
+     * @return Response
+     */
+    public function getPreviousAndNextEventLink($eventDate): Response
+    {
+        $previousEvent = $this->eventRepository->findPreviousEvent($eventDate);
+        $nextEvent= $this->eventRepository->findNextEvent($eventDate);
+
+        return $this->render('frontEnd/event/previousAndNextEventLink.html.twig', array(
+            'previousEvent' => $previousEvent,
+            'nextEvent' => $nextEvent
+        ));
+
+    }
+
+
 }

@@ -1,0 +1,13 @@
+{% for event in previousEvent %}
+    <div class="col-lg-6">
+        <a href="{{ path('event.show', {'slug' : event.slug}) }}">Evènement précédent</a>
+    </div>
+{% endfor %}
+
+
+{% for event in nextEvent %}
+    <div class="col-lg-6">
+        <a href="{{ path('event.show', {'slug' : event.slug}) }}">Evènement suivant</a>
+    </div>
+{% endfor %}
+

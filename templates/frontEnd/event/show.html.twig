@@ -26,6 +26,9 @@
                     <p>{{ event.content | raw }}</p>
                 </div>
 
+                {{ render(controller('App\\Controller\\EventController::getPreviousAndNextEventLink',
+                    {'eventDate' : event.eventDate})) }}
+
             </div>
 
 
