@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Page;
 use App\Entity\PageCategory;
+use App\Form\ContactType;
 use App\Repository\PageRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -58,7 +60,6 @@ class PageController extends AbstractController
         ]);
     }
     // TODO penser à créer les pages d'erreur
-    // TODO modification de EditAction
 
 
     /**
@@ -72,6 +73,28 @@ class PageController extends AbstractController
         return $this->render('frontEnd/page/menuCategory.html.twig', array(
             'listPages' => $listPages
         ));
+    }
+
+
+    /**
+     * @Route("/contact", name="contact")
+     * @param $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function contact(Request $request)
+    {
+        $form = $this->createForm(ContactType::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        return $this->render('frontEnd/page/contact.html.twig', array('form'=>$form->createView()));
+
     }
 
 
