@@ -1,3 +1,8 @@
 .jumbotron{
-    margin-top: -120px;
+    height: 250px;
+    text-align: center;
+    vertical-align:middle;
+    color: white;
+    padding-top: 90px;
+    background-color: #112F41;
 }
