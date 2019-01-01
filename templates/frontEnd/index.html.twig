@@ -12,4 +12,10 @@
                 {{ message }}
             </div>
         {% endfor %}
+
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
     {% endblock %}
