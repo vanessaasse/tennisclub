@@ -6,6 +6,7 @@ use App\Entity\Page;
 use App\Entity\PageCategory;
 use App\Form\ContactType;
 use App\Repository\PageRepository;
+use App\Service\EmailService;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -78,16 +79,22 @@ class PageController extends AbstractController
 
     /**
      * @Route("/contact", name="contact")
-     * @param $request
+     * @param Request $request
+     * @param EmailService $emailService
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
-    public function contact(Request $request)
+    public function contact(Request $request, EmailService $emailService)
     {
         $form = $this->createForm(ContactType::class);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+
+            $emailService->sendMailContact($form->getData());
 
             $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
             return $this->redirect($this->generateUrl('homepage'));

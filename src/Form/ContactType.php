@@ -46,8 +46,8 @@ class ContactType extends AbstractType
             ->add('member', ChoiceType::class, array(
                 'label' => 'Adhérent au Tennis Club de Teyran',
                 'choices' => array(
-                    'Oui' => true,
-                    'Non' => false)
+                    'Oui' => 'Oui',
+                    'Non' => 'Non')
             ))
             ->add('message', TextareaType::class, array(
                 'label' => 'Votre message',
