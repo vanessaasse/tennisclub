@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Page;
 use App\Entity\PageCategory;
 use App\Form\ContactType;
+use App\Form\ReservationTennisCourt;
 use App\Repository\PageRepository;
 use App\Service\EmailService;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -102,6 +103,33 @@ class PageController extends AbstractController
 
         return $this->render('frontEnd/page/contact.html.twig', array('form'=>$form->createView()));
 
+    }
+
+
+    /**
+     * @Route("/reserver-un-court", name="contact")
+     * @param Request $request
+     * @param EmailService $emailService
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function reservationTennisCourt(Request $request, EmailService $emailService)
+    {
+        $form = $this->createForm(ReservationTennisCourt::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $emailService->sendMailReservationTennisCourt($form->getData());
+
+            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        return $this->render('frontEnd/page/reservationTennisCourt.html.twig', array('form'=>$form->createView()));
     }
 
 

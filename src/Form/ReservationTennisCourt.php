@@ -4,16 +4,20 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\Range;
 
-class ContactType extends AbstractType
+class ReservationTennisCourt extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -42,6 +46,21 @@ class ContactType extends AbstractType
                     new NotBlank(array('message' => 'Veuillez saisir votre adresse mail.')),
                     new Email(array('strict' => true, 'message' => "Cette adresse mail n'est pas valide."))
                 )))
+            ->add('date', DateType::class, array(
+                'label' => 'Date de réservation souhaitée',
+                'data' => new \DateTime(),
+                'required' => true,
+                'constraints' => array(
+                    new NotNull(array('message' => 'Veuillez saisir une date de réservation.')),
+                    new Range(array('min' => "today", 'minMessage' => "Vous ne pouvez pas saisir une date ultérieure à aujourd'hui.",
+                        'max' => "+1 year", 'maxMessage' => "Vous ne pouvez pas saisir une date au-delà d'une année.")))
+            ))
+            ->add('time', TimeType::class, array(
+                'label' => 'Heure de réservation souhaitée',
+                'required' => true,
+                'input' => 'datetime',
+                'widget' => 'choice'
+            ))
             ->add('member', ChoiceType::class, array(
                 'label' => 'Adhérent au Tennis Club de Teyran',
                 'choices' => array(
@@ -50,7 +69,6 @@ class ContactType extends AbstractType
             ))
             ->add('message', TextareaType::class, array(
                 'label' => 'Votre message',
-                'required' => true,
                 'constraints' => array(
                     new NotBlank(array('message' => 'Veuillez saisir votre message.'))
 
@@ -59,6 +77,6 @@ class ContactType extends AbstractType
 
     public function getName()
     {
-        return 'Contact';
+        return 'ReservationTennisCourt';
     }
 }

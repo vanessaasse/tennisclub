@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html lang="fr">
 <head>
-    <title>Contactez-nous</title>
+    <title>Réservez un court de tennis</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,6 +17,8 @@
             <strong>Prénom :</strong> {{ data.firstname }}<br/><br/>
             <strong>Téléphone :</strong> {{ data.phone }}<br/><br/>
             <strong>Email :</strong> {{ data.email }}<br/><br/>
+            <strong>Date de réservation souhaitée :</strong> {{ data.date |date("d/m/Y") }}<br/><br/>
+            <strong>Heure de réservation souhaitée :</strong> {{ data.time |date("H:i") }}<br/><br/>
             <strong>Adhérent au club :</strong> {{ data.member }}<br/><br/>
             <strong>Message : </strong> {{ data.message }}<br/><br/>
         </td>
