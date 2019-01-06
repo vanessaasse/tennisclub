@@ -21,6 +21,8 @@
             <strong>Heure de réservation souhaitée :</strong> {{ data.time |date("H:i") }}<br/><br/>
             <strong>Adhérent au club :</strong> {{ data.member }}<br/><br/>
             <strong>Message : </strong> {{ data.message }}<br/><br/>
+            <strong>Politique de confidentialité : </strong> {% if data.privacyPolicy == true %}Oui{% endif %}
+            {% if data.privacyPolicy == false %}Non{% endif %}<br/><br/>
         </td>
     </tr>
 </table>

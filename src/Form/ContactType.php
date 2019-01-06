@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -54,7 +55,12 @@ class ContactType extends AbstractType
                 'constraints' => array(
                     new NotBlank(array('message' => 'Veuillez saisir votre message.'))
 
-                )));
+                )))
+            ->add('privacyPolicy', CheckboxType::class, array(
+                'label' => "En soumettant ce formulaire, vous acceptez que vos informations personnelles soient exploitées 
+                conformément à notre politique de confidentialité.",
+                'required' => false
+            ));
     }
 
     public function getName()

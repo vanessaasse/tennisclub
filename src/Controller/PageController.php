@@ -44,6 +44,33 @@ class PageController extends AbstractController
     }
 
     /**
+     * @Route("/page/{slug}", name="liens-utiles", requirements={"slug": "liens-utiles"})
+     * @param Page $page
+     * @param Request $request
+     * @param EmailService $emailService
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function liensUtiles(Page $page, Request $request, EmailService $emailService)
+    {
+        $form = $this->createForm(ReservationTennisCourt::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $emailService->sendMailReservationTennisCourt($form->getData());
+
+            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        return $this->render('frontEnd/page/show.html.twig', array('form'=>$form->createView(), 'page' => $page));
+    }
+
+    /**
      * @Route("/page/{slug}", name="page.show", requirements={"slug": "[a-z0-9/-]*"})
      * @param Page $page
      * @param $slug
@@ -107,7 +134,7 @@ class PageController extends AbstractController
 
 
     /**
-     * @Route("/reserver-un-court", name="contact")
+     * @Route("/reserver-un-court", name="reservation-court")
      * @param Request $request
      * @param EmailService $emailService
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -134,13 +161,23 @@ class PageController extends AbstractController
 
 
 
+
+
+
     /**
      * @Route("/a-propos", name="ap_pros")
 
     public function aPropos(PageRepository $pageRepository){
-        $page = $pageRepository->findOneBy(['slug'=> "test-1"]);
 
-    }*/
+        $this->getDoctrine()->getManager();
+
+        $page = $pageRepository->findOneBy(['slug'=> "liens-utiles"]);
+
+        return $this->render('frontEnd/page/show.html.twig', [
+            'page' => $page
+        ]);
+
+    } */
 
 
 
