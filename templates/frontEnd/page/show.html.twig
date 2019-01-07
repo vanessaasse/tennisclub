@@ -19,6 +19,12 @@
                 <div class="col-lg-9">
                 <h3>{{ page.title }}</h3>
                 <p>{{ page.content | raw }}</p>
+
+                    {{ render(controller('App\\Controller\\PageController::enrolmentTennisSchool',
+                        {'page' : page, 'request' : app.request }
+                       )) }}
+
+
                 </div>
 
 
