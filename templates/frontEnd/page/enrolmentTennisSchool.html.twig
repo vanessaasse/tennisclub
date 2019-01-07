@@ -1,0 +1,22 @@
+{% if page.slug == 'tarifs-et-inscription' %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{{ form_row(form.childLastname) }}
+{{ form_row(form.childFirstname) }}
+{{ form_row(form.childBirthday) }}
+{{ form_row(form.childgender) }}
+{{ form_row(form.childAdress) }}
+{{ form_row(form.childPostalCode) }}
+{{ form_row(form.childCity) }}
+{{ form_row(form.courses) }}
+{{ form_row(form.individualTournament) }}
+{{ form_row(form.match) }}
+{{ form_row(form.image) }}
+{{ form_row(form.privacyPolicy) }}
+
+
+<button type="submit" class="btn btn-form">Validez</button>
+{{ form_end(form) }}
+
+{% endif %}
