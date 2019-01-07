@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Page;
 use App\Entity\PageCategory;
 use App\Form\ContactType;
+use App\Form\EnrolmentTennisSchool;
 use App\Form\ReservationTennisCourt;
 use App\Repository\PageRepository;
 use App\Service\EmailService;
@@ -43,37 +44,10 @@ class PageController extends AbstractController
         $this->em = $em;
     }
 
-    /**
-     * @Route("/page/{slug}", name="liens-utiles", requirements={"slug": "liens-utiles"})
-     * @param Page $page
-     * @param Request $request
-     * @param EmailService $emailService
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
-    public function liensUtiles(Page $page, Request $request, EmailService $emailService)
-    {
-        $form = $this->createForm(ReservationTennisCourt::class);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-
-            $emailService->sendMailReservationTennisCourt($form->getData());
-
-            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
-            return $this->redirect($this->generateUrl('homepage'));
-        }
-
-        return $this->render('frontEnd/page/show.html.twig', array('form'=>$form->createView(), 'page' => $page));
-    }
 
     /**
      * @Route("/page/{slug}", name="page.show", requirements={"slug": "[a-z0-9/-]*"})
      * @param Page $page
-     * @param $slug
      * @return Response
      */
     public function show(Page $page): Response
@@ -103,7 +77,6 @@ class PageController extends AbstractController
             'listPages' => $listPages
         ));
     }
-
 
     /**
      * @Route("/contact", name="contact")
@@ -160,9 +133,60 @@ class PageController extends AbstractController
     }
 
 
+    /**
+     * @Route("/page/{slug}", name="tarifs-et-inscription", requirements={"slug": "tarifs-et-inscription"})
+     * @param Page $page
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function enrolmentTennisSchool(Page $page, Request $request)
+    {
+        $form = $this->createForm(EnrolmentTennisSchool::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        return $this->render('frontEnd/page/enrolmentTennisSchool.html.twig', array('form'=>$form->createView(), 'page' => $page));
+    }
 
 
 
+
+
+
+
+
+    /**
+     * @Route("/page/{slug}", name="liens-utiles", requirements={"slug": "liens-utiles"})
+     * @param Page $page
+     * @param Request $request
+     * @param EmailService $emailService
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function liensUtiles(Page $page, Request $request, EmailService $emailService)
+    {
+        $form = $this->createForm(ReservationTennisCourt::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $emailService->sendMailReservationTennisCourt($form->getData());
+
+            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        return $this->render('frontEnd/page/show.html.twig', array('form'=>$form->createView(), 'page' => $page));
+    }
 
     /**
      * @Route("/a-propos", name="ap_pros")
