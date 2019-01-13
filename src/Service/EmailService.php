@@ -83,4 +83,22 @@ class EmailService
             ->setContentType('text/html');
         $this->mailer->send($message);
     }
+
+
+    /**
+     * @param $data
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendMailTennisAdult($data)
+    {
+        $message = (new \Swift_Message("Inscription au Tennis club"))
+            ->setFrom($data['email'])
+            ->setTo($this->emailFrom)
+            ->setBody($this->templating->render('email/tennisAdult.html.twig',
+                array('data' => $data)))
+            ->setContentType('text/html');
+        $this->mailer->send($message);
+    }
 }
