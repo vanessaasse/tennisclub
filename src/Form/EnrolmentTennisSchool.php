@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\LessThan;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
@@ -132,8 +133,9 @@ class EnrolmentTennisSchool extends AbstractType
             ->add('privacyPolicy', CheckboxType::class, array(
                 'label' => "En soumettant ce formulaire, vous acceptez que vos informations personnelles soient exploitées 
                 conformément à notre politique de confidentialité.",
-                'required' => false
-            ));
+                'constraints' => array(
+                    new IsTrue(array('message' => 'Pour envoyer votre inscription, vous devez accepter notre politique de confidentialité.'))
+            )));
 
 
     }
