@@ -35,6 +35,19 @@
                     {% endif %}
 
 
+                    <!--Affichage du formulaire Contactez-nous si slug = "contact" -->
+                    {% if page.slug == 'contact' %}
+                        {{ render(controller('App\\Controller\\PageController::contact',
+                            {'page' : page, 'request' : app.request  }
+                        )) }}
+                    {% endif %}
+
+                    <!--Affichage du formulaire Réservation d'un court si slug = "reserver-un-court" -->
+                    {% if page.slug == 'reserver-un-court' %}
+                        {{ render(controller('App\\Controller\\PageController::reservationTennisCourt',
+                            {'page' : page, 'request' : app.request  }
+                        )) }}
+                    {% endif %}
 
                 </div>
 

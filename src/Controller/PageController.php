@@ -6,7 +6,7 @@ use App\Entity\Page;
 use App\Entity\PageCategory;
 use App\Form\ContactType;
 use App\Form\EnrolmentTennisSchool;
-use App\Form\ReservationTennisCourt;
+use App\Form\ReservationTennisCourtType;
 use App\Form\TennisAdultType;
 use App\Repository\PageRepository;
 use App\Service\EmailService;
@@ -79,60 +79,6 @@ class PageController extends AbstractController
         ));
     }
 
-    /**
-     * @Route("/contact", name="contact")
-     * @param Request $request
-     * @param EmailService $emailService
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
-    public function contact(Request $request, EmailService $emailService)
-    {
-        $form = $this->createForm(ContactType::class);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-
-            $emailService->sendMailContact($form->getData());
-
-            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
-            return $this->redirect($this->generateUrl('homepage'));
-        }
-
-        return $this->render('frontEnd/page/contact.html.twig', array('form'=>$form->createView()));
-
-    }
-
-
-    /**
-     * @Route("/reserver-un-court", name="reservation-court")
-     * @param Request $request
-     * @param EmailService $emailService
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
-    public function reservationTennisCourt(Request $request, EmailService $emailService)
-    {
-        $form = $this->createForm(ReservationTennisCourt::class);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-
-            $emailService->sendMailReservationTennisCourt($form->getData());
-
-            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
-            return $this->redirect($this->generateUrl('homepage'));
-        }
-
-        return $this->render('frontEnd/page/reservationTennisCourt.html.twig', array('form'=>$form->createView()));
-    }
-
 
     /**
      * @Route("/page/{slug}", name="tarifs-et-inscription", requirements={"slug": "tarifs-et-inscription"})
@@ -163,6 +109,7 @@ class PageController extends AbstractController
 
 
     /**
+     * @Route("/page/{slug}", name="inscription-au-tennis-club", requirements={"slug": "inscription-au-tennis-club"})
      * @param Page $page
      * @param Request $request
      * @param EmailService $emailService
@@ -188,6 +135,63 @@ class PageController extends AbstractController
         return $this->render('frontEnd/page/tennisAdult.html.twig', array('form'=>$form->createView(), 'page' =>
             $page));
 
+    }
+
+
+    /**
+     * @Route("/page/{slug}", name="contact", requirements={"slug": "contact"})
+     * @param Page $page
+     * @param Request $request
+     * @param EmailService $emailService
+     * @return Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function contact(Page $page, Request $request, EmailService $emailService)
+    {
+        $form = $this->createForm(ContactType::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $emailService->sendMailContact($form->getData());
+
+            return $this->render('frontEnd/page/replyToForm.html.twig', [
+                'page' => $page]);
+        }
+
+        return $this->render('frontEnd/page/contact.html.twig', array('form'=>$form->createView()));
+
+    }
+
+
+    /**
+     * @Route("/page/{slug}", name="reserver-un-court", requirements={"slug": "reserver-un-court"})
+     * @param Page $page
+     * @param Request $request
+     * @param EmailService $emailService
+     * @return Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function reservationTennisCourt(Page $page, Request $request, EmailService $emailService)
+    {
+        $form = $this->createForm(ReservationTennisCourtType::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $emailService->sendMailReservationTennisCourt($form->getData());
+
+            return $this->render('frontEnd/page/replyToForm.html.twig', [
+                'page' => $page]);
+        }
+
+        return $this->render('frontEnd/page/reservationTennisCourt.html.twig', array('form'=>$form->createView()));
     }
 
 

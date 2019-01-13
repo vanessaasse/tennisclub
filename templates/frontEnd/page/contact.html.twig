@@ -1,64 +1,12 @@
-{% extends 'base.html.twig' %}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
-    {% block title %}
-        Contact - {{ parent() }}
-    {% endblock %}
+{{ form_row(form.lastname) }}<br/>
+{{ form_row(form.firstname) }}<br/>
+{{ form_row(form.phone) }}<br/>
+{{ form_row(form.email) }}<br/>
+{{ form_row(form.member) }}<br/>
+{{ form_row(form.message) }}<br/>
+{{ form_row(form.privacyPolicy) }}
 
-
-
-    {% block body %}
-
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1>Contactez-nous</h1>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-
-                <div class="col col-lg-2">
-                </div>
-
-                <div class="col col-lg-8">
-
-                    <p>Vous souhaitez obtenir des informations sur notre club, sur nos offres, ou nos différentes
-                        compétitions, n'hésitez pas à nous contacter via le formulaire ci-dessous.</p>
-                    <p>Nous vous répondrons dans les plus brefs délais.</p>
-                    <br/>
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-
-                {{ form_row(form.lastname) }}<br/>
-                {{ form_row(form.firstname) }}<br/>
-                {{ form_row(form.phone) }}<br/>
-                {{ form_row(form.email) }}<br/>
-                {{ form_row(form.member) }}<br/>
-                {{ form_row(form.message) }}<br/>
-                {{ form_row(form.privacyPolicy) }}
-
-                    <div class="row">
-                            <div class="col col-lg-8">
-                            </div>
-
-                            <div class="col">
-                                <button type="submit" class="btn btn-form">Validez</button>
-                            </div>
-
-                        </div>
-
-
-
-                {{ form_end(form) }}
-                </div>
-
-                <div class="col col-lg-2">
-                </div>
-
-            </div>
-        </div>
-
-
-
-
-
-    {% endblock %}
+<button type="submit" class="btn btn-form">Validez</button>
+{{ form_end(form) }}

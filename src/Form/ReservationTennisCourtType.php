@@ -14,11 +14,15 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\GreaterThan;
+use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\LessThan;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\Range;
 
-class ReservationTennisCourt extends AbstractType
+class ReservationTennisCourtType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -54,8 +58,10 @@ class ReservationTennisCourt extends AbstractType
                 'constraints' => array(
                     new NotNull(array('message' => 'Veuillez saisir une date de réservation.')),
                     new Range(array('min' => "today", 'minMessage' => "Vous ne pouvez pas saisir une date ultérieure à aujourd'hui.",
-                        'max' => "+1 year", 'maxMessage' => "Vous ne pouvez pas saisir une date au-delà d'une année.")))
-            ))
+                        'max' => "+1 year", 'maxMessage' => "Vous ne pouvez pas saisir une date au-delà d'une année
+                        .")),
+                    new GreaterThan(array('value' => 'Today', 'message' => "Vous devez saisir une date supérieure à aujourd'hui."))
+            )))
             ->add('time', TimeType::class, array(
                 'label' => 'Heure de réservation souhaitée',
                 'required' => true,
@@ -77,8 +83,9 @@ class ReservationTennisCourt extends AbstractType
             ->add('privacyPolicy', CheckboxType::class, array(
                 'label' => "En soumettant ce formulaire, vous acceptez que vos informations personnelles soient exploitées 
                 conformément à notre politique de confidentialité.",
-                'required' => false
-            ));
+                'constraints' => array(
+                    new IsTrue(array('message' => 'Pour envoyer ce message, vous devez accepter notre politique de confidentialité.'))
+            )));
     }
 
     public function getName()
