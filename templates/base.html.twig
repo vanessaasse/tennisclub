@@ -68,26 +68,28 @@
                                             <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="pill" href="#v-pills-club">Le club</a>
+                                            <a class="nav-link" data-toggle="pill" href="#club">Le club</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="pill" href="#v-pills-ecole-tennis">L'école de tennis</a>
+                                            <a class="nav-link" data-toggle="pill" href="#ecole-tennis">L'école de tennis</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link"  href="{{ path('page.show', {'slug' :
-                                                'nos-differentes-offres'}) }}">Tennis Adulte</a>
+                                            <a class="nav-link" data-toggle="pill" href="#tennis-adulte">Tennis
+                                                Adulte</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="pill" href="#v-pills-competitions">Compétitions</a>
+                                            <a class="nav-link" data-toggle="pill" href="#competitions">Compétitions</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="pill" href="#v-pills-evenements">Evènements</a>
+                                            <a class="nav-link" data-toggle="pill" href="#evenements">Evènements</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="pill" href="#">Réservez un court</a>
+                                            <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                'reserver-un-court'}) }}">Réservez un court</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ path('contact') }}">Contactez-nous</a>
+                                            <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                'contact'}) }}">Contactez-nous</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -95,7 +97,7 @@
                                 <div class="col-7">
                                     <div class="nav flex-column tab-content" id="v-pills-tabContent">
                                         <!-- Bloc liens de l'onglet "Le club" -->
-                                        <div class="tab-pane fade" id="v-pills-club" role="tabpanel" aria-labelledby="v-pills-club">
+                                        <div class="tab-pane fade" id="club" role="tabpanel" aria-labelledby="club">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ path('page.show', {'slug' :
                                                     'presentation-du-club'}) }}">Présentation</a>
@@ -112,7 +114,7 @@
                                         </div>
 
                                         <!-- Bloc liens de l'onglet "L'école de tennis" -->
-                                        <div class="tab-pane fade" id="v-pills-ecole-tennis" role="tabpanel" aria-labelledby="v-pills-ecole-tennis">
+                                        <div class="tab-pane fade" id="ecole-tennis" role="tabpanel" aria-labelledby="ecole-tennis">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ path('page.show', {'slug' :
                                                     'presentation-de-lecole-de-tennis'}) }}">Présentation de l'école</a>
@@ -127,8 +129,22 @@
                                             </li>
                                         </div>
 
+
+                                        <!-- Bloc liens de l'onglet "Tennis Adulte" -->
+                                        <div class="tab-pane fade" id="tennis-adulte" role="tabpanel"
+                                             aria-labelledby="tennis-adulte">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'nos-differentes-offres'}) }}">Nos différentes offres</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'inscription-au-tennis-club'}) }}">Inscription au tennis club</a>
+                                            </li>
+                                        </div>
+
                                         <!-- Bloc liens de l'onglet "Compétitions" -->
-                                        <div class="tab-pane fade" id="v-pills-competitions" role="tabpanel" aria-labelledby="v-pills-competitions">
+                                        <div class="tab-pane fade" id="competitions" role="tabpanel" aria-labelledby="competitions">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ path('page.show', {'slug' :
                                                     'tournois-jeunes'}) }}">Tournois jeunes</a>
@@ -144,7 +160,7 @@
                                         </div>
 
                                         <!-- Bloc liens de l'onglet "Evènement" -->
-                                        <div class="tab-pane fade" id="v-pills-evenements" role="tabpanel" aria-labelledby="v-pills-evenements">
+                                        <div class="tab-pane fade" id="evenements" role="tabpanel" aria-labelledby="evenements">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ path('event.list') }}">Agenda</a>
                                             </li>
