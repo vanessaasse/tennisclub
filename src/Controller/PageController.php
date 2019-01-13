@@ -137,9 +137,13 @@ class PageController extends AbstractController
      * @Route("/page/{slug}", name="tarifs-et-inscription", requirements={"slug": "tarifs-et-inscription"})
      * @param Page $page
      * @param Request $request
+     * @param EmailService $emailService
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
-    public function enrolmentTennisSchool(Page $page, Request $request)
+    public function enrolmentTennisSchool(Page $page, Request $request, EmailService $emailService)
     {
         $form = $this->createForm(EnrolmentTennisSchool::class);
 
@@ -147,8 +151,10 @@ class PageController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
 
-            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
-            return $this->redirect($this->generateUrl('homepage'));
+            $emailService->sendMailEnrolmentTennisSchool($form->getData());
+
+            return $this->render('frontEnd/page/replyToForm.html.twig', [
+                'page' => $page]);
         }
 
         return $this->render('frontEnd/page/enrolmentTennisSchool.html.twig', array('form'=>$form->createView(), 'page' => $page));
@@ -161,32 +167,6 @@ class PageController extends AbstractController
 
 
 
-    /**
-     * @Route("/page/{slug}", name="liens-utiles", requirements={"slug": "liens-utiles"})
-     * @param Page $page
-     * @param Request $request
-     * @param EmailService $emailService
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
-    public function liensUtiles(Page $page, Request $request, EmailService $emailService)
-    {
-        $form = $this->createForm(ReservationTennisCourt::class);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-
-            $emailService->sendMailReservationTennisCourt($form->getData());
-
-            $this->addFlash('notice', 'Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
-            return $this->redirect($this->generateUrl('homepage'));
-        }
-
-        return $this->render('frontEnd/page/show.html.twig', array('form'=>$form->createView(), 'page' => $page));
-    }
 
     /**
      * @Route("/a-propos", name="ap_pros")
