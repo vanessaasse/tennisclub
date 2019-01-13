@@ -7,6 +7,7 @@ use App\Entity\PageCategory;
 use App\Form\ContactType;
 use App\Form\EnrolmentTennisSchool;
 use App\Form\ReservationTennisCourt;
+use App\Form\TennisAdultType;
 use App\Repository\PageRepository;
 use App\Service\EmailService;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -158,6 +159,35 @@ class PageController extends AbstractController
         }
 
         return $this->render('frontEnd/page/enrolmentTennisSchool.html.twig', array('form'=>$form->createView(), 'page' => $page));
+    }
+
+
+    /**
+     * @param Page $page
+     * @param Request $request
+     * @param EmailService $emailService
+     * @return Response
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function tennisAdult(Page $page, Request $request, EmailService $emailService)
+    {
+        $form = $this->createForm(TennisAdultType::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $emailService->sendMailTennisAdult($form->getData());
+
+            return $this->render('frontEnd/page/replyToForm.html.twig', [
+                'page' => $page]);
+        }
+
+        return $this->render('frontEnd/page/tennisAdult.html.twig', array('form'=>$form->createView(), 'page' =>
+            $page));
+
     }
 
 

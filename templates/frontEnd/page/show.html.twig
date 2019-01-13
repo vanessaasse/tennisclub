@@ -20,12 +20,20 @@
                     <h2>{{ page.title }}</h2>
                     <p>{{ page.content | raw }}</p>
 
+                    <!--Affichage du formulaire Inscription à l'école de tennis si slug = "tarifs-et-inscription" -->
                     {% if page.slug == 'tarifs-et-inscription' %}
-                        <!--Affichage du formulaire Inscription à l'école de tennis si slug = "tarifs-et-inscription" -->
                         {{ render(controller('App\\Controller\\PageController::enrolmentTennisSchool',
                             {'page' : page, 'request' : app.request  }
                         )) }}
                     {% endif %}
+
+                    <!--Affichage du formulaire Tennis Adulte si slug = "inscription-au-tennis-club" -->
+                    {% if page.slug == 'inscription-au-tennis-club' %}
+                        {{ render(controller('App\\Controller\\PageController::tennisAdult',
+                            {'page' : page, 'request' : app.request  }
+                        )) }}
+                    {% endif %}
+
 
 
                 </div>
