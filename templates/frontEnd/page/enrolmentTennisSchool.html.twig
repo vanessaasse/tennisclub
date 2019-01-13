@@ -1,7 +1,6 @@
-{% if page.slug == 'tarifs-et-inscription' %}
-
 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
+<h3>Informations concernant votre enfant</h3>
 {{ form_row(form.childLastname) }}
 {{ form_row(form.childFirstname) }}
 {{ form_row(form.childBirthday) }}
@@ -12,11 +11,23 @@
 {{ form_row(form.courses) }}
 {{ form_row(form.individualTournament) }}
 {{ form_row(form.match) }}
+
+<h3>Droit à l'image</h3>
 {{ form_row(form.image) }}
+
+<h3>Informations concernant le responsable légal de l'enfant</h3>
+{{ form_row(form.parentLastname) }}
+{{ form_row(form.parentFirstname) }}
+{{ form_row(form.phone) }}
+{{ form_row(form.email) }}
+
+
+
+
 {{ form_row(form.privacyPolicy) }}
 
 
 <button type="submit" class="btn btn-form">Validez</button>
 {{ form_end(form) }}
 
-{% endif %}
+
