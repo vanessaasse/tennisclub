@@ -77,12 +77,6 @@ class Page
         $this->setCreatedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
     }
 
-    public function __toString()
-    {
-        return $this->getTitle();
-    }
-
-
     public function getId(): ?int
     {
         return $this->id;

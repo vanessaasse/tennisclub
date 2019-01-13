@@ -49,13 +49,29 @@
                         )) }}
                     {% endif %}
 
+                    <br/>
+
                 </div>
 
 
                 <div class="col-lg-3">
+                    <!--Affichage du menu de la catégorie en cours -->
                     {{ page.pageCategory }}<br/>
                     {{ render(controller('App\\Controller\\PageController::getMenuCategory',
                         {'pageCategory' : page.pageCategory})) }}
+
+                    <br/><br/>
+                    <!--Affichage d'un second menu dans la sidebar -->
+                    {% if (page.slug == 'liens-utiles' or page.slug == 'reserver-un-court' or page.slug ==
+                        'contact') %}
+                        <a href="{{ path('page.show', {'slug' : 'presentation-de-lecole-de-tennis'}) }}">Ecole de tennis</a><br/>
+                        <a href="{{ path('page.show', {'slug' : 'nos-differentes-offres'}) }}">Tennis Adulte</a><br/>
+                        <a href="{{ path('page.show', {'slug' : 'tournois-adultes'}) }}">Compétitions</a><br/>
+                    {% else %}
+                        <a href="{{ path('page.show', {'slug' : 'reserver-un-court'}) }}">Réservez un court</a><br/>
+                        <a href="{{ path('page.show', {'slug' : 'contact'}) }}">Contactez-nous</a><br/>
+                        <a href="{{ path('page.show', {'slug' : 'liens-utiles'}) }}">Liens utiles</a>
+                    {% endif %}
 
                 </div>
             </div>
