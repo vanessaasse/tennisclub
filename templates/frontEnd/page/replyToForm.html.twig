@@ -1,0 +1,10 @@
+<br/>
+
+<div class="alert alert-success">Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.</div>
+<br/>
+
+{{ page.pageCategory }} : pour en savoir plus<br/>
+    {{ render(controller('App\\Controller\\PageController::getMenuCategory',
+            {'pageCategory' : page.pageCategory})) }}<br/>
+
+Ou retour à la <a href="{{ path('homepage') }}">page d'accueil</a>
