@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html lang="fr">
+<head>
+    <title>Inscription au Tennis club</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+
+<body>
+
+<table>
+    <tr>
+        <td>
+            <strong>Nom :</strong> {{ data.lastname }}<br/><br/>
+            <strong>Prénom :</strong> {{ data.firstname }}<br/><br/>
+            <strong>Date de naissance :</strong> {{ data.birthday | date("d/m/Y") }}<br/><br/>
+            <strong>Genre :</strong> {{ data.gender }}<br/><br/>
+            <strong>Adresse postale :</strong> {{ data.address }}<br/><br/>
+            <strong>Code postal:</strong> {{ data.postalCode }}<br/><br/>
+            <strong>Ville :</strong> {{ data.city }}<br/><br/>
+            <strong>Téléphone : </strong> {{ data.phone }}<br/><br/>
+            <strong>Email :</strong> {{ data.email }}<br/><br/>
+
+            Renseignements tennistiques :<br/>
+            <strong>Quel est votre niveau au tennis ? :</strong> {{ data.level }}<br/>
+            <strong>Etes-vous classé au tennis ? Si oui, indiquez ici votre classement :</strong> {{ data.rank }}<br/><br/>
+
+            <strong>Formules choisies : </strong> {{ data.courses |join(', ') }}<br/><br/>
+            <strong>Tournois internes en simple  :</strong> {{ data.tournament }}<br/><br/>
+            <strong>Participation aux matches par équipe :</strong> {{ data.match }}<br/><br/>
+
+            <strong>Politique de confidentialité : </strong> {% if data.privacyPolicy == true %}Oui{% endif %}
+            {% if data.privacyPolicy == false %}Non{% endif %}<br/><br/>
+        </td>
+    </tr>
+</table>
+
+</body>
