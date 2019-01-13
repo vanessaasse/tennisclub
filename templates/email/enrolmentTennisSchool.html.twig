@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html lang="fr">
+<head>
+    <title>Inscription à l'école de tennis</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+
+<body>
+
+<table>
+    <tr>
+        <td>
+            Informations concernant l'enfant à inscrire à l'école de tennis :<br/><br/>
+            <strong>Nom :</strong> {{ data.childLastname }}<br/><br/>
+            <strong>Prénom :</strong> {{ data.childFirstname }}<br/><br/>
+            <strong>Date de naissance :</strong> {{ data.childBirthday | date("d/m/Y") }}<br/><br/>
+            <strong>Genre :</strong> {{ data.childgender }}<br/><br/>
+            <strong>Adresse postale :</strong> {{ data.childAdress }}<br/><br/>
+            <strong>Code postal:</strong> {{ data.childPostalCode }}<br/><br/>
+            <strong>Ville :</strong> {{ data.childCity }}<br/><br/>
+            <strong>Formules choisies : </strong> {{ data.courses |join(', ') }}<br/><br/>
+            <strong>Participation aux tournois indidivuels :</strong> {{ data.individualTournament }}<br/><br/>
+            <strong>Participation aux matches par équipe :</strong> {{ data.match }}<br/><br/>
+            <strong>Droit à l'image :</strong> {{ data.image }}<br/><br/>
+
+            Informations concernant le responsable légal de l'enfant :<br/><br/>
+            <strong>Nom :</strong> {{ data.parentLastname }}<br/><br/>
+            <strong>Prénom :</strong> {{ data.parentFirstname }}<br/><br/>
+            <strong>Téléphone :</strong> {{ data.phone }}<br/><br/>
+            <strong>Email :</strong> {{ data.email }}<br/><br/>
+
+
+            <strong>Politique de confidentialité : </strong> {% if data.privacyPolicy == true %}Oui{% endif %}
+            {% if data.privacyPolicy == false %}Non{% endif %}<br/><br/>
+        </td>
+    </tr>
+</table>
+
+</body>
