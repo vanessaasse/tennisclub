@@ -17,29 +17,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                <h3>{{ page.title }}</h3>
-                <p>{{ page.content | raw }}</p>
+                    <h2>{{ page.title }}</h2>
+                    <p>{{ page.content | raw }}</p>
 
-                    {{ render(controller('App\\Controller\\PageController::enrolmentTennisSchool',
-                        {'page' : page, 'request' : app.request }
-                       )) }}
+                    {% if page.slug == 'tarifs-et-inscription' %}
+                        <!--Affichage du formulaire Inscription à l'école de tennis si slug = "tarifs-et-inscription" -->
+                        {{ render(controller('App\\Controller\\PageController::enrolmentTennisSchool',
+                            {'page' : page, 'request' : app.request  }
+                        )) }}
+                    {% endif %}
 
 
                 </div>
 
 
-            <div class="col-lg-3">
-                {{ page.pageCategory }}<br/>
-                {{ render(controller('App\\Controller\\PageController::getMenuCategory',
-                    {'pageCategory' : page.pageCategory})) }}
+                <div class="col-lg-3">
+                    {{ page.pageCategory }}<br/>
+                    {{ render(controller('App\\Controller\\PageController::getMenuCategory',
+                        {'pageCategory' : page.pageCategory})) }}
 
-            </div>
+                </div>
             </div>
         </div>
-
-
-
-
-
-
     {% endblock %}
