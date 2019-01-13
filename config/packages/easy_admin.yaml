@@ -17,6 +17,9 @@ easy_admin:
               children:
                   - { entity: 'Page', label: 'Toutes les pages', params: { action: 'list'}}
                   - { entity: 'Page', label: 'Créer une page', params: { action: 'new'}}
+            - label: 'Categories de pages'
+              children:
+                  - { entity: 'PageCategory', label: 'Tous les catégories', params: { action: 'list'}}
             - label: 'Actualité'
               icon: 'plus-circle'
               children:
@@ -35,6 +38,7 @@ easy_admin:
               icon: 'user'
               children:
                   - { entity: 'User', label: 'Tous les utilisateurs', params: { action: 'list'}}
+
     formats:
         datetime: 'd/m/Y H:i:s'
     entities:
@@ -48,5 +52,7 @@ easy_admin:
             class: App\Entity\Image
         User:
             class: App\Entity\User
+        PageCategory:
+            class: App\Entity\PageCategory
 
 

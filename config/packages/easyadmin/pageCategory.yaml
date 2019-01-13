@@ -1,0 +1,24 @@
+easy_admin:
+    entities:
+        PageCategory:
+            class: App\Entity\PageCategory
+            label: "Catégories de pages"
+            list:
+                title: "Toutes les catégories"
+                max_results: 20
+                actions:
+                    - { name: 'new', label: "Créer une catégorie" }
+                fields:
+                    - { property: 'name', label: "Nom de la catégorie"}
+            new:
+                title: "Créer une catégorie"
+                actions:
+                    - { name: '-delete' }
+                fields:
+                    - { property: 'name', label: "Nom de la catégorie"}
+            edit:
+                title: "Modifier une catégorie"
+                actions:
+                    - { name: '-delete' }
+                fields:
+                    - { property: 'name', label: "Nom de la catégorie"}
