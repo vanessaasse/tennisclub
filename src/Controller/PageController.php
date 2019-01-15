@@ -195,6 +195,22 @@ class PageController extends AbstractController
     }
 
 
+    /**
+     * @param Page $page
+     * @param Request $request
+     * @param $slug
+     * @return Response
+     */
+    public function getUrl(Page $page, Request $request, $slug)
+    {
+        $currentRoute = $request->attributes->get('_route');
+        $currentUrl = $this->get('router')->generate($currentRoute, array('slug' => $slug), true);
+
+        return $this->render('frontEnd/page/socialmedia.html.twig', [
+            'page' => $page, 'currentUrl' => $currentUrl]);
+    }
+
+
 
 
     /**

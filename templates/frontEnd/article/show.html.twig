@@ -21,6 +21,11 @@
                     Le {{ article.createdAt | date("d/m/Y") }} à {{ article.createdAt | date ("H:i") }}<br/>
                     Date de modification<br/>
                     Le {{ article.editedAt | date("d/m/Y") }} à {{ article.editedAt | date ("H:i") }}
+                    <br><br/>
+
+                    A partager sur les réseaux sociaux
+                    {{ render(controller('App\\Controller\\ArticleController::getUrl',
+                        {'article' : article, 'request' : app.request, 'slug' : article.slug })) }}
                 </div>
 
                 <div class="col-lg-9">

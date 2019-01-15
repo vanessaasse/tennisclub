@@ -19,6 +19,11 @@
                 <div class="col-lg-3">
                     Date de l'évènement<br/>
                     Le {{ event.eventDate | date("d/m/Y") }}
+                    <br/><br/>
+
+                    A partager sur les réseaux sociaux
+                    {{ render(controller('App\\Controller\\EventController::getUrl',
+                        {'event' : event, 'request' : app.request, 'slug' : event.slug })) }}
                 </div>
 
                 <div class="col-lg-9">
@@ -28,6 +33,8 @@
 
                 {{ render(controller('App\\Controller\\EventController::getPreviousAndNextEventLink',
                     {'eventDate' : event.eventDate})) }}
+
+
 
             </div>
 

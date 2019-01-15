@@ -7,6 +7,7 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -75,7 +76,21 @@ class ArticleController extends AbstractController
             'previousArticle' => $previousArticle,
             'nextArticle' => $nextArticle
         ));
+    }
 
+    /**
+     * @param Article $article
+     * @param Request $request
+     * @param $slug
+     * @return Response
+     */
+    public function getUrl(Article $article, Request $request, $slug)
+    {
+        $currentRoute = $request->attributes->get('_route');
+        $currentUrl = $this->get('router')->generate($currentRoute, array('slug' => $slug), true);
+
+        return $this->render('frontEnd/article/socialmedia.html.twig', [
+            'article' => $article, 'currentUrl' => $currentUrl]);
     }
 
 }

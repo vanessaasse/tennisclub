@@ -6,6 +6,7 @@ use App\Entity\Event;
 use App\Repository\EventRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -45,6 +46,7 @@ class EventController extends AbstractController
             'listEvents' => $listEvents
         ));
     }
+    // TODO Afficher les évènements publiés et à date d'aujourd'hui et +
 
 
     /**
@@ -78,7 +80,21 @@ class EventController extends AbstractController
             'previousEvent' => $previousEvent,
             'nextEvent' => $nextEvent
         ));
+    }
 
+    /**
+     * @param Event $event
+     * @param Request $request
+     * @param $slug
+     * @return Response
+     */
+    public function getUrl(Event $event, Request $request, $slug)
+    {
+        $currentRoute = $request->attributes->get('_route');
+        $currentUrl = $this->get('router')->generate($currentRoute, array('slug' => $slug), true);
+
+        return $this->render('frontEnd/event/socialmedia.html.twig', [
+            'event' => $event, 'currentUrl' => $currentUrl]);
     }
 
 

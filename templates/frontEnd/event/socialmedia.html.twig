@@ -1,0 +1,30 @@
+<a href="https://www.facebook.com/sharer.php?u=<?={{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset
+    (currentUrl) }}?>&t={{ event.title }}"
+   onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
+    <img src="{{ asset('assets/img/facebook-logo-in-circular-button-outlined-social-symbol.png') }}">
+</a>
+
+<a href="https://twitter.com/share?url={{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset
+    (currentUrl) }}&text={{ event.title }}"
+   onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
+    <img src="{{ asset('assets/img/twitter-circular-button.png') }}">
+</a>
+
+<a href="https://www.linkedin.com/shareArticle?mini=true&url={{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset
+    (currentUrl) }}&title={{ event.title }}" onclick="window.open(this.href, '', 'menubar=no,toolbar=no,' +
+     'resizable=yes,' +
+     'scrollbars=yes,height=500,width=700');return false;">
+    <img src="{{ asset('assets/img/social-linkedin-circular-button.png') }}">
+</a>
+
+<a href="whatsapp://send?text={{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset
+    (currentUrl) }}" onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
+    <img src="{{ asset('assets/img/whatsapp-logo.png') }}">
+</a>
+
+
+<br/>
+<br/>
+
+{{ dump(currentUrl) }}
+{{ dump(event.title) }}
