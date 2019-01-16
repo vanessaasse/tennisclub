@@ -22,14 +22,15 @@ class Image
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $size;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $file;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
 
     public function getId(): ?int
     {
@@ -48,17 +49,7 @@ class Image
         return $this;
     }
 
-    public function getSize(): ?int
-    {
-        return $this->size;
-    }
 
-    public function setSize(int $size): self
-    {
-        $this->size = $size;
-
-        return $this;
-    }
 
     public function getFile(): ?string
     {
