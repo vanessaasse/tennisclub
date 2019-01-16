@@ -8,6 +8,7 @@ easy_admin:
                 max_results: 20
                 actions:
                     - { name: 'new', label: "Créer une catégorie" }
+                    - { name: 'show', label: "Voir" }
                 fields:
                     - { property: 'name', label: "Nom de la catégorie"}
             new:
@@ -22,3 +23,11 @@ easy_admin:
                     - { name: '-delete' }
                 fields:
                     - { property: 'name', label: "Nom de la catégorie"}
+
+            show:
+                title: "Voir les pages de cette catégorie"
+                actions:
+                    - { name: '-delete' }
+                fields:
+                    - { property: 'name', label: 'Nom de la catégorie'}
+                    - { property: 'pages', label: 'Pages de cette catégorie'}
