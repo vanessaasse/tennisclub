@@ -1,5 +1,5 @@
-<a href="https://www.facebook.com/sharer.php?u=<?{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset
-    (currentUrl) }}?>&t={{ page.title }}"
+<a href="https://www.facebook.com/sharer.php?u={{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset
+    (currentUrl) }}"
        onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
     <img src="{{ asset('assets/img/facebook-logo-in-circular-button-outlined-social-symbol.png') }}">
 </a>
@@ -20,10 +20,3 @@
     (currentUrl) }}" onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
     <img src="{{ asset('assets/img/whatsapp-logo.png') }}">
 </a>
-
-
-
-
-
-{{ dump(currentUrl) }}
-{{ dump(page.title) }}
