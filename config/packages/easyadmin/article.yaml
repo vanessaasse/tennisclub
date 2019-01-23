@@ -12,6 +12,7 @@ easy_admin:
                     - { property: 'title', label: "Titre de l'article"}
                     - { property: 'createdAt', label: 'Créé le'}
                     - { property: 'editedAt', label: 'Modifié le'}
+                    #- { property: 'image', type: 'image', base_path: '%app.path.images%' }
                     - { property: 'isPublished', label: 'Publication', type: 'boolean'}
                     - { property: 'Lien en ligne', template: 'backEnd/article/getLinkOfArticleOnline.htlm.twig'}
             search:
@@ -23,8 +24,11 @@ easy_admin:
                     - { type: 'group', columns: 8, label: 'Texte'}
                     - { property: 'title', label: "Titre de l'article"}
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
-                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { type: 'group', columns: 4}
+                    - { type: 'section', label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cet article ?'}
+                    - { type: 'section', label: 'Illustration'}
+                    - { property: 'imageFile', label: 'Photo', type: 'vich_image' }
             edit:
                 title: "Modifier un article"
                 actions:
@@ -33,8 +37,11 @@ easy_admin:
                     - { type: 'group', columns: 8, label: 'Texte'}
                     - { property: 'title', label: "Titre de l'article"}
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
-                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { type: 'group', columns: 4}
+                    - { type: 'section', label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+                    - { type: 'section', label: 'Illustration'}
+                    - { property: 'imageFile', label: 'Photo', type: 'vich_image' }
 
 
 

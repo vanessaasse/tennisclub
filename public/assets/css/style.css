@@ -1,3 +1,10 @@
+/** GLOBAL **/
+
+img{
+    max-width: 100%;
+}
+
+
 /* Page */
 .jumbotron{
     height: 250px;
@@ -14,4 +21,6 @@
     color: white;
     width: 150px;
 }
+
+
 

@@ -25,8 +25,12 @@ easy_admin:
                     - { property: 'title', label: 'Titre de la page'}
                     - { property: 'pageCategory', label: 'Catégorie'}
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
-                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { type: 'group', columns: 4}
+                    - { type: 'section', label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+                    - { type: 'section', label: 'Illustration'}
+                    - { property: 'imageFile', label: 'Photo', type: 'vich_image' }
+
             edit:
                 title: "Modifier une page"
                 actions:
@@ -36,9 +40,11 @@ easy_admin:
                     - { property: 'title', label: 'Titre de la page'}
                     - { property: 'pageCategory', label: 'Catégorie'}
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
-                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { type: 'group', columns: 4}
+                    - { type: 'section', label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
-
+                    - { type: 'section', label: 'Illustration'}
+                    - { property: 'imageFile', label: 'Photo', type: 'vich_image' }
 
             show:
                 title: "Voir le contenu de la page"

@@ -18,7 +18,15 @@
             <div class="row">
                 <div class="col-lg-9">
                     <h2>{{ page.title }}</h2>
+
+                    <!--Affichage de l'image -->
+                    {% if vich_uploader_asset(page, 'imageFile') is not null %}
+                        <img src="{{ vich_uploader_asset(page, 'imageFile') | imagine_filter('image_page') }}"
+                             alt="{{ page.image }}">
+                    {% endif %}
+
                     <p>{{ page.content | raw }}</p>
+
 
                     <!--Affichage du formulaire Inscription à l'école de tennis si slug = "tarifs-et-inscription" -->
                     {% if page.slug == 'tarifs-et-inscription' %}
@@ -76,10 +84,10 @@
                     <br/><br/>
 
                     <!-- Affichage du bloc réseaux sociaux -->
-                    <!-- TODO Vérifier le bon fonctionnement de ces liens sur les pages, articles et events -->
                     A partager sur les réseaux sociaux
                     {{ render(controller('App\\Controller\\PageController::getUrl',
                         {'page' : page, 'request' : app.request, 'slug' : page.slug })) }}
+
 
 
 

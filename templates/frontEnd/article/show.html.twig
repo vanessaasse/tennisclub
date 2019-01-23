@@ -16,20 +16,27 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     Date de publication<br/>
                     Le {{ article.createdAt | date("d/m/Y") }} à {{ article.createdAt | date ("H:i") }}<br/>
                     Date de modification<br/>
                     Le {{ article.editedAt | date("d/m/Y") }} à {{ article.editedAt | date ("H:i") }}
                     <br><br/>
 
-                    A partager sur les réseaux sociaux
+                    A partager sur les réseaux sociaux<br/>
                     {{ render(controller('App\\Controller\\ArticleController::getUrl',
                         {'article' : article, 'request' : app.request, 'slug' : article.slug })) }}
                 </div>
 
-                <div class="col-lg-9">
+                <div class="col-lg-8">
                     <h3>{{ article.title }}</h3>
+
+                    <!--Affichage de l'image -->
+                    {% if vich_uploader_asset(article, 'imageFile') is not null %}
+                        <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('image_article') }}"
+                             alt="{{ article.image }}">
+                    {% endif %}
+
                     <p>{{ article.content | raw }}</p>
                 </div>
 

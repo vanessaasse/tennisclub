@@ -25,8 +25,11 @@ easy_admin:
                     - { property: 'title', label: "Titre de l'évènement"}
                     - { property: 'eventDate', label: "Date de l'évènement"}
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
-                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { type: 'group', columns: 4}
+                    - { type: 'section', label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+                    - { type: 'section', label: 'Illustration'}
+                    - { property: 'imageFile', label: 'Photo', type: 'vich_image' }
             edit:
                 title: "Modifier un évènement"
                 actions:
@@ -36,5 +39,8 @@ easy_admin:
                     - { property: 'title', label: "Titre de l'évènement"}
                     - { property: 'eventDate', label: "Date de l'évènement"}
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
-                    - { type: 'group', columns: 4, label: 'Publication'}
+                    - { type: 'group', columns: 4}
+                    - { type: 'section', label: 'Publication'}
                     - { property: 'isPublished', label: 'Souhaitez-vous publier cette page ?'}
+                    - { type: 'section', label: 'Illustration'}
+                    - { property: 'imageFile', label: 'Photo', type: 'vich_image' }

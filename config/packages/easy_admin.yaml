@@ -30,10 +30,6 @@ easy_admin:
               children:
                   - { entity: 'Event', label: 'Tous les évènements', params: { action: 'list'}}
                   - { entity: 'Event', label: 'Créer un évènement', params: { action: 'new'}}
-            - label: 'Image'
-              icon: 'image'
-              children:
-                  - { entity: 'Image', label: 'Toutes les images', params: { action: 'list'}}
             - label: 'Utilisateurs'
               icon: 'user'
               children:
@@ -48,8 +44,6 @@ easy_admin:
             class: App\Entity\Article
         Event:
             class: App\Entity\Event
-        Image:
-            class: App\Entity\Image
         User:
             class: App\Entity\User
         PageCategory:

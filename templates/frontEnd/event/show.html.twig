@@ -16,18 +16,27 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     Date de l'évènement<br/>
                     Le {{ event.eventDate | date("d/m/Y") }}
                     <br/><br/>
 
-                    A partager sur les réseaux sociaux
+                    A partager sur les réseaux sociaux<br/>
                     {{ render(controller('App\\Controller\\EventController::getUrl',
                         {'event' : event, 'request' : app.request, 'slug' : event.slug })) }}
                 </div>
 
-                <div class="col-lg-9">
+                <div class="col-lg-8">
                     <h3>{{ event.title }}</h3>
+
+                    <!--Affichage de l'image -->
+                    {% if vich_uploader_asset(event, 'imageFile') is not null %}
+                        <img src="{{ vich_uploader_asset(event, 'imageFile') | imagine_filter('image_event') }}"
+                             alt="{{ event.image }}">
+                    {% endif %}
+
+
+
                     <p>{{ event.content | raw }}</p>
                 </div>
 
