@@ -43,7 +43,9 @@
                 {{ render(controller('App\\Controller\\EventController::getPreviousAndNextEventLink',
                     {'eventDate' : event.eventDate})) }}
 
-
+                <div class="">
+                    <a href="{{ path('event.list') }}">Retour à l'agenda</a>
+                </div>
 
             </div>
 

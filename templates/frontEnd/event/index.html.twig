@@ -23,8 +23,14 @@
                     <div class="col-lg-9">
                         <a href="{{ path('event.show', {'slug' : event.slug}) }}">{{ event.title }}</a><br/>
                     </div>
-
                 {% endfor %}
+
+
+                {% if listEvents is empty %}
+                    <div class="alert alert-info" role="alert">
+                        Aucun évènement n'est communiqué pour le moment. N'hésitez pas à consulter notre agenda ultérieurement.
+                    </div>
+                {% endif %}
             </div>
         </div>
 

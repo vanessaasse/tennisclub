@@ -28,13 +28,14 @@ class EventRepository extends ServiceEntityRepository
             ->select('e')
             ->where('e.isPublished = :isPublished')
             ->setParameter('isPublished', '1')
-            ->orderBy('e.eventDate', 'DESC')
+            ->orderBy('e.eventDate', 'ASC')
             ->getQuery()
             ->getResult();
 
         return $query;
     }
 
+    // TODO Ajouter la notion d'évènement supérieur ou égal à aujourd'hui
 
     /**
      * @param $eventDate

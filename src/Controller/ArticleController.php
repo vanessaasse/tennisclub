@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,12 +33,17 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/actualites/", name="article.list")
-     *
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
      */
-    public function index()
+    public function index(PaginatorInterface $paginator, Request $request) : Response
     {
         $this->getDoctrine()->getManager();
-        $listArticles = $this->articleRepository->getPublishedArticles();
+        $listArticles = $paginator->paginate(
+            $this->articleRepository->getPublishedArticles(),
+            $request->query->getInt('page', 1),
+            5);
 
         return $this->render('frontEnd/article/index.html.twig', array(
             'listArticles' => $listArticles

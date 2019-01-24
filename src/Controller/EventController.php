@@ -46,7 +46,6 @@ class EventController extends AbstractController
             'listEvents' => $listEvents
         ));
     }
-    // TODO Afficher les évènements publiés et à date d'aujourd'hui et +
 
 
     /**

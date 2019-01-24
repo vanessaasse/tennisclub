@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -21,16 +22,16 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
      *
-     * @return mixed
+     * @return Query
      */
-    public function getPublishedArticles()
+    public function getPublishedArticles() : Query
     {
         $query = $this->createQueryBuilder('a')
             ->select('a')
             ->where('a.isPublished = :isPublished')
             ->setParameter('isPublished', '1')
-            ->getQuery()
-            ->getResult();
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery();
 
         return $query;
     }
