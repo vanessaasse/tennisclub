@@ -19,6 +19,12 @@
                 <div class="col-lg-9">
                     <h2>{{ page.title }}</h2>
 
+                    <!-- Affichage du bloc réseaux sociaux -->
+                    A partager sur les réseaux sociaux
+                    {{ render(controller('App\\Controller\\PageController::getUrl',
+                        {'page' : page, 'request' : app.request, 'slug' : page.slug })) }}
+
+
                     <!--Affichage de l'image -->
                     {% if vich_uploader_asset(page, 'imageFile') is not null %}
                         <img src="{{ vich_uploader_asset(page, 'imageFile') | imagine_filter('image_page') }}"
@@ -82,15 +88,6 @@
                     {% endif %}
 
                     <br/><br/>
-
-                    <!-- Affichage du bloc réseaux sociaux -->
-                    A partager sur les réseaux sociaux
-                    {{ render(controller('App\\Controller\\PageController::getUrl',
-                        {'page' : page, 'request' : app.request, 'slug' : page.slug })) }}
-
-
-
-
                 </div>
             </div>
         </div>

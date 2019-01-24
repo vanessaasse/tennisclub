@@ -111,6 +111,10 @@
                                                 <a class="nav-link" href="{{ path('page.show', {'slug' :
                                                     'les-partenaires-du-club'}) }}">Les partenaires</a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('page.show', {'slug' :
+                                                    'liens-utiles'}) }}">Liens utiles</a>
+                                            </li>
                                         </div>
 
                                         <!-- Bloc liens de l'onglet "L'école de tennis" -->
@@ -224,18 +228,18 @@
                 <hr/>
                 <div class="row">
 
-                    <div class="col-1"></div>
                     <div class="col-7">
                        Tennis Club de Teyran - Chemin de Couquerolles - 34820 Teyran<br/>
                         Tél. : 04 67 70 16 93
                     </div>
 
-                    <div class="col-3">
-                        <a href="https://www.facebook.com/teyran.tennisclub/" target="_blank">Suivez-nous sur
-                            Facebook <i class="fab fa-facebook"></i></a>
+                    <div class="col-5">
+                        <i class="fab fa-facebook"></i><a href="https://www.facebook.com/teyran.tennisclub/"
+                        target="_blank"> Suivez-nous sur Facebook</a><br/>
+                        <a href="{{ path('page.show', {'slug' : 'mentions-legales'}) }}">Mentions légales</a> -
+                        <a href="{{ path('page.show', {'slug' : 'politique-de-confidentialite'}) }}">Politique de
+                            confidentialité</a>
                     </div>
-
-                    <div class="col-1"></div>
 
                 </div>
 
