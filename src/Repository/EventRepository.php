@@ -28,7 +28,7 @@ class EventRepository extends ServiceEntityRepository
             ->select('e')
             ->where('e.isPublished = :isPublished')
             ->setParameter('isPublished', '1')
-            ->orderBy('e.eventDate', 'ASC')
+            ->orderBy('e.beginningEventDate', 'ASC')
             ->getQuery()
             ->getResult();
 
@@ -38,17 +38,17 @@ class EventRepository extends ServiceEntityRepository
     // TODO Ajouter la notion d'évènement supérieur ou égal à aujourd'hui
 
     /**
-     * @param $eventDate
+     * @param $beginningEventDate
      * @return mixed
      */
-    public function findPreviousEvent($eventDate)
+    public function findPreviousEvent($beginningEventDate)
     {
 
         $query = $this->createQueryBuilder('e')
             ->select('e')
-            ->where('e.eventDate < :eventDate')
-            ->setParameter('eventDate', $eventDate)
-            ->orderBy('e.eventDate', 'DESC')
+            ->where('e.beginningEventDate < :beginningEventDate')
+            ->setParameter('beginningEventDate', $beginningEventDate)
+            ->orderBy('e.beginningEventDate', 'DESC')
             ->andWhere('e.isPublished = :isPublished')
             ->setParameter('isPublished', '1')
             ->setMaxResults(1)
@@ -60,16 +60,16 @@ class EventRepository extends ServiceEntityRepository
 
 
     /**
-     * @param $eventDate
+     * @param $beginningEventDate
      * @return mixed
      */
-    public function findNextEvent($eventDate)
+    public function findNextEvent($beginningEventDate)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
-            ->where('e.eventDate > :eventDate')
-            ->setParameter('eventDate', $eventDate)
-            ->orderBy('e.eventDate', 'ASC')
+            ->where('e.beginningEventDate > :beginningEventDate')
+            ->setParameter('beginningEventDate', $beginningEventDate)
+            ->orderBy('e.beginningEventDate', 'ASC')
             ->andWhere('e.isPublished = :isPublished')
             ->setParameter('isPublished', '1')
             ->setMaxResults(1)

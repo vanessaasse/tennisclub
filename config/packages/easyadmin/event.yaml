@@ -10,7 +10,8 @@ easy_admin:
                 - { name: 'new', label: "Créer un évènement" }
                 fields:
                 - { property: 'title', label: "Titre de l'évènement"}
-                - { property: 'eventDate', label: "Date de l'évènement"}
+                - { property: 'beginningEventDate', label: "Date de l'évènement"}
+                - { property: 'endEventDate', label: "Date de fin" }
                 - { property: 'createdAt', label: 'Créé le'}
                 - { property: 'editedAt', label: 'Modifié le'}
                 - { property: 'isPublished', label: 'Publication', type: 'boolean'}
@@ -23,7 +24,9 @@ easy_admin:
                 fields:
                     - { type: 'group', columns: 8, label: 'Texte'}
                     - { property: 'title', label: "Titre de l'évènement"}
-                    - { property: 'eventDate', label: "Date de l'évènement"}
+                    - { property: 'beginningEventDate', label: "Date de l'évènement"}
+                    - { property: 'endEventDate', label: "Date de fin de l'évènement (à ne remplir que si l'évènement
+                     est sur plusieurs jours)" }
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { type: 'group', columns: 4}
                     - { type: 'section', label: 'Publication'}
@@ -37,7 +40,9 @@ easy_admin:
                 fields:
                     - { type: 'group', columns: 8, label: 'Texte'}
                     - { property: 'title', label: "Titre de l'évènement"}
-                    - { property: 'eventDate', label: "Date de l'évènement"}
+                    - { property: 'beginningEventDate', label: "Date de l'évènement"}
+                    - { property: 'endEventDate', label: "Date de fin de l'évènement (à ne remplir que si l'évènement
+                                         est sur plusieurs jours)" }
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { type: 'group', columns: 4}
                     - { type: 'section', label: 'Publication'}

@@ -16,9 +16,25 @@
         <div class="container">
 
             <div class="row">
+                <a href="{{ path('easyadmin',{'entity': 'Event', 'id': event.id, 'action': 'edit'}) }}">Editer</a>
+            </div>
+
+            <div class="row">
                 <div class="col-lg-4">
-                    Date de l'évènement<br/>
-                    Le {{ event.eventDate | date("d/m/Y") }}
+
+                    {% if event.EndEventDate is empty %}
+
+                        Date de l'évènement<br/>
+                        Le {{ event.beginningEventDate | date("d/m/Y") }}
+
+                    {% else %}
+
+                        Du {{ event.beginningEventDate | date("d/m/Y") }}<br/>
+                        au {{ event.endEventDate | date("d/m/Y") }}
+
+                    {% endif %}
+
+
                     <br/><br/>
 
                     A partager sur les réseaux sociaux<br/>
@@ -41,7 +57,7 @@
                 </div>
 
                 {{ render(controller('App\\Controller\\EventController::getPreviousAndNextEventLink',
-                    {'eventDate' : event.eventDate})) }}
+                    {'beginningEventDate' : event.beginningEventDate})) }}
 
                 <div class="">
                     <a href="{{ path('event.list') }}">Retour à l'agenda</a>

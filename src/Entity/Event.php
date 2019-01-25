@@ -28,7 +28,14 @@ class Event
      * @ORM\Column(type="date")
      * @Assert\Type(type="\DateTime")
      */
-    private $eventDate;
+    private $beginningEventDate;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="date", nullable=true)
+     * @Assert\Type(type="\DateTime")
+     */
+    private $endEventDate;
 
     /**
      * @var \DateTime
@@ -98,7 +105,7 @@ class Event
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
-        $this->setEventDate(new \DateTime());
+        $this->setBeginningEventDate(new \DateTime());
     }
 
 
@@ -107,14 +114,26 @@ class Event
         return $this->id;
     }
 
-    public function getEventDate(): ?\DateTimeInterface
+    public function getBeginningEventDate(): ?\DateTimeInterface
     {
-        return $this->eventDate;
+        return $this->beginningEventDate;
     }
 
-    public function setEventDate(\DateTimeInterface $eventDate): self
+    public function setBeginningEventDate(\DateTimeInterface $beginningEventDate): self
     {
-        $this->eventDate = $eventDate;
+        $this->beginningEventDate = $beginningEventDate;
+
+        return $this;
+    }
+
+    public function getEndEventDate(): ?\DateTimeInterface
+    {
+        return $this->endEventDate;
+    }
+
+    public function setEndEventDate($endEventDate): self
+    {
+        $this->endEventDate = $endEventDate;
 
         return $this;
     }
