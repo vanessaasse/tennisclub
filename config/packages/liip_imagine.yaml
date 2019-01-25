@@ -1,7 +1,6 @@
 liip_imagine:
     driver: "gd"
     filter_sets:
-        cache: ~
         image_page:
             quality: 85
             filters:
