@@ -24,11 +24,17 @@ class EventRepository extends ServiceEntityRepository
      */
     public function findPublishedEvents()
     {
+        $today = date('Y/m/d');
+
         $query = $this->createQueryBuilder('e')
             ->select('e')
             ->where('e.isPublished = :isPublished')
             ->setParameter('isPublished', '1')
             ->orderBy('e.beginningEventDate', 'ASC')
+            ->andWhere('e.beginningEventDate >= :beginningEventDate')
+            ->setParameter('beginningEventDate', $today)
+            ->orWhere('e.endEventDate >= :endEventDate')
+            ->setParameter('endEventDate', $today)
             ->getQuery()
             ->getResult();
 

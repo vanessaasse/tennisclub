@@ -10,8 +10,8 @@ easy_admin:
                 - { name: 'new', label: "Créer un évènement" }
                 fields:
                 - { property: 'title', label: "Titre de l'évènement"}
-                - { property: 'beginningEventDate', label: "Date de l'évènement"}
-                - { property: 'endEventDate', label: "Date de fin" }
+                - { property: 'beginningEventDate', label: "Date de l'évènement", format: 'd/m/Y'}
+                - { property: 'endEventDate', label: "Date de fin", format: 'd/m/Y'}
                 - { property: 'createdAt', label: 'Créé le'}
                 - { property: 'editedAt', label: 'Modifié le'}
                 - { property: 'isPublished', label: 'Publication', type: 'boolean'}

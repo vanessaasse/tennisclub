@@ -17,7 +17,7 @@
             <div class="row">
                 {% for event in listEvents %}
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         {% if event.EndEventDate is empty %}
                             Le {{ event.beginningEventDate | date("d/m/Y") }}
                         {% else %}
@@ -26,7 +26,7 @@
                         {% endif %}
                     </div>
 
-                    <div class="col-lg-9">
+                    <div class="col-lg-8">
                         <a href="{{ path('event.show', {'slug' : event.slug}) }}">{{ event.title }}</a><br/>
                     </div>
                 {% endfor %}
