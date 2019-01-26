@@ -59,8 +59,6 @@ class PageController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        //$page->getMainImage();
-
         return $this->render('frontEnd/page/show.html.twig', [
             'page' => $page
         ]);

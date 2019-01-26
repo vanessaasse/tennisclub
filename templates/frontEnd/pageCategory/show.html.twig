@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+    {% block title %}
+        {{ pageCategory.name}} - {{ parent() }}
+    {% endblock %}
+
+
+    {% block body %}
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>{{ pageCategory.name }}</h1>
+            </div>
+        </div>
+
+
+        <div class="container">
+            {% for page in pageCategory.pages %}
+
+                <a href="{{ path('page.show', {'slug' : page.slug}) }}">{{ page.title }}</a><br/>
+                {{ page.content | easyadmin_truncate(200) | raw }} <br/><br/>
+
+            {% endfor %}
+        </div>
+
+    {% endblock%}

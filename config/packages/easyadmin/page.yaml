@@ -38,6 +38,7 @@ easy_admin:
                 fields:
                     - { type: 'group', columns: 8, label: 'Texte'}
                     - { property: 'title', label: 'Titre de la page'}
+                    - { property: 'createdAt', label: 'Créée le'}
                     - { property: 'pageCategory', label: 'Catégorie'}
                     - { property: 'content', label: 'Contenu', type: 'fos_ckeditor'}
                     - { type: 'group', columns: 4}

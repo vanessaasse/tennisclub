@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageCategoryRepository")
+ *
  */
 class PageCategory
 {
@@ -23,6 +25,12 @@ class PageCategory
     private $name;
 
     /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", length=190)
+     */
+    private $slug;
+
+    /**
      * @var Page[]\ArrayCollection
      * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="pageCategory", cascade={"persist"})
      */
@@ -31,7 +39,6 @@ class PageCategory
     public function __construct()
     {
         $this->pages = new ArrayCollection();
-
     }
 
     public function __toString()
@@ -56,6 +63,20 @@ class PageCategory
 
         return $this;
     }
+
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
 
 
     /**
