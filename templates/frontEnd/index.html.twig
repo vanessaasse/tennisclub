@@ -4,9 +4,12 @@
         Accueil - {{ parent() }}
     {% endblock %}
 
-
-
     {% block body %}
+
+
+
+
+
         {% for message in app.flashes('alert') %}
             <div class="alert alert-danger">
                 {{ message }}
