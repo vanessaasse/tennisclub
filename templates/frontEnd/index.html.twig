@@ -6,9 +6,7 @@
 
     {% block body %}
 
-
-
-
+        {# Messages flash #}
 
         {% for message in app.flashes('alert') %}
             <div class="alert alert-danger">
@@ -21,4 +19,49 @@
                 {{ message }}
             </div>
         {% endfor %}
+
+        {# End Messages flash #}
+
+
+        <div class="container-fluid">
+            <div class="img-homepage">
+                <h1>Tennis club</h1><br/>
+                <h1 class="second-line-title">de Teyran</h1>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row bloc-raccourcis-homepage">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 raccourcis-homepage">
+                    <a href="{{ path('pageCategory.show', {'slug' :
+                        'lecole-de-tennis'}) }}">Ecole de tennis</a>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 raccourcis-homepage">
+                    <a href="{{ path('pageCategory.show', {'slug' :
+                        'tennis-adulte'}) }}">Tennis Adulte</a>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 raccourcis-homepage">
+                    <a href="{{ path('pageCategory.show', {'slug' :
+                        'competitions'}) }}">Compétitions</a>
+                </div>
+            </div>
+
+            <div class="row">
+
+                {% for articles in listArticles %}
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+
+        </div>
+
     {% endblock %}

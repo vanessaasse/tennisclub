@@ -4,12 +4,88 @@ img{
     max-width: 100%;
 }
 
+.nav-link{
+    font-size: 14px;
+    margin-left: 10px;
+    color: #112F41;
+}
 
+.dropdown-item{
+    font-size: 14px;
+}
+
+.dropdown-item:hover{
+    color: #ED553B;
+}
+
+body{
+    font-family: "Comfortaa", serif;
+}
+
+footer{
+    font-size: 14px;
+    color: grey;
+}
+
+footer a{
+    font-size: 14px;
+    color: grey;
+}
+
+footer a:hover{
+    color: #ED553B;
+}
 
 /** END GLOBAL **/
 
 
+/** HOMEPAGE **/
+.img-homepage{
+    background-image: url("/assets/img/tennis-club-teyran-accueil.jpg");
+    background-size: cover;
+    height: 400px;
+    background-position: 50% 25%;
+}
 
+.img-homepage h1{
+    display: inline-flex;
+    background-color: white;
+    font-weight: bolder;
+    color: #112F41;
+    margin-top: 100px;
+    margin-left: 100px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 50px;
+}
+
+.second-line-title{
+    margin-top: 0 !important;
+    margin-left: 160px !important;
+}
+
+.bloc-raccourcis-homepage{
+    margin-left: -100px;
+}
+
+.raccourcis-homepage{
+    padding: 15px;
+    border-radius: 10px;
+    border: solid 2px white;
+    margin-top: 50px;
+    text-align: center;
+    color:white;
+    background-color: #ED553B;
+}
+
+.raccourcis-homepage a{
+    color: white;
+}
+
+
+/** END HOMEPAGE **/
 
 
 /* Page */
