@@ -55,17 +55,31 @@
 
                 <div class="col-lg-8">
 
+                    <!-- lancement du carrousel -->
                     <div id="carousel" class="carousel slide" data-ride="carousel">
 
+                        <!-- intégrer des boutons d'indication-->
+                        <ol class="carousel-indicators">
+                            {% for article in listArticles %}
+                            <li data-target="#carousel" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
+                            {% endfor %}
+                        </ol>
+
+                        <!-- intégration de la boucle for -->
                         <div class="carousel-inner">
                             {% for article in listArticles %}
-                        <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>{{ article.title }}</h5>
-                        </div>
+                                <!-- loop pour afficher carousel active ou non -->
+                                <div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {%
+                                    endif %}>
+                                <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5><a href="{{ path('article.show', {'slug' : article.slug}) }}">{{ article.title }}</a></h5>
+                                </div>
+                                </div>
                             {% endfor %}
                         </div>
 
+                        <!-- intégration des boutons précédents et suivants-->
                         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Prédécent</span>
@@ -83,17 +97,5 @@
 
     {% endblock %}
 
-    {% block javascripts %}
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.carousel').carousel({
-                    interval : 3000
-                    }
-                );
-            });
-        </script>
-
-    {% endblock %}
 
 
