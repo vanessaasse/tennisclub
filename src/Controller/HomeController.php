@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\ArticleRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +14,24 @@ use App\Entity\Page;
 class HomeController extends AbstractController
 {
     /**
+     * @var ArticleRepository
+     */
+    private $articleRepository;
+
+    /**
+     * @var ObjectManager
+     */
+    private $em;
+
+    public function __construct(ArticleRepository $articleRepository, ObjectManager $em)
+    {
+        $this->articleRepository = $articleRepository;
+        $this->em = $em;
+    }
+
+
+
+    /**
      *
      * @Route("/", name="homepage")
      *
@@ -19,7 +39,11 @@ class HomeController extends AbstractController
      */
     public function index():Response
     {
-        return $this->render('frontEnd/index.html.twig');
+        $listArticles = $this->articleRepository->getThreeFirstPublishedArticles();
+
+        return $this->render('frontEnd/index.html.twig', array(
+            'listArticles' => $listArticles
+        ));
     }
 
 }

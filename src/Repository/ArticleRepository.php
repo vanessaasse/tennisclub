@@ -74,4 +74,24 @@ class ArticleRepository extends ServiceEntityRepository
 
         return $query;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getThreeFirstPublishedArticles()
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.isPublished = :isPublished')
+            ->setParameter('isPublished', '1')
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
+
 }

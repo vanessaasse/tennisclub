@@ -15,6 +15,10 @@ liip_imagine:
             filters:
                 relative_resize:
                     widen: 750
+        image_slider_homepage:
+            quality: 85
+            filters:
+                thumbnail: { size: [750, 400], mode: outbound }
 
 #TODO Gestion du cache
 
