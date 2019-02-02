@@ -1,17 +1,21 @@
 /** GLOBAL **/
 
+html{
+    font-size: 100%;
+    /*1rem = 16px*/
+}
+
 img{
     max-width: 100%;
 }
 
 .nav-link{
-    font-size: 14px;
-    margin-left: 10px;
+    font-size: 0.9rem;
     color: #112F41;
 }
 
 .dropdown-item{
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 .dropdown-item:hover{
@@ -19,16 +23,15 @@ img{
 }
 
 body{
-    font-family: "Comfortaa", serif;
+    font-family: "Comfortaa", Arial, serif;
 }
 
 footer{
-    font-size: 14px;
+    font-size: 0.9rem;
     color: grey;
 }
 
 footer a{
-    font-size: 14px;
     color: grey;
 }
 
@@ -40,10 +43,12 @@ footer a:hover{
 
 
 /** HOMEPAGE **/
+
+/* bandeau d'entête */
 .img-homepage{
     background-image: url("/assets/img/tennis-club-teyran-accueil.jpg");
     background-size: cover;
-    height: 400px;
+    height: 25rem;
     background-position: 50% 25%;
 }
 
@@ -52,38 +57,112 @@ footer a:hover{
     background-color: white;
     font-weight: bolder;
     color: #112F41;
-    margin-top: 100px;
-    margin-left: 100px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 50px;
+    margin-top: 6rem;
+    margin-left: 4rem;
+    padding-top: 0.18rem;
+    padding-bottom: 0.18rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    font-size: 3rem;
 }
 
-.second-line-title{
-    margin-top: 0 !important;
-    margin-left: 160px !important;
-}
+@media screen and (max-width: 650px){
+    .img-homepage h1{
+        margin-left: 1rem !important;
+        margin-top: 14rem;
+        font-size: 3rem;
 
+    }
+}
+/* end bandeau d'entête */
+
+/* trois boutons raccourcis sur la homepage */
 .bloc-raccourcis-homepage{
-    margin-left: -100px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-.raccourcis-homepage{
-    padding: 15px;
+.raccourcis-homepage-item{
+    padding-top: 0.9rem;
+    padding-bottom: 0.5rem;
     border-radius: 10px;
-    border: solid 2px white;
-    margin-top: 50px;
+    border: solid 3px white;
     text-align: center;
     color:white;
-    background-color: #ED553B;
+    background-color: #068587;
+
 }
 
-.raccourcis-homepage a{
+.raccourcis-homepage-item h2{
+    font-size: 1rem;
+}
+
+.raccourcis-homepage-item a{
     color: white;
 }
+/* end trois boutons raccourcis sur la homepage */
 
+/*carrousel*/
+.carousel{
+    margin-bottom: 2rem;
+    height: auto;
+}
+.carousel-caption{
+    border-radius:10px;
+    background-color: #ffffff;
+    opacity: 0.75;
+}
+
+.carousel-caption h2{
+    font-size: 1.8rem;
+}
+
+.carousel-caption a{
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #112F41;
+}
+
+.carousel-indicators li{
+    background-color: #112F41;
+}
+
+.carousel-indicators .active{
+    background-color: #112F41;
+}
+/*end carousel */
+
+/* widget agenda */
+.widget-agenda h2{
+    /*background-color: #F2B134;
+    border-radius: 10px;*/
+    border-top: 3px solid #F2B134;
+
+    color: #F2B134;
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.list-events{
+    padding-left: 1rem;
+}
+
+.events-date{
+    color: #4FB99F;
+}
+/* end widget agenda */
+
+
+/* Blocs liens utiles */
+.blocs-liens-utiles a{
+    color: #112F41;
+}
+
+/* end Blocs liens utiles */
 
 /** END HOMEPAGE **/
 

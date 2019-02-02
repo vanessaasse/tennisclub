@@ -41,8 +41,6 @@ class EventRepository extends ServiceEntityRepository
         return $query;
     }
 
-    // TODO Ajouter la notion d'évènement supérieur ou égal à aujourd'hui
-
     /**
      * @param $beginningEventDate
      * @return mixed
@@ -79,6 +77,26 @@ class EventRepository extends ServiceEntityRepository
             ->andWhere('e.isPublished = :isPublished')
             ->setParameter('isPublished', '1')
             ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
+    public function getFiveNextEvents()
+    {
+        $today = date('Y/m/d');
+
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.isPublished = :isPublished')
+            ->setParameter('isPublished', '1')
+            ->orderBy('e.beginningEventDate', 'ASC')
+            ->andWhere('e.beginningEventDate >= :beginningEventDate')
+            ->setParameter('beginningEventDate', $today)
+            ->orWhere('e.endEventDate >= :endEventDate')
+            ->setParameter('endEventDate', $today)
+            ->setMaxResults(5)
             ->getQuery()
             ->getResult();
 

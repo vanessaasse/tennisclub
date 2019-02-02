@@ -20,7 +20,6 @@ liip_imagine:
             filters:
                 thumbnail: { size: [750, 400], mode: outbound }
 
-#TODO Gestion du cache
 
 #liip_imagine:
 #    # valid drivers options include "gd" or "gmagick" or "imagick"

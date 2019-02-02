@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ArticleRepository;
+use App\Repository\EventRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,13 +20,20 @@ class HomeController extends AbstractController
     private $articleRepository;
 
     /**
+     * @var EventRepository
+     */
+    private $eventRepository;
+
+    /**
      * @var ObjectManager
      */
     private $em;
 
-    public function __construct(ArticleRepository $articleRepository, ObjectManager $em)
+    public function __construct(ArticleRepository $articleRepository,EventRepository $eventRepository, ObjectManager
+    $em)
     {
         $this->articleRepository = $articleRepository;
+        $this->eventRepository = $eventRepository;
         $this->em = $em;
     }
 
@@ -40,9 +48,11 @@ class HomeController extends AbstractController
     public function index():Response
     {
         $listArticles = $this->articleRepository->getThreeFirstPublishedArticles();
+        $listEvents = $this->eventRepository->getFiveNextEvents();
 
         return $this->render('frontEnd/index.html.twig', array(
-            'listArticles' => $listArticles
+            'listArticles' => $listArticles,
+            'listEvents' => $listEvents
         ));
     }
 

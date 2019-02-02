@@ -22,41 +22,40 @@
 
         {# End Messages flash #}
 
-
+        <!-- Image de Une -->
         <div class="container-fluid">
             <div class="img-homepage">
-                <h1>Tennis club</h1><br/>
-                <h1 class="second-line-title">de Teyran</h1>
+                <h1>Tennis club de Teyran</h1>
             </div>
         </div>
 
 
         <div class="container">
 
+            <!-- trois blocs link -->
             <div class="row bloc-raccourcis-homepage">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-3 raccourcis-homepage">
+                <div class="col-md-4 raccourcis-homepage-item">
                     <a href="{{ path('pageCategory.show', {'slug' :
-                        'lecole-de-tennis'}) }}">Ecole de tennis</a>
+                        'lecole-de-tennis'}) }}"><h2>Ecole de tennis</h2></a>
                 </div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-3 raccourcis-homepage">
+                <div class="col-md-4 raccourcis-homepage-item">
                     <a href="{{ path('pageCategory.show', {'slug' :
-                        'tennis-adulte'}) }}">Tennis Adulte</a>
+                        'tennis-adulte'}) }}"><h2>Tennis Adulte</h2></a>
                 </div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-3 raccourcis-homepage">
+                <div class="col-md-4 raccourcis-homepage-item">
                     <a href="{{ path('pageCategory.show', {'slug' :
-                        'competitions'}) }}">Compétitions</a>
+                        'competitions'}) }}"><h2>Compétitions</h2></a>
                 </div>
             </div>
 
+
             <div class="row">
 
-                <div class="col-lg-8">
+                <!-- carrousel -->
+                <div class="col-md-8">
 
                     <!-- lancement du carrousel -->
-                    <div id="carousel" class="carousel slide" data-ride="carousel">
+                    <div id="carousel" class="carousel slide rounded" data-ride="carousel">
 
                         <!-- intégrer des boutons d'indication-->
                         <ol class="carousel-indicators">
@@ -69,11 +68,12 @@
                         <div class="carousel-inner">
                             {% for article in listArticles %}
                                 <!-- loop pour afficher carousel active ou non -->
-                                <div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {%
-                                    endif %}>
-                                <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                <h5><a href="{{ path('article.show', {'slug' : article.slug}) }}">{{ article.title }}</a></h5>
+                                <div class="carousel-item {{ (loop.index0)? "": "active"}}" data-interval="1000">
+                                    <a href="{{ path('article.show', {'slug' : article.slug}) }}"><img src="{{
+                                        vich_uploader_asset(article, 'imageFile') }}" ></a>
+                                <div class="carousel-caption">
+                                <h2><a href="{{ path('article.show', {'slug' : article.slug}) }}">{{ article.title
+                                        }}</a></h2>
                                 </div>
                                 </div>
                             {% endfor %}
@@ -91,10 +91,38 @@
                     </div>
 
                 </div>
+
+                <!-- Agenda -->
+                <div class="col-md-4">
+                    <div class="widget-agenda">
+
+                    <h2>Agenda</h2>
+                        <div class="list-events">
+                        {% for event in listEvents %}
+                        <i class="fas fa-angle-double-right"></i> {{ event.title }}<br/>
+                            <div class="events-date">
+                            {% if event.EndEventDate is empty %}
+                                Le {{ event.beginningEventDate | date("d/m/Y") }}<br/>
+                            {% else %}
+                                Du {{ event.beginningEventDate | date("d/m/Y") }} au {{ event.endEventDate | date
+                                ("d/m/Y") }}<br/>
+                            {% endif %}<br/>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Liens utiles -->
+                    <div class="blocs-liens-utiles">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-warning"><i class="fas fa-tag"></i><a href="{{ path('page.show', {'slug' :
+                                'liens-utiles'}) }}"> Nos liens utiles</a></li>
+                    </ul>
+                    </div>
+                </div>
+
             </div>
-
         </div>
-
     {% endblock %}
 
 
