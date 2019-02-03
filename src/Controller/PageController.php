@@ -128,6 +128,7 @@ class PageController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
 
             $emailService->sendMailTennisAdult($form->getData());
+            $emailService->sendConfirmationMailTennisAdult($form->getData());
 
             return $this->render('frontEnd/page/replyToForm.html.twig', [
                 'page' => $page]);

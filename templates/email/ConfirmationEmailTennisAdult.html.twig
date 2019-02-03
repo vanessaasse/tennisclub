@@ -13,6 +13,16 @@
 <table>
     <tr>
         <td>
+            Nous avons bien reçu votre demande d'inscription. Le Tennis Club de Teyran vous contactera dans les
+            plus brefs délais pour la finaliser.<br/><br/>
+
+            Nous vous invitons à nous présenter les deux documents suivants dûment remplis
+            lors de la validation votre inscription au club :<br/>
+            <a href="http://www.fft.fr/sites/default/files/pdf/cerfa_15699.do_.pdf">Questionnaire CERFA 15699*01</a><br/>
+            <a href="http://www.fft.fr/sites/default/files/pdf/modele_attestation_adulte.pdf">Attestation de santé</a><br/>
+
+            <hr/>
+
             <strong>Nom :</strong> {{ data.lastname }}<br/>
             <strong>Prénom :</strong> {{ data.firstname }}<br/>
             <strong>Date de naissance :</strong> {{ data.birthday | date("d/m/Y") }}<br/>
@@ -33,8 +43,10 @@
             <strong>Tournois internes en simple  :</strong> {{ data.tournament }}<br/><br/>
             <strong>Participation aux matches par équipe :</strong> {{ data.match }}<br/><br/>
 
-            <strong>Politique de confidentialité : </strong> {% if data.privacyPolicy == true %}Oui{% endif %}
-            {% if data.privacyPolicy == false %}Non{% endif %}<br/><br/>
+            <hr/>
+
+            Tennis Club de Teyran - Chemin de Couquerolles - 34820 Teyran<br/>
+            Tél. : 04 67 70 16 93 - Mail : tennisclubteyran34@gmail.com
         </td>
     </tr>
 </table>

@@ -92,14 +92,20 @@ class TennisAdultType extends AbstractType
             ->add('rank', TextType::class, array(
                 'label' => "Etes-vous classé au tennis ? Si oui, indiquez ici votre classement :",
             ))
+            ->add('formule', ChoiceType::class, array(
+                'label' => "Formules choisies",
+                'choices' => array(
+                    'Je joue seul(e)' => 'Je joue seul(e)',
+                    'Je joue avec mon enfant' => 'Je joue avec mon enfant'
+                )))
             ->add('courses', ChoiceType::class, array(
-                'label' => 'Formules choisies :',
+                'label' => 'Je souhaite également :',
                 'choices' => array(
                     'choices' => array(
-                        'Je joue avec un ami' => 'Je joue avec un ami',
-                        'Je recherche un partenaire' => 'Je recherche un partenaire',
-                        'Je prends des cours' => 'Je prends des cours',
-                        'Je participe aux compétitions' => 'Je participe aux compétitions')),
+                        'jouer avec un ami' => 'jouer avec un ami',
+                        'rechercher un partenaire' => 'rechercher un partenaire',
+                        'prendre des cours' => 'prendre des cours',
+                        'participer aux compétitions' => 'participer aux compétitions')),
                 'expanded' => true,
                 'multiple' => true
             ))
