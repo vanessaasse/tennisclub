@@ -66,7 +66,6 @@ class EmailService
         $this->mailer->send($message);
     }
 
-
     /**
      * @param $data
      * @throws \Twig_Error_Loader
@@ -79,6 +78,23 @@ class EmailService
             ->setFrom($data['email'])
             ->setTo($this->emailFrom)
             ->setBody($this->templating->render('email/enrolmentTennisSchool.html.twig',
+                array('data' => $data)))
+            ->setContentType('text/html');
+        $this->mailer->send($message);
+    }
+
+    /**
+     * @param $data
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendConfirmationMailEnrolmentTennisSchool($data)
+    {
+        $message = (new \Swift_Message("Inscription à l'école de tennis"))
+            ->setFrom($this->emailFrom)
+            ->setTo($data['email'])
+            ->setBody($this->templating->render('email/confirmationEmailEnrolmentTennisSchool.html.twig',
                 array('data' => $data)))
             ->setContentType('text/html');
         $this->mailer->send($message);

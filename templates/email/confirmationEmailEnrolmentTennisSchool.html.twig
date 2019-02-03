@@ -8,11 +8,22 @@
 </head>
 
 
-<body>
+<body style="padding:1rem;">
 
 <table>
     <tr>
         <td>
+            Nous avons bien reçu votre demande d'inscription. Le Tennis Club de Teyran vous contactera dans les
+            plus brefs délais pour la finaliser.<br/><br/>
+
+            Nous vous invitons à nous présenter les deux documents suivants dûment remplis
+            lors de la validation votre inscription au club :<br/>
+            <a href="http://www.fft.fr/sites/default/files/pdf/cerfa_15699.do_.pdf">Questionnaire CERFA 15699*01</a><br/>
+            <a href="http://www.fft.fr/sites/default/files/pdf/modele_attestation_mineur.pdf">Attestation
+                mineur</a><br/>
+
+            <hr/>
+
             Informations concernant l'enfant à inscrire à l'école de tennis :<br/>
             <strong>Nom :</strong> {{ data.childLastname }}<br/>
             <strong>Prénom :</strong> {{ data.childFirstname }}<br/>
@@ -21,18 +32,16 @@
             <strong>Adresse postale :</strong> {{ data.childAdress }}<br/>
             <strong>Code postal:</strong> {{ data.childPostalCode }}<br/>
             <strong>Ville :</strong> {{ data.childCity }}<br/><br/>
-
             <strong>Formules choisies : </strong> {{ data.courses |join(', ') }}<br/>
             <strong>Participation aux tournois indidivuels :</strong> {{ data.individualTournament }}<br/>
             <strong>Participation aux matches par équipe :</strong> {{ data.match }}<br/><br/>
-
             <strong>Droit à l'image :</strong> {{ data.image }}<br/><br/>
 
             Informations concernant le(s) responsable(s) de l'enfant :<br/><br/>
 
             Parent 1<br/>
             <strong>Nom :</strong> {{ data.parentLastname }}<br/>
-            <strong>Prénom :</strong> {{ data.parentFirstname }}<br/>
+            <strong>Prénom :</strong> {{ data.parentFirstname }}<br/
             <strong>Téléphone :</strong> {{ data.phone }}<br/>
             <strong>Email :</strong> {{ data.email }}<br/><br/>
 
@@ -46,8 +55,10 @@
             {% if data.secondParentEmail is not empty %}<strong>Email :</strong> {{ data.secondParentEmail }}<br/>{% endif
             %}
 
-            <strong>Politique de confidentialité : </strong> {% if data.privacyPolicy == true %}Oui{% endif %}
-            {% if data.privacyPolicy == false %}Non{% endif %}<br/><br/>
+            <hr/>
+
+            Tennis Club de Teyran - Chemin de Couquerolles - 34820 Teyran<br/>
+            Tél. : 04 67 70 16 93 - Mail : tennisclubteyran34@gmail.com
         </td>
     </tr>
 </table>

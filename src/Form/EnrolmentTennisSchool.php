@@ -123,6 +123,18 @@ class EnrolmentTennisSchool extends AbstractType
                     new NotBlank(array('message' => "Veuillez saisir l'adresse mail du parent.")),
                     new Email(array('strict' => true, 'message' => "Cette adresse mail n'est pas valide."))
                 )))
+            ->add('secondParentLastname', TextType::class, array(
+                'label' => 'Nom'
+                ))
+            ->add('secondParentFirstname', TextType::class, array(
+                'label' => 'Prénom'
+            ))
+            ->add('secondParentPhone', TelType::class, array(
+                'label' => 'Téléphone'
+                ))
+            ->add('secondParentEmail', EmailType::class, array(
+                'label' => 'Email'
+                ))
             ->add('image', ChoiceType::class, array(
                 'label' => "Autorisez-vous des prises de vue photographiques ou des enregistrements audiovisuels sur 
         lesquels votre enfant pourrait apparaître ? (pour des publications sur le site du club et sur la page Facebook)",

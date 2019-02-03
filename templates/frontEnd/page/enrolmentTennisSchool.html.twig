@@ -15,11 +15,19 @@
 <h3>Droit à l'image</h3>
 {{ form_row(form.image) }}<br/><br/>
 
-<h3>Informations concernant le responsable légal de l'enfant</h3>
+<h3>Informations concernant le(s) responsable(s) de l'enfant</h3>
+
+<h4>Parent 1</h4>
 {{ form_row(form.parentLastname) }}<br/>
 {{ form_row(form.parentFirstname) }}<br/>
 {{ form_row(form.phone) }}<br/>
 {{ form_row(form.email) }}<br/>
+
+<h4>Parent 2</h4>
+{{ form_row(form.secondParentLastname) }}<br/>
+{{ form_row(form.secondParentFirstname) }}<br/>
+{{ form_row(form.secondParentPhone) }}<br/>
+{{ form_row(form.secondParentEmail) }}<br/>
 
 {{ form_row(form.privacyPolicy) }}<br/>
 
