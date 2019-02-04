@@ -11,6 +11,8 @@ easy_admin:
                 - 'https://use.fontawesome.com/releases/v5.6.1/css/all.css'
             js:
                 - 'bundles/easyadmin/bootstrap-all.js'
+            favicon: '/assets/img/favicon.ico'
+
         menu:
             - label: 'Pages'
               icon: 'file'
