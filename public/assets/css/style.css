@@ -114,7 +114,7 @@ footer a:hover{
     opacity: 0.75;
 }
 
-.carousel-caption h2{
+.carousel-caption h3{
     font-size: 1.8rem;
 }
 
@@ -135,11 +135,8 @@ footer a:hover{
 /*end carousel */
 
 /* widget agenda */
-.widget-agenda h2{
-    /*background-color: #F2B134;
-    border-radius: 10px;*/
+.widget-agenda h4{
     border-top: 3px solid #F2B134;
-
     color: #F2B134;
     text-align: center;
     font-size: 1.5rem;
@@ -149,6 +146,10 @@ footer a:hover{
 
 .list-events{
     padding-left: 1rem;
+}
+
+.list-events a{
+    color: #112F41;
 }
 
 .events-date{

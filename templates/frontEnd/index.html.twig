@@ -72,8 +72,8 @@
                                     <a href="{{ path('article.show', {'slug' : article.slug}) }}"><img src="{{
                                         vich_uploader_asset(article, 'imageFile') }}" ></a>
                                 <div class="carousel-caption">
-                                <h2><a href="{{ path('article.show', {'slug' : article.slug}) }}">{{ article.title
-                                        }}</a></h2>
+                                <h3><a href="{{ path('article.show', {'slug' : article.slug}) }}">{{ article.title
+                                        }}</a></h3>
                                 </div>
                                 </div>
                             {% endfor %}
@@ -96,10 +96,11 @@
                 <div class="col-md-4">
                     <div class="widget-agenda">
 
-                    <h2>Agenda</h2>
+                    <h4>Agenda</h4>
                         <div class="list-events">
                         {% for event in listEvents %}
-                        <i class="fas fa-angle-double-right"></i> {{ event.title }}<br/>
+                        <i class="fas fa-angle-double-right"></i> <a href="{{ path('event.show', {'slug' : event.slug})
+                        }}">{{ event.title }}</a><br/>
                             <div class="events-date">
                             {% if event.EndEventDate is empty %}
                                 Le {{ event.beginningEventDate | date("d/m/Y") }}<br/>
