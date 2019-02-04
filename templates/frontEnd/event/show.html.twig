@@ -16,10 +16,6 @@
         <div class="container">
 
             <div class="row">
-                <a href="{{ path('easyadmin',{'entity': 'Event', 'id': event.id, 'action': 'edit'}) }}">Editer</a>
-            </div>
-
-            <div class="row">
                 <div class="col-lg-4">
 
                     {% if event.EndEventDate is empty %}
@@ -40,6 +36,11 @@
                     A partager sur les réseaux sociaux<br/>
                     {{ render(controller('App\\Controller\\EventController::getUrl',
                         {'event' : event, 'request' : app.request, 'slug' : event.slug })) }}
+
+                    <br/><br/>
+
+                    <a href="{{ path('easyadmin',{'entity': 'Event', 'id': event.id, 'action': 'edit'}) }}">Editer
+                        cet évènement</a>
                 </div>
 
                 <div class="col-lg-8">
