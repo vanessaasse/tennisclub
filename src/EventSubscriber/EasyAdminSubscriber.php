@@ -4,12 +4,24 @@ namespace App\EventSubscriber;
 
 use App\Entity\Article;
 use App\Entity\Event;
+use App\Entity\User;
+use App\Manager\UserManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use App\Entity\Page;
 
 class EasyAdminSubscriber implements EventSubscriberInterface
 {
+
+    /**
+     * @var UserManager
+     */
+    private $userManager;
+
+    public function __construct(UserManager $userManager)
+    {
+        $this->userManager = $userManager;
+    }
 
 
     /**
@@ -33,8 +45,9 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
+            'easy_admin.pre_persist' => array(array('updateUserPassword')),
             'easy_admin.pre_update' => array(array('setEditedAtPage'), array('setEditedAtArticle'),
-                array('setEditedAtEvent'))
+                array('setEditedAtEvent'), array('updateUserPassword'))
         );
     }
 
@@ -71,7 +84,9 @@ class EasyAdminSubscriber implements EventSubscriberInterface
 
     }
 
-
+    /**
+     * @param GenericEvent $event
+     */
     public function setEditedAtEvent(GenericEvent $event)
     {
         $entity = $event->getSubject();
@@ -84,4 +99,24 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         $entity->setEditedAt(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
         $event['Event'] = $entity;
     }
+
+
+    /**
+     * @param GenericEvent $event
+     */
+    public function updateUserPassword(GenericEvent $event)
+    {
+        $entity = $event->getSubject();
+
+        if(!($entity instanceof User && $entity->getPlainPassword()))
+        {
+            return;
+        }
+
+        $this->userManager->encodePassword($entity, $entity->getPlainPassword());
+    }
+
+
+
+
 }

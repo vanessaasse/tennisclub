@@ -21,7 +21,6 @@ class RegistrationController extends Controller
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
-        dump($user);
 
         $form->handleRequest($request);
 
@@ -37,9 +36,6 @@ class RegistrationController extends Controller
             dump($user);
             return $this->redirectToRoute('login');
             $this->addFlash('success', 'Votre compte utilisateur a bien été enregistré.');
-            // TODO reset password
-
-
         }
 
 

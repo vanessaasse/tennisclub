@@ -1,0 +1,27 @@
+easy_admin:
+    entities:
+        User:
+            class: App\Entity\User
+            label: "Utilisateurs"
+            list:
+                title: "Tous les Utilisateurs"
+                max_results: 20
+                actions:
+                    - { name: 'new', label: "Créer un utilisateur" }
+                fields:
+                    - { property: 'id', label: 'ID'}
+                    - { property: 'username', label: 'Login'}
+                    - { property: 'email', label: 'Email'}
+                    - { property: 'roles', label: 'Role'}
+            new:
+                title: "Créer un utilisateur"
+                fields:
+                    - { property: 'username', label: 'Login'}
+                    - { property: 'email', label: 'Email'}
+                    - { property: 'plainPassword', label: 'Mot de passe'}
+            edit:
+                title: "Modifier un utilisateur"
+                fields:
+                    - { property: 'username', label: 'Login'}
+                    - { property: 'email', label: 'Email'}
+                    - { property: 'plainPassword', label: 'Mot de passe'}
