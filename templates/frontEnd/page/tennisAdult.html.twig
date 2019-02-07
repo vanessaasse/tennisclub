@@ -1,25 +1,36 @@
+<div class="form-tennis-adult">
 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
-{{ form_row(form.lastname) }}<br/>
-{{ form_row(form.firstname) }}<br/>
-{{ form_row(form.birthday) }}<br/>
-{{ form_row(form.gender) }}<br/>
-{{ form_row(form.address) }}<br/>
-{{ form_row(form.postalCode) }}<br/>
-{{ form_row(form.city) }}<br/>
-{{ form_row(form.phone) }}<br/>
-{{ form_row(form.email) }}<br/>
-{{ form_row(form.level) }}<br/>
-{{ form_row(form.rank) }}<br/>
-{{ form_row(form.formule) }}
-{{ form_row(form.courses) }}<br/>
-{{ form_row(form.tournament) }}<br/>
-{{ form_row(form.match) }}<br/>
+    <div class="inner-wrap">
+    {{ form_row(form.lastname) }}<br/>
+    {{ form_row(form.firstname) }}<br/>
+    {{ form_row(form.birthday) }}<br/>
+    {{ form_row(form.gender) }}<br/>
+    {{ form_row(form.address) }}<br/>
+    {{ form_row(form.postalCode) }}<br/>
+    {{ form_row(form.city) }}<br/>
+    {{ form_row(form.phone) }}<br/>
+    {{ form_row(form.email) }}
+    </div>
 
-{{ form_row(form.privacyPolicy) }}<br/>
+    <div class="inner-wrap">
+    {{ form_row(form.level) }}<br/>
+    {{ form_row(form.rank) }}
+    </div>
+
+    <div class="inner-wrap">
+    {{ form_row(form.formule) }}<br/>
+    {{ form_row(form.courses) }}<br/>
+    {{ form_row(form.tournament) }}<br/>
+    {{ form_row(form.match) }}
+    </div>
+
+    <div class="inner-wrap">
+    {{ form_row(form.privacyPolicy) }}
+    </div>
 
 
 <button type="submit" class="btn btn-form">Validez</button>
 {{ form_end(form) }}
 
-
+</div>

@@ -293,6 +293,18 @@ footer a:hover{
     margin-bottom: 3rem;
 }
 
+/** End Form Ecole de tennis **/
+
+/** Form Tennis Adult **/
+
+.form-tennis-adult .inner-wrap{
+    padding: 1.5rem;
+    background: #F8F8F8;
+    border-radius: 6px;
+    margin-bottom: 3rem;
+}
+/** End Tennis Adult **/
+
 
 /*** END VUES PAGE ***/
 
