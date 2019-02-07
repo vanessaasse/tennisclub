@@ -5,10 +5,6 @@ html{
     /*1rem = 16px*/
 }
 
-img{
-    max-width: 100%;
-}
-
 .nav-link{
     font-size: 0.9rem;
     color: #112F41;
@@ -26,7 +22,27 @@ body{
     font-family: "Comfortaa", Arial, serif;
 }
 
+b, strong{
+    font-weight: 800;
+    color: #ED553B;
+}
+
+blockquote{
+    font-style: italic;
+    font-size: 1rem;
+    margin-left: 32px;
+    border-left: 4px solid #CCC;
+    padding-left: 8px;
+    text-align: left;
+
+}
+
+img{
+    max-width: 100%;
+}
+
 footer{
+    padding-bottom: 2rem;
     font-size: 0.9rem;
     color: grey;
 }
@@ -44,11 +60,11 @@ footer a:hover{
 }
 
 .authentify{
-    color: #ED553B;
+    color: #068587;
 }
 
 .authentify a{
-    color: #ED553B;
+    color: #068587;
 }
 
 /** END GLOBAL **/
