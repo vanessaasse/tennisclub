@@ -1,38 +1,50 @@
+<div class="form-tennis-school">
+
 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
-<h3>Informations concernant votre enfant</h3>
-{{ form_row(form.childLastname) }}<br/>
-{{ form_row(form.childFirstname) }}<br/>
-{{ form_row(form.childBirthday) }}<br/>
-{{ form_row(form.childgender) }}<br/>
-{{ form_row(form.childAdress) }}<br/>
-{{ form_row(form.childPostalCode) }}<br/>
-{{ form_row(form.childCity) }}<br/>
-{{ form_row(form.courses) }}<br/>
-{{ form_row(form.individualTournament) }}<br/>
-{{ form_row(form.match) }}<br/><br/>
+<h3><i class="fas fa-arrow-right"></i> 1. Informations concernant votre enfant</h3>
+    <div class="inner-wrap">
+    {{ form_row(form.childLastname) }}<br/>
+    {{ form_row(form.childFirstname) }}<br/>
+    {{ form_row(form.childBirthday) }}<br/>
+    {{ form_row(form.childgender) }}<br/>
+    {{ form_row(form.childAdress) }}<br/>
+    {{ form_row(form.childPostalCode) }}<br/>
+    {{ form_row(form.childCity) }}<br/>
+    {{ form_row(form.courses) }}<br/>
+    {{ form_row(form.individualTournament) }}<br/>
+    {{ form_row(form.match) }}
+    </div>
 
-<h3>Droit à l'image</h3>
-{{ form_row(form.image) }}<br/><br/>
+<h3><i class="fas fa-arrow-right"></i> 2. Droit à l'image</h3>
+    <div class="inner-wrap">
+    {{ form_row(form.image) }}
+    </div>
 
-<h3>Informations concernant le(s) responsable(s) de l'enfant</h3>
+<h3><i class="fas fa-arrow-right"></i> 3. Informations concernant le(s) responsable(s) de l'enfant</h3>
 
-<h4>Parent 1</h4>
-{{ form_row(form.parentLastname) }}<br/>
-{{ form_row(form.parentFirstname) }}<br/>
-{{ form_row(form.phone) }}<br/>
-{{ form_row(form.email) }}<br/>
+    <div class="inner-wrap">
+    <h4><i class="fas fa-user-circle"></i> Parent 1 :</h4>
+    {{ form_row(form.parentLastname) }}<br/>
+    {{ form_row(form.parentFirstname) }}<br/>
+    {{ form_row(form.phone) }}<br/>
+    {{ form_row(form.email) }}
+    </div>
 
-<h4>Parent 2</h4>
-{{ form_row(form.secondParentLastname) }}<br/>
-{{ form_row(form.secondParentFirstname) }}<br/>
-{{ form_row(form.secondParentPhone) }}<br/>
-{{ form_row(form.secondParentEmail) }}<br/>
+    <div class="inner-wrap">
+    <h4><i class="fas fa-user-circle"></i> Parent 2 :</h4>
+    {{ form_row(form.secondParentLastname) }}<br/>
+    {{ form_row(form.secondParentFirstname) }}<br/>
+    {{ form_row(form.secondParentPhone) }}<br/>
+    {{ form_row(form.secondParentEmail) }}
+    </div>
 
-{{ form_row(form.privacyPolicy) }}<br/>
+    <div class="inner-wrap">
+    {{ form_row(form.privacyPolicy) }}
+    </div>
 
 
 <button type="submit" class="btn btn-form">Validez</button>
 {{ form_end(form) }}
 
-
+</div>

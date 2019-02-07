@@ -265,8 +265,34 @@ footer a:hover{
 .page-show.blocs-liens-utiles{
     margin-top: 2rem;
 }
-
 /** End Widget - MenuCategory **/
+
+
+/**Form Ecole de Tennis **/
+
+.form-tennis-school{
+    margin-top: 3rem;
+}
+.form-tennis-school h3{
+    font-size: 1.4rem;
+    color: #ED553B;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-tennis-school h4{
+    font-size: 1.2rem;
+    color: #068587;
+    margin-bottom: 1rem;
+}
+
+.inner-wrap{
+    padding: 1.5rem;
+    background: #F8F8F8;
+    border-radius: 6px;
+    margin-bottom: 3rem;
+}
+
 
 /*** END VUES PAGE ***/
 
