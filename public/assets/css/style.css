@@ -43,10 +43,18 @@ footer a:hover{
     margin: 0.1rem;
 }
 
+.authentify{
+    color: #ED553B;
+}
+
+.authentify a{
+    color: #ED553B;
+}
+
 /** END GLOBAL **/
 
 
-/** HOMEPAGE **/
+/** index **/
 
 /* bandeau d'entête */
 .img-homepage{
@@ -166,14 +174,13 @@ footer a:hover{
 .blocs-liens-utiles a{
     color: #112F41;
 }
-
 /* end Blocs liens utiles */
+/** END index **/
 
-/** END HOMEPAGE **/
 
+/*** VUES PAGE ***/
 
-/** PAGE **/
-
+/** Page **/
 /* En-tête de la page */
 .jumbotron{
     height: 250px;
@@ -187,7 +194,9 @@ footer a:hover{
 .page-subtitle h1{
     font-size: 3rem;
 }
+/* end En-tête de la page */
 
+/* Corps de texte */
 .page-body{
     margin-top: 3rem;
 }
@@ -210,10 +219,40 @@ footer a:hover{
     border-radius: 8px;
     margin-top: 0.5rem;
 }
+/* End Corps de texte */
 
+/* Widget */
+.page-widget h3{
+    border-top: 3px solid #F2B134;
+    color: #F2B134;
+    text-align: center;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    margin-top: 3.2rem;
+}
 
+@media screen and (max-width: 991px){
+    .page-widget h3{
+        margin-top: 1rem;
+    }
+}
+/* End widget */
 
-/** END PAGE **/
+/** End Page **/
+
+/** Widget - MenuCategory **/
+.list-pages a{
+    color: #112F41;
+}
+
+.page-show.blocs-liens-utiles{
+    margin-top: 2rem;
+}
+
+/** End Widget - MenuCategory **/
+
+/*** END VUES PAGE ***/
 
 /* Formulaire */
 .btn-form{

@@ -68,6 +68,8 @@ class PageController extends AbstractController
 
     /**
      * @return Response
+     * Retourne l'ensemble des liens d'une catégorie
+     * Affiché dans le widget de la page
      */
     public function getMenuCategory($pageCategory): Response
     {

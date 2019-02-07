@@ -69,32 +69,36 @@
 
                     <br/>
 
+                    <div class="authentify">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <i class="far fa-edit"></i> <a href="{{ path('easyadmin',{'entity': 'Page', 'id': page.id,
+                            'action': 'edit'}) }}">Editer
+                            cette page</a>
+                        {% endif %}
+                    </div>
+
                 </div>
 
 
                 <div class="col-lg-3">
                     <!--Affichage du menu de la catégorie en cours -->
-                    <h3>{{ page.pageCategory }}</h3><br/>
+                    <div class="page-widget">
+                    <h3>A lire aussi dans la catégorie "{{ page.pageCategory }}"</h3>
+
                     {{ render(controller('App\\Controller\\PageController::getMenuCategory',
                         {'pageCategory' : page.pageCategory})) }}
 
-                    <br/><br/>
-                    <!--Affichage d'un second menu dans la sidebar -->
-                    {% if (page.slug == 'liens-utiles' or page.slug == 'reserver-un-court' or page.slug ==
-                        'contact') %}
-                        <a href="{{ path('page.show', {'slug' : 'presentation-de-lecole-de-tennis'}) }}">Ecole de tennis</a><br/>
-                        <a href="{{ path('page.show', {'slug' : 'nos-differentes-offres'}) }}">Tennis Adulte</a><br/>
-                        <a href="{{ path('page.show', {'slug' : 'tournois-adultes'}) }}">Compétitions</a><br/>
-                    {% else %}
-                        <a href="{{ path('page.show', {'slug' : 'reserver-un-court'}) }}">Réservez un court</a><br/>
-                        <a href="{{ path('page.show', {'slug' : 'contact'}) }}">Contactez-nous</a><br/>
-                        <a href="{{ path('page.show', {'slug' : 'liens-utiles'}) }}">Liens utiles</a>
+                    <!-- Liens utiles -->
+                    {% if (page.slug != 'liens-utiles') %}
+                        <div class="page-show blocs-liens-utiles">
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-warning"><i class="fas fa-tag"></i><a href="{{ path('page.show', {'slug' :
+                                        'liens-utiles'}) }}"> Nos liens utiles</a></li>
+                            </ul>
+                        </div>
+
                     {% endif %}
-
-                    <br/><br/>
-
-                    <a href="{{ path('easyadmin',{'entity': 'Page', 'id': page.id, 'action': 'edit'}) }}">Editer
-                        cette page</a>
+                    </div>
                 </div>
             </div>
         </div>

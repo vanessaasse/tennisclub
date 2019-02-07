@@ -1,5 +1,8 @@
- {% for page in listPages %}
+<div class="list-pages">
+{% for page in listPages %}
      {% if page.isPublished == true %}
-         <a href="{{ path('page.show', {'slug' : page.slug}) }}">{{ page.title }}</a><br/>
+         <i class="fas fa-angle-double-right"></i> <a href="{{ path('page.show', {'slug' : page.slug}) }}">{{ page
+         .title }}</a><br/>
      {% endif %}
  {% endfor %}
+</div>
