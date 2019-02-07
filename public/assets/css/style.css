@@ -39,6 +39,10 @@ footer a:hover{
     color: #ED553B;
 }
 
+.icon-social-media{
+    margin: 0.1rem;
+}
+
 /** END GLOBAL **/
 
 
@@ -168,15 +172,48 @@ footer a:hover{
 /** END HOMEPAGE **/
 
 
-/* Page */
+/** PAGE **/
+
+/* En-tête de la page */
 .jumbotron{
     height: 250px;
     text-align: center;
     vertical-align:middle;
     color: white;
     padding-top: 90px;
-    background-color: #112F41;
+    background-color: #ED553B;
 }
+
+.page-subtitle h1{
+    font-size: 3rem;
+}
+
+.page-body{
+    margin-top: 3rem;
+}
+
+.page-title h2{
+    font-size: 2rem;
+}
+
+.page-content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.page-social-media{
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.page-image img{
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+
+
+/** END PAGE **/
 
 /* Formulaire */
 .btn-form{
