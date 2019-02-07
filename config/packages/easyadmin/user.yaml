@@ -13,15 +13,40 @@ easy_admin:
                     - { property: 'username', label: 'Login'}
                     - { property: 'email', label: 'Email'}
                     - { property: 'roles', label: 'Role'}
+
             new:
                 title: "Créer un utilisateur"
                 fields:
                     - { property: 'username', label: 'Login'}
                     - { property: 'email', label: 'Email'}
                     - { property: 'plainPassword', label: 'Mot de passe'}
+                    -   property: 'roles'
+                        label: 'Role'
+                        type: 'choice'
+                        type_options:
+                             multiple: true
+                             expanded: true
+                             choices:
+                                 'ROLE_USER': 'ROLE_USER'
+                                 'ROLE_ADMIN': 'ROLE_ADMIN'
+                                 'ROLE_SUPER_ADMIN': 'ROLE_SUPER_ADMIN'
+
             edit:
                 title: "Modifier un utilisateur"
+                actions:
+                    - { name: '-delete' }
                 fields:
                     - { property: 'username', label: 'Login'}
                     - { property: 'email', label: 'Email'}
                     - { property: 'plainPassword', label: 'Mot de passe'}
+                    -   property: 'roles'
+                        label: 'Role'
+                        type: 'choice'
+                        type_options:
+                             multiple: true
+                             expanded: true
+                             choices:
+                                 'ROLE_USER': 'ROLE_USER'
+                                 'ROLE_ADMIN': 'ROLE_ADMIN'
+                                 'ROLE_SUPER_ADMIN': 'ROLE_SUPER_ADMIN'
+

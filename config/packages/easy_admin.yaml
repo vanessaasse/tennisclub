@@ -7,7 +7,6 @@ easy_admin:
         form_theme: '@EasyAdmin/form/bootstrap_4.html.twig'
         assets:
             css:
-                - '../public/assets/css/admin.css'
                 - 'https://use.fontawesome.com/releases/v5.6.1/css/all.css'
             js:
                 - 'bundles/easyadmin/bootstrap-all.js'
@@ -36,6 +35,8 @@ easy_admin:
               icon: 'user'
               children:
                   - { entity: 'User', label: 'Tous les utilisateurs', params: { action: 'list'}}
+                  - { entity: 'User', label: 'Créer un utilisateur', params: { action: 'new'}}
+
 
     formats:
         datetime: 'd/m/Y H:i:s'

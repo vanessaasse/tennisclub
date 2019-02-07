@@ -36,7 +36,7 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @Assert\NotBlank()
+     *
      */
     private $plainPassword;
 
@@ -151,3 +151,5 @@ class User implements UserInterface
         $this->plainPassword = null;
     }
 }
+
+
