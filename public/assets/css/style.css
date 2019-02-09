@@ -264,12 +264,26 @@ footer a:hover{
 
 .page-show.blocs-liens-utiles{
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 /** End Widget - MenuCategory **/
 
+/** Forms**/
+.inner-wrap{
+    padding: 1.5rem;
+    background: #F8F8F8;
+    border-radius: 6px;
+    margin-bottom: 3rem;
+}
+
+.btn-form{
+    background-color: #112F41;
+    color: white;
+    width: 150px;
+}
+/** End forms**/
 
 /**Form Ecole de Tennis **/
-
 .form-tennis-school{
     margin-top: 3rem;
 }
@@ -285,35 +299,107 @@ footer a:hover{
     color: #068587;
     margin-bottom: 1rem;
 }
-
-.inner-wrap{
-    padding: 1.5rem;
-    background: #F8F8F8;
-    border-radius: 6px;
-    margin-bottom: 3rem;
-}
-
 /** End Form Ecole de tennis **/
 
+
 /** Form Tennis Adult **/
-
-.form-tennis-adult .inner-wrap{
-    padding: 1.5rem;
-    background: #F8F8F8;
-    border-radius: 6px;
-    margin-bottom: 3rem;
+.form-tennis-adult{
+    margin-top: 3rem;
 }
-/** End Tennis Adult **/
+/** end form tennis adult **/
 
+/** Form reservation **/
+.form-reservation-court{
+    margin-top: 2rem;
+}
+/** End form reservation **/
+
+/** form contact **/
+.form-contact-us{
+    margin-top: 2rem;
+}
+/** end form contact **/
 
 /*** END VUES PAGE ***/
 
-/* Formulaire */
-.btn-form{
-    background-color: #112F41;
-    color: white;
-    width: 150px;
+
+/*** Page de catégories ***/
+.pagecategory-subtitle h1{
+    font-size: 3rem;
 }
+
+.list-pages{
+    margin-bottom: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.list-pages h2{
+    font-size: 1.2rem;
+    color: #068587;
+}
+
+.list-pages a{
+    color: #068587;
+}
+/*** End Page de catégorie ***/
+
+/*** Events ***/
+.page-subtitle h1{
+    font-size: 3rem;
+}
+
+thead{
+    background-color: #F2B134;
+    color: white;
+}
+
+.table thead th{
+    border-bottom: 1px solid #F2B134;
+}
+
+.table thead tr th{
+    font-size: 1.2rem;
+}
+
+.event-name a{
+    color: #4FB99F;
+}
+
+@media (max-width: 700px) {
+    .table{
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+    .table thead {
+        display: none;
+    }
+
+    .table tr{
+        display: block;
+        margin-bottom: 3rem;
+    }
+    .table td {
+        display: block;
+    }
+    .table td:before {
+        float: left;
+        font-weight: bold;
+    }
+
+    .table td, .table th {
+        padding: 0;
+        vertical-align: top;
+        border-top: 1px solid white;
+    }
+}
+
+
+
+
+
+
+/*** End events ***/
 
 
 
