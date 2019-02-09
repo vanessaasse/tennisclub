@@ -9,7 +9,9 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
+                <div class="pagecategory-subtitle">
                 <h1>{{ pageCategory.name }}</h1>
+                </div>
             </div>
         </div>
 
@@ -17,9 +19,12 @@
         <div class="container">
             {% for page in pageCategory.pages %}
 
-                <a href="{{ path('page.show', {'slug' : page.slug}) }}">{{ page.title }}</a><br/>
-                {{ page.content | easyadmin_truncate(200) | raw }} <br/><br/>
-
+                <div class="list-pages">
+                    <a href="{{ path('page.show', {'slug' : page.slug}) }}"><h2><i class="fas fa-layer-group"></i> {{
+                            page.title }}</h2></a>
+                {{ page.content | easyadmin_truncate(200) | raw }} <a href="{{ path('page.show', {'slug' : page
+                        .slug}) }}">Lire la suite</a>
+                </div>
             {% endfor %}
         </div>
 
