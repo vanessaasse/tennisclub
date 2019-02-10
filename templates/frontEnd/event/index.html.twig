@@ -27,7 +27,7 @@
                     <tbody>
                     {% for event in listEvents %}
                     <tr>
-                    <td class="event-date" data-label="date">
+                    <td class="event-date">
                         {% if event.EndEventDate is empty %}
                             Le {{ event.beginningEventDate | date("d/m/Y") }}
                         {% else %}
@@ -35,8 +35,8 @@
                             ("d/m/Y") }}
                         {% endif %}
                     </td>
-                    <td class="event-name" data-label="event-name">
-                        <a href="{{ path('event.show', {'slug' : event.slug}) }}">{{ event.title }}</a>
+                    <td class="event-name">
+                        <h2><a href="{{ path('event.show', {'slug' : event.slug}) }}">{{ event.title }}</a></h2>
                     </td>
                     </tr>
                     {% endfor %}

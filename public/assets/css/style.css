@@ -357,7 +357,7 @@ footer a:hover{
 /*** End Page de catégorie ***/
 
 /*** List Events ***/
-.page-subtitle h1{
+.event-subtitle h1{
     font-size: 3rem;
 }
 
@@ -372,6 +372,10 @@ thead{
 
 .table thead tr th{
     font-size: 1.2rem;
+}
+
+.event-name h2{
+    font-size: 1.1rem;
 }
 
 .event-name a{
@@ -456,4 +460,72 @@ thead{
 /*** End vue event ***/
 
 
+/*** vue list articles ***/
+.bloc-article{
+    margin-bottom: 2rem;
+}
 
+.article-item h2{
+    font-size: 1.3rem;
+}
+
+.bloc-article .btn-article-date{
+    background-color: #F2B134;
+    color: white;
+    text-align: left;
+}
+
+.paginator{
+    position: center;
+}
+/*** end vue list articles ***/
+
+/*** vue article ***/
+.article-subtitle h1{
+    font-size: 3rem;
+}
+
+.article-body{
+    margin-top: 3rem;
+}
+
+.article-content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.article-content h2{
+    font-size: 2rem;
+}
+
+.btn-article-date{
+    background-color: #068587;
+    color: white;
+    text-align: left;
+}
+
+.article-image img{
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.bloc-previous-next-article{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.previous-next-article-item{
+    padding-top: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-radius: 10px;
+    border: solid 3px white;
+    text-align: center;
+    color:white;
+    background-color: #F2B134;
+    font-size: 1rem;
+}
+
+.previous-next-article-item a{
+    color: white;
+}

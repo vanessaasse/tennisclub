@@ -9,30 +9,41 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
+                <div class="article-subtitle">
                 <h1>Actualités du club</h1>
+                </div>
             </div>
         </div>
 
         <div class="container">
+
+            {% for article in listArticles %}
+                <div class="row bloc-article">
+                <div class="col-lg-3">
+                    <button type="button" class="btn btn-article-date">
+                    Publié le {{ article.createdAt | date("d/m/Y") }}
+                </div>
+
+                <div class="col-lg-9 article-item">
+                    <h2><a href="{{ path('article.show', {'slug' : article.slug}) }}">{{ article.title
+                        }}</a></h2>
+                    <p>{{ article.content | easyadmin_truncate(200) | raw }}
+                    <a href="{{ path('article.show', {'slug' : article.slug}) }}">[Lire la suite]</a></p>
+
+                </div>
+                </div>
+            {% endfor %}
+
+            {# display navigation #}
             <div class="row">
-                {% for article in listArticles %}
-                    <div class="col-lg-3">
-                        {{ article.createdAt | date("d/m/Y") }}
-                    </div>
-
-                    <div class="col-lg-9">
-                        <a href="{{ path('article.show', {'slug' : article.slug}) }}">{{ article.title }}</a><br/>
-                        {{ article.content | easyadmin_truncate(200) | raw }}
-                        <a href="{{ path('article.show', {'slug' : article.slug}) }}">[Lire la suite]</a>
-                    </div>
-
-                {% endfor %}
-
-                {# display navigation #}
-                <div class="paginator">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-9">
                     {{ knp_pagination_render(listArticles) }}
                 </div>
             </div>
+
+
         </div>
+
 
     {% endblock %}

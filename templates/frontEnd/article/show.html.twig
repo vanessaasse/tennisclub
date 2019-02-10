@@ -9,59 +9,47 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
+                <div class="article-subtitle">
                 <h1>Actualités du club</h1>
+                </div>
             </div>
         </div>
 
         <div class="container">
 
-            <div class="row">
-                <div class="col-lg-4">
-                    Date de publication<br/>
-                    Le {{ article.createdAt | date("d/m/Y") }} à {{ article.createdAt | date ("H:i") }}<br/>
-                    Date de modification<br/>
-                    Le {{ article.editedAt | date("d/m/Y") }} à {{ article.editedAt | date ("H:i") }}
-                    <br><br/>
-
-                    A partager sur les réseaux sociaux<br/>
-                    {{ render(controller('App\\Controller\\ArticleController::getUrl',
-                        {'article' : article, 'request' : app.request, 'slug' : article.slug })) }}
-                    <br><br/>
-
-                    <a href="{{ path('easyadmin',{'entity': 'Article', 'id': article.id, 'action': 'edit'})
-                    }}">Editer cet article</a>
+            <div class="row article-body">
+                <div class="col-lg-3">
+                    <div class="authentify">
+                        <i class="far fa-edit"></i> <a href="{{ path('easyadmin',{'entity': 'Article', 'id': article.id, 'action': 'edit'})
+                        }}">Editer cet article</a>
+                    </div>
                 </div>
 
-                <div class="col-lg-8">
-                    <h3>{{ article.title }}</h3>
+                <div class="col-lg-9 article-content">
+                    <h2>{{ article.title }}</h2>
+
+                    <button type="button" class="btn btn-article-date">
+                    Publié le {{ article.createdAt | date("d/m/Y") }} à {{ article.createdAt | date ("H:i") }} -
+                    Modifié le {{ article.editedAt | date("d/m/Y") }} à {{ article.editedAt | date ("H:i") }}
+                    </button>
 
                     <!--Affichage de l'image -->
+                    <div class="article-image">
                     {% if vich_uploader_asset(article, 'imageFile') is not null %}
                         <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('image_article') }}"
                              alt="{{ article.image }}">
                     {% endif %}
+                    </div>
+
+                    <div class="page-social-media">{{ render(controller('App\\Controller\\ArticleController::getUrl',
+                            {'article' : article, 'request' : app.request, 'slug' : article.slug })) }}</div>
 
                     <p>{{ article.content | raw }}</p>
+
+                    {{ render(controller('App\\Controller\\ArticleController::getPreviousAndNextArticleLink',
+                        {'id' : article.id})) }}
                 </div>
 
-                {{ render(controller('App\\Controller\\ArticleController::getPreviousAndNextArticleLink',
-                    {'id' : article.id})) }}
-
-
+                </div>
             </div>
-
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
     {% endblock %}

@@ -1,14 +1,20 @@
+<div class="row bloc-previous-next-article">
 {% for article in previousArticle %}
-    <div class="col-lg-6">
-    <a href="{{ path('article.show', {'slug' : article.slug}) }}">Article précédent</a>
+    <div class="col-lg-4 previous-next-article-item">
+        <i class="fas fa-angle-double-left"></i> <a href="{{ path('article.show', {'slug' : article.slug})
+        }}">Article précédent</a>
     </div>
 {% endfor %}
 
 
 {% for article in nextArticle %}
-    <div class="col-lg-6">
-    <a href="{{ path('article.show', {'slug' : article.slug}) }}">Article suivant</a>
+    <div class="col-lg-4 previous-next-article-item">
+    <a href="{{ path('article.show', {'slug' : article.slug}) }}">Article suivant</a> <i class="fas fa-angle-double-right"></i>
     </div>
 {% endfor %}
 
+<div class="col-lg-4 previous-next-article-item">
+    <i class="fas fa-list-alt"></i> <a href="{{ path('article.list') }}">Retour aux actualités</a>
+</div>
+</div>
 
