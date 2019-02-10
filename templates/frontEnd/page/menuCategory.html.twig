@@ -1,8 +1,10 @@
 <div class="list-pages">
 {% for page in listPages %}
      {% if page.isPublished == true %}
+         <div class="page-page-item">
          <i class="fas fa-angle-double-right"></i> <a href="{{ path('page.show', {'slug' : page.slug}) }}">{{ page
          .title }}</a><br/>
+         </div>
      {% endif %}
  {% endfor %}
 </div>

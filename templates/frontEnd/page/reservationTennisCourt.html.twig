@@ -1,18 +1,27 @@
+<div class="form-reservation-court">
 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
-{{ form_row(form.lastname) }}<br/>
-{{ form_row(form.firstname) }}<br/>
-{{ form_row(form.phone) }}<br/>
-{{ form_row(form.email) }}<br/>
-{{ form_row(form.date) }}<br/>
-{{ form_row(form.time) }}<br/>
-{{ form_row(form.member) }}<br/>
-{{ form_row(form.message) }}<br/>
-{{ form_row(form.privacyPolicy) }}<br/>
+    <div class="inner-wrap">
+    {{ form_row(form.lastname) }}<br/>
+    {{ form_row(form.firstname) }}<br/>
+    {{ form_row(form.phone) }}<br/>
+    {{ form_row(form.email) }}<br/>
+    </div>
 
-<button type="submit" class="btn btn-form">Validez</button>
-{{ form_end(form) }}
+    <div class="inner-wrap">
+    {{ form_row(form.date) }}<br/>
+    {{ form_row(form.time) }}<br/>
+    </div>
 
+    <div class="inner-wrap">
+    {{ form_row(form.member) }}<br/>
+    {{ form_row(form.message) }}<br/>
+    {{ form_row(form.privacyPolicy) }}<br/>
+    </div>
+
+    <button type="submit" class="btn btn-form">Validez</button>
+    {{ form_end(form) }}
+</div>
 
 
 

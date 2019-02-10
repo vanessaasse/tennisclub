@@ -5,6 +5,14 @@ html{
     /*1rem = 16px*/
 }
 
+a{
+    color: #4FB99F;
+}
+
+a:hover{
+    color: #ED553B;
+}
+
 .nav-link{
     font-size: 0.9rem;
     color: #112F41;
@@ -262,6 +270,10 @@ footer a:hover{
     color: #112F41;
 }
 
+.page-page-item{
+    padding-bottom: 0.5rem;
+}
+
 .page-show.blocs-liens-utiles{
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -344,7 +356,7 @@ footer a:hover{
 }
 /*** End Page de catégorie ***/
 
-/*** Events ***/
+/*** List Events ***/
 .page-subtitle h1{
     font-size: 3rem;
 }
@@ -393,13 +405,55 @@ thead{
         border-top: 1px solid white;
     }
 }
+/*** End list events ***/
+
+/*** Vue event ***/
+.event-body{
+    margin-top: 3rem;
+}
+
+.btn-event-date{
+    background-color: #068587;
+    color: white;
+    text-align: left;
+}
+
+.event-content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.event-title h2{
+    font-size: 2rem;
+}
+
+.event-image img{
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.bloc-previous-next-event{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
 
 
+.previous-next-event-item{
+    padding-top: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-radius: 10px;
+    border: solid 3px white;
+    text-align: center;
+    color:white;
+    background-color: #F2B134;
+    font-size: 1rem;
+}
 
-
-
-
-/*** End events ***/
+.previous-next-event-item a{
+    color: white;
+}
+/*** End vue event ***/
 
 
 

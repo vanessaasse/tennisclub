@@ -1,13 +1,19 @@
+<div class="row bloc-previous-next-event">
 {% for event in previousEvent %}
-    <div class="col-lg-6">
-        <a href="{{ path('event.show', {'slug' : event.slug}) }}">Evènement précédent</a>
+    <div class="col-lg-4 previous-next-event-item">
+        <i class="fas fa-angle-double-left"></i> <a href="{{ path('event.show', {'slug' : event.slug}) }}">Evènement
+            précédent</a>
     </div>
 {% endfor %}
-
 
 {% for event in nextEvent %}
-    <div class="col-lg-6">
-        <a href="{{ path('event.show', {'slug' : event.slug}) }}">Evènement suivant</a>
+    <div class="col-lg-4 previous-next-event-item">
+        <a href="{{ path('event.show', {'slug' : event.slug}) }}">Evènement suivant</a> <i class="fas fa-angle-double-right"></i>
     </div>
 {% endfor %}
+
+    <div class="col-lg-4 previous-next-event-item">
+        <i class="fas fa-calendar-alt"></i> <a href="{{ path('event.list') }}">Retour à l'agenda</a>
+    </div>
+</div>
 

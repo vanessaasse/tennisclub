@@ -14,7 +14,7 @@ liip_imagine:
             quality: 85
             filters:
                 relative_resize:
-                    widen: 750
+                    widen: 807
         image_slider_homepage:
             quality: 85
             filters:
