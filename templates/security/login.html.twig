@@ -1,8 +1,52 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
 
-{% block title %}Se connecter{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-{% block body %}
+    <link rel="icon" href="{{ asset('assets/img/favicon.ico') }}" />
+
+        <title>Se connecter - Tennis Club de Teyran</title>
+
+    {% block stylesheets %}
+        <!-- Bootstrap & fontawesome -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+              integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+        <!-- Custom fonts for this template -->
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type='text/css'>
+
+        <!-- Custom styles for this template-->
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    {% endblock %}
+
+</head>
+
+<body class="form-login">
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6">
+
+                <div class="row justify-content-center align-items-center">
+                <img src="{{ asset
+                    ('assets/img/TennisClub_Teyran_login-page-form.png')
+                }}" alt="tennis-club-teyran">
+                </div>
+
+                <div class="row justify-content-center align-items-center">
+                <h1>Tennis Club de Teyran</h1>
+                </div>
+
+                <div class="row justify-content-center align-items-center">
+                <h2><i class="fas fa-user-lock"></i> Se connecter</h2>
+                </div>
+
+
+
 <form method="post">
 
     {% if error %}
@@ -13,29 +57,39 @@
         {{ message }}
     {% endfor %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <div class="row justify-content-center align-items-center">
     <label for="inputEmail" class="sr-only">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+    <label><input type="checkbox" name="_remember_me" class="form-remember"> Se souvenir de moi </label>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
+        <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
+    </div>
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+        See https://symfony.com/doc/current/security/remember_me.html#}
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+    <button class="btn btn-lg btn-success btn-form-login" type="submit">
+        Validez
     </button>
+    </div>
 </form>
-{% endblock %}
+
+
+        </div>
+    </div>
+
+
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    {% endblock %}
+
+
+</body>
+</html>
