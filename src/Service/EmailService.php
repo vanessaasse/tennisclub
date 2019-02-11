@@ -36,7 +36,7 @@ class EmailService
      */
     public function sendMailContact($data)
     {
-        $message = (new \Swift_Message("Demande d'informations via le site internet"))
+        $message = (new \Swift_Message("Tennis Club de Teyran  - Demande d'informations via le site internet"))
             ->setFrom($data['email']) // je récupère l'adresse donnée par l'internaute dans le formulaire.
             // Dans le controller, j'ai appelé les datas par  $emailService->sendMailContact($form->getData());
             ->setTo($this->emailFrom) // je récupère l'adresse que j'ai enregistré dans parameters.yml grâce à
@@ -57,7 +57,7 @@ class EmailService
      */
     public function sendMailReservationTennisCourt($data)
     {
-        $message = (new \Swift_Message("Réservation de court de tennis"))
+        $message = (new \Swift_Message("Tennis Club de Teyran  - Réservation de court de tennis"))
             ->setFrom($data['email'])
             ->setTo($this->emailFrom)
             ->setBody($this->templating->render('email/reservationTennisCourt.html.twig',
@@ -74,7 +74,7 @@ class EmailService
      */
     public function sendMailEnrolmentTennisSchool($data)
     {
-        $message = (new \Swift_Message("Inscription à l'école de tennis"))
+        $message = (new \Swift_Message("Tennis Club de Teyran  - Inscription à l'école de tennis"))
             ->setFrom($data['email'])
             ->setTo($this->emailFrom)
             ->setBody($this->templating->render('email/enrolmentTennisSchool.html.twig',
@@ -91,7 +91,7 @@ class EmailService
      */
     public function sendConfirmationMailEnrolmentTennisSchool($data)
     {
-        $message = (new \Swift_Message("Inscription à l'école de tennis"))
+        $message = (new \Swift_Message("Tennis Club de Teyran  - Inscription à l'école de tennis"))
             ->setFrom($this->emailFrom)
             ->setTo($data['email'])
             ->setBody($this->templating->render('email/confirmationEmailEnrolmentTennisSchool.html.twig',
@@ -109,7 +109,7 @@ class EmailService
      */
     public function sendMailTennisAdult($data)
     {
-        $message = (new \Swift_Message("Inscription au Tennis Adulte"))
+        $message = (new \Swift_Message("Tennis Club de Teyran  - Inscription au Tennis Adulte"))
             ->setFrom($data['email'])
             ->setTo($this->emailFrom)
             ->setBody($this->templating->render('email/tennisAdult.html.twig',
@@ -126,7 +126,7 @@ class EmailService
      */
     public function sendConfirmationMailTennisAdult($data)
     {
-        $message = (new \Swift_Message("Inscription au Tennis Adulte"))
+        $message = (new \Swift_Message("Tennis Club de Teyran  - Inscription au Tennis Adulte"))
             ->setFrom($this->emailFrom)
             ->setTo($data['email'])
             ->setBody($this->templating->render('email/ConfirmationEmailTennisAdult.html.twig',

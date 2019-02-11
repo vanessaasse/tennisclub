@@ -8,21 +8,24 @@
 </head>
 
 
-<body style="padding:1rem;">
+<body>
 
-<table>
+<table width="100%" style="margin:2.5rem;">
     <tr>
         <td>
             Nous avons bien reçu votre demande d'inscription. Le Tennis Club de Teyran vous contactera dans les
             plus brefs délais pour la finaliser.<br/><br/>
 
             Nous vous invitons à nous présenter les deux documents suivants dûment remplis
-            lors de la validation votre inscription au club :<br/>
-            <a href="http://www.fft.fr/sites/default/files/pdf/cerfa_15699.do_.pdf">Questionnaire CERFA 15699*01</a><br/>
+            lors de la validation de cette inscription au club :<br/>
+            <a href="http://www.fft.fr/sites/default/files/pdf/cerfa_15699.do_.pdf">Questionnaire CERFA</a><br/>
             <a href="http://www.fft.fr/sites/default/files/pdf/modele_attestation_mineur.pdf">Attestation
-                mineur</a><br/>
-
-            <hr/>
+                mineur</a><br/><br/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Voici les informations que vous avez saisies en ligne :</strong><br/><br/>
 
             Informations concernant l'enfant à inscrire à l'école de tennis :<br/>
             <strong>Nom :</strong> {{ data.childLastname }}<br/>
@@ -41,7 +44,7 @@
 
             Parent 1<br/>
             <strong>Nom :</strong> {{ data.parentLastname }}<br/>
-            <strong>Prénom :</strong> {{ data.parentFirstname }}<br/
+            <strong>Prénom :</strong> {{ data.parentFirstname }}<br/>
             <strong>Téléphone :</strong> {{ data.phone }}<br/>
             <strong>Email :</strong> {{ data.email }}<br/><br/>
 

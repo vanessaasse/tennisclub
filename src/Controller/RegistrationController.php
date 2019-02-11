@@ -12,7 +12,7 @@ use App\Form\UserType;
 class RegistrationController extends Controller
 {
     /**
-     * @Route("/register", name="register")
+     * @Route(name="register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
