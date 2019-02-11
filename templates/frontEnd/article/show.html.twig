@@ -20,8 +20,10 @@
             <div class="row article-body">
                 <div class="col-lg-3">
                     <div class="authentify">
+                        {% if is_granted('EDIT', article) %}
                         <i class="far fa-edit"></i> <a href="{{ path('easyadmin',{'entity': 'Article', 'id': article.id, 'action': 'edit'})
                         }}">Editer cet article</a>
+                        {% endif %}
                     </div>
                 </div>
 

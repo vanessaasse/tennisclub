@@ -21,8 +21,10 @@
 
                 <div class="col-lg-3">
                     <div class="authentify">
-                    <i class="far fa-edit"></i> <a href="{{ path('easyadmin',{'entity': 'Event', 'id': event.id,
-                    'action': 'edit'}) }}">Editer cet évènement</a>
+                        {% if is_granted('EDIT', event) %}
+                        <i class="far fa-edit"></i> <a href="{{ path('easyadmin',{'entity': 'Event', 'id': event.id,
+                        'action': 'edit'}) }}">Editer cet évènement</a>
+                        {% endif %}
                     </div>
                 </div>
 

@@ -45,9 +45,11 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'easy_admin.pre_persist' => array(array('updateUserPassword')),
-            'easy_admin.pre_update' => array(array('setEditedAtPage'), array('setEditedAtArticle'),
-                array('setEditedAtEvent'), array('updateUserPassword'))
+            'easy_admin.pre_persist' => [['updateUserPassword']],
+            'easy_admin.pre_update' => [
+                ['setEditedAtPage'], ['setEditedAtArticle'],
+                ['setEditedAtEvent'], ['updateUserPassword']
+            ]
         );
     }
 
@@ -70,12 +72,12 @@ class EasyAdminSubscriber implements EventSubscriberInterface
 
     /**
      * @param GenericEvent $event
-    */
+     */
     public function setEditedAtArticle(GenericEvent $event)
     {
         $entity = $event->getSubject();
 
-        if(!($entity instanceof Article)){
+        if (!($entity instanceof Article)) {
             return;
         }
 
@@ -91,8 +93,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     {
         $entity = $event->getSubject();
 
-        if(!($entity instanceof Event))
-        {
+        if (!($entity instanceof Event)) {
             return;
         }
 
@@ -108,15 +109,12 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     {
         $entity = $event->getSubject();
 
-        if(!($entity instanceof User && $entity->getPlainPassword()))
-        {
+        if (!($entity instanceof User && $entity->getPlainPassword())) {
             return;
         }
 
         $this->userManager->encodePassword($entity, $entity->getPlainPassword());
     }
-
-
 
 
 }

@@ -19,7 +19,15 @@ easy_admin:
                 fields:
                     - { property: 'username', label: 'Login'}
                     - { property: 'email', label: 'Email'}
-                    - { property: 'plainPassword', label: 'Mot de passe'}
+                    -   property: 'plainPassword'
+                        type: 'repeated'
+                        type_options:
+                            type: Symfony\Component\Form\Extension\Core\Type\PasswordType
+                            first_options:
+                                label: 'Mot de passe'
+                            second_options:
+                                label: 'Confirmez votre mot de passe'
+                            required: true
                     -   property: 'roles'
                         label: 'Role'
                         type: 'choice'
@@ -29,7 +37,6 @@ easy_admin:
                              choices:
                                  'ROLE_USER': 'ROLE_USER'
                                  'ROLE_ADMIN': 'ROLE_ADMIN'
-                                 'ROLE_SUPER_ADMIN': 'ROLE_SUPER_ADMIN'
 
             edit:
                 title: "Modifier un utilisateur"
@@ -38,7 +45,15 @@ easy_admin:
                 fields:
                     - { property: 'username', label: 'Login'}
                     - { property: 'email', label: 'Email'}
-                    - { property: 'plainPassword', label: 'Mot de passe'}
+                    -   property: 'plainPassword'
+                        type: 'repeated'
+                        type_options:
+                            type: Symfony\Component\Form\Extension\Core\Type\PasswordType
+                            first_options:
+                                label: 'Mot de passe'
+                            second_options:
+                                label: 'Confirmez votre mot de passe'
+                            required: false
                     -   property: 'roles'
                         label: 'Role'
                         type: 'choice'
@@ -48,5 +63,4 @@ easy_admin:
                              choices:
                                  'ROLE_USER': 'ROLE_USER'
                                  'ROLE_ADMIN': 'ROLE_ADMIN'
-                                 'ROLE_SUPER_ADMIN': 'ROLE_SUPER_ADMIN'
 
