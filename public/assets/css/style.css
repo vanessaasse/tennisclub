@@ -577,3 +577,24 @@ thead{
     align-content: left;
 }
 /*** Enf form login ***/
+
+
+/*** Pages Errors ***/
+
+.page-errors{
+    margin-top: 2rem;
+}
+
+.pages-error-title h1{
+    font-size:6rem;
+}
+
+.page-error-text{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    text-align: center;
+}
+
+.pages-error-btn{
+    font-size: 1.2rem;
+}

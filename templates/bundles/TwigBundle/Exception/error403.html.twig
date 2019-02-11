@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container page-errors">
+        <div class="row justify-content-center align-items-center">
+            <div class="pages-error-title">
+                <h1>4<img src="{{ asset('assets/img/emoji-404.png')}}" class="image-emoji">3</h1>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+            <p>|<br/>|<br/>|</p>
+        </div>
+
+        <div class="row justify-content-center align-items-center page-error-text">
+            <p>Accès refusé. Vous n'avez pas les droits requis pour accéder à cette partie du site. Veuillez contacter l'administrateur.</p>
+        </div>
+
+
+        <div class="row justify-content-center align-items-center">
+            <p>|<br/>|<br/>|</p>
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+            <div class="alert alert-success pages-error-btn" role="alert">
+                <a class="nav-link" href="{{ path('homepage') }}">Retour à la page d'accueil</a>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
