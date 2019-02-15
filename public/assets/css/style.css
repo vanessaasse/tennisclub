@@ -576,6 +576,15 @@ thead{
 .form-remember{
     align-content: left;
 }
+
+.btn-forgot-password{
+    margin-top: 2rem;
+    color:#ED553B;
+}
+
+.btn-forgot-password a{
+    color:#ED553B;
+}
 /*** Enf form login ***/
 
 
@@ -598,3 +607,20 @@ thead{
 .pages-error-btn{
     font-size: 1.2rem;
 }
+
+
+/*** end pages errors ***/
+
+
+/*** Form forgot and reset password ***/
+
+.form-password{
+    margin-top: 1.5rem;
+}
+.form-password h2{
+    font-size: 1.2rem;
+}
+
+/*** end form forgot et reset password ***/
+
+

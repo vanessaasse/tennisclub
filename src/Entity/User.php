@@ -52,6 +52,13 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @var Reset
+     * @ORM\OneToOne(targetEntity="App\Entity\Reset", mappedBy="user")
+     *
+     */
+    private $resetToken;
+
 
     public function __construct()
     {
@@ -149,6 +156,24 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         $this->plainPassword = null;
+    }
+
+    public function getResetToken(): ?Reset
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?Reset $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = $resetToken === null ? null : $this;
+        if ($newUser !== $resetToken->getUser()) {
+            $resetToken->setUser($newUser);
+        }
+
+        return $this;
     }
 }
 

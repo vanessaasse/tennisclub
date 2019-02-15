@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use App\Entity\Reset;
+
 class EmailService
 {
     /**
@@ -133,5 +135,24 @@ class EmailService
                 array('data' => $data)))
             ->setContentType('text/html');
         $this->mailer->send($message);
+    }
+
+
+    /**
+     * @param Reset $reset
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function sendResetPasswordMail(Reset $reset)
+    {
+        $message = (new \Swift_Message('Modifiez votre mot de passe'))
+            ->setFrom($this->emailFrom)
+            ->setTo($reset->getUser()->getEmail())
+            ->setBody($this->templating->render('email/ResetPassword.html.twig',
+                array('reset' => $reset)))
+            ->setContentType('text/html');
+        $this->mailer->send($message);
+
     }
 }
