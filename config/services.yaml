@@ -6,6 +6,7 @@
 parameters:
     locale: 'fr'
     app.path.images: /uploads/images
+    ga_tracking: UA-134925539-1
 
 services:
     # default configuration for services in *this* file
