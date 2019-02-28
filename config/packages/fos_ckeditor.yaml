@@ -3,6 +3,7 @@ fos_ck_editor:
     configs:
         my_config:
             toolbar: standard
+            allowedContent: true
 
 
 twig:
