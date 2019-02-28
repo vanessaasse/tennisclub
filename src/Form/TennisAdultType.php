@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use Beelab\Recaptcha2Bundle\Form\Type\RecaptchaType;
+use Beelab\Recaptcha2Bundle\Validator\Constraints\Recaptcha2;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -127,6 +129,11 @@ class TennisAdultType extends AbstractType
                 conformément à notre politique de confidentialité.",
                 'constraints' => array(
                     new IsTrue(array('message' => 'Pour envoyer votre inscription, vous devez accepter notre politique de confidentialité.'))
+                )))
+            ->add('captcha', RecaptchaType::class, array(
+                'required' => true,
+                'constraints' => array(
+                    new Recaptcha2(array('message' => 'reCaptcha invalide'))
                 )));
     }
 }
