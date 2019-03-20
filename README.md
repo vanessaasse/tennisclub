@@ -18,6 +18,8 @@ It's a website of a tennis association.
 3. Go to "TennisClub" file: `$ cd tennisclub`
 4. Get dependancies with Composer: `$ composer install` (windows) or `$ composer.phar install` (Mac)
 5. Create the database: `$ php bin/console doctrine:database:create`
-7. Update database : `$ php bin/console doctrine:migrations:migrate`
-8. Run the project : `$ php bin/console server:run`
+6. Update database : `$ php bin/console doctrine:migrations:migrate`
+7. Install CKEditor: `$ php bin/console ckeditor:install`
+8. Install Assets : `$ php bin/console assets:install`
+9. Run the project : `$ php bin/console server:run`
 
